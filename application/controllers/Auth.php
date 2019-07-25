@@ -7,6 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('admin/mod_usaha');
     }
 
     public function index()
@@ -192,6 +193,7 @@ class Auth extends CI_Controller
     {
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('nm_usaha', 'Nama Usaha', 'required');
         $this->form_validation->set_rules(
             'email',
             'Email',
@@ -228,6 +230,7 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('users', $data);
+            $this->mod_usaha->create();
             $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

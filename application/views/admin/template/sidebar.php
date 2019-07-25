@@ -115,7 +115,7 @@
              </a>
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="<?= base_url('admin/umum/profile'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/usaha/profile'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>Profil Usaha</p>
                  </a>
