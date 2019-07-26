@@ -34,11 +34,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>NO</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Level</th>
-                            <th>Aktiv</th>
+                            <th width="5">NO</th>
+                            <th>Nama Usaha</th>
+                            <th>Izin Usaha</th>
+                            <th>Tanggal Terbit</th>
+                            <th>Berlaku</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
                         </tr>
@@ -49,24 +49,15 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-                            /*foreach ($kec as $b) {
-
-                                if ($a->role_id == 3) {
-                                    if ($a->kec_id == $b->kec_id) {
-                                        $y = $b->nama_kec;
-                                    }
-                                }
-                            }*/
-
 
                             echo "<tr>
-                                <td>" . $no . "</td>
-                                <td>" . $a->nm_usaha . "</td>
-                                <td>" . $a->nmr_izin . "</td>
-                                <td>" . $a->tgl_terbit . "</td>
-                                <td>" . $a->berlaku . "</td>
-                                <td>" . anchor("admin/user/edit/" . $a->usaha_id, "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
-                                <td>"; ?><a href="<?= base_url('admin/user/delete/' . $a->usaha_id); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
+                                <td width='5'>" . $no . "</td>
+                                <td>" . $a['nm_usaha'] . "</td>
+                                <td>" . $a['nmr_izin'] . "</td>
+                                <td>" . $a['tgl_terbit'] . "</td>
+                                <td>" . $a['berlaku'] . "</td>
+                                <td>" . anchor("admin/izin/edit/" . $a['id_izin'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>"; ?><a href="<?= base_url('admin/izin/delete/' . $a['id_izin']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
                             </tr>
                             <?php $no++;
                         }

@@ -17,40 +17,48 @@ class Mod_izin extends Ci_Model
         $query = $this->db->query($sql);
         return $query;
     }
-
-    function updateB()
+    function selectByUser($id)
     {
-        $data = [
-            'almt_ktr' => $this->input->post('almt_ktr'),
-            'kec_ktr' => $this->input->post('kec_ktr'),
-            'almt_ush' => $this->input->post('almt_ush'),
-            'kec_ush' => $this->input->post('kec_ush'),
-            'telepon' => $this->input->post('telepon'),
-            'email_u' => $this->input->post('email_u'),
-            'tahun_opr' => $this->input->post('tahun_opr')
-
-        ];
-
-
-        $this->db->where('id_usaha', $this->input->post('id'));
-        $this->db->update('usaha', $data);
+        $sql = "select * from usaha where user_id='" . $id . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+    function selectById($id)
+    {
+        $sql = "select * from perizinan where id_izin='" . $id . "'";
+        $query = $this->db->query($sql);
+        return $query;
     }
 
-    function updateC()
+    function simpan()
     {
         $data = [
-            'jenis_dok' => $this->input->post('jenis_dok'),
-            'tahun_sah' => $this->input->post('tahun_sah'),
-            'luas_lahan' => $this->input->post('luas_lahan'),
-            'jenis_produk' => $this->input->post('jenis_produk'),
-            'kapasitas' => $this->input->post('kapasitas'),
-            'jenis_bahan' => $this->input->post('jenis_bahan'),
-            'penggunaan' => $this->input->post('penggunaan'),
-            'sumber_air' => $this->input->post('sumber_air'),
-            'jml_karyawan' => $this->input->post('jml_karyawan')
+            'id_usaha' => $this->input->post('id_usaha'),
+            'j_izin' => $this->input->post('j_izin'),
+            'nmr_izin' => $this->input->post('nmr_izin'),
+            'tgl_terbit' => $this->input->post('tgl_terbit'),
+            'berlaku' => $this->input->post('berlaku'),
+            'keterangan' => $this->input->post('keterangan')
 
         ];
-        $this->db->where('id_usaha', $this->input->post('id'));
-        $this->db->update('usaha', $data);
+
+
+
+        $this->db->insert('perizinan', $data);
+    }
+
+    function update()
+    {
+        $data = [
+            'id_usaha' => $this->input->post('id_usaha'),
+            'j_izin' => $this->input->post('j_izin'),
+            'nmr_izin' => $this->input->post('nmr_izin'),
+            'tgl_terbit' => $this->input->post('tgl_terbit'),
+            'berlaku' => $this->input->post('berlaku'),
+            'keterangan' => $this->input->post('keterangan')
+
+        ];
+        $this->db->where('id_izin', $this->input->post('id_izin'));
+        $this->db->update('perizinan', $data);
     }
 }
