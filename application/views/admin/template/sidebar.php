@@ -121,15 +121,15 @@
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="<?= base_url('admin/umum/izin'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/izin'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>Perizinan / Non Perizinan</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="<?= base_url('admin/umum/sarana'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/sarana'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
-                   <p>Sarana Prasarana</p>
+                   <p>Sarana & Prasarana</p>
                  </a>
                </li>
              </ul>

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Mod_usaha extends Ci_Model
+class Mod_izin extends Ci_Model
 {
     function create()
     {
@@ -11,17 +11,11 @@ class Mod_usaha extends Ci_Model
         ];
         $this->db->insert('usaha', $data);
     }
-    function updateA()
+    function selectByUsaha()
     {
-        $data = [
-            'user_id' => $this->input->post('id_user'),
-            'nm_usaha' => $this->input->post('usaha'),
-            'jenis' => $this->input->post('jenis'),
-            'owner' => $this->input->post('owner')
-        ];
-
-        $this->db->where('id_usaha', $this->input->post('id'));
-        $this->db->update('usaha', $data);
+        $sql = "select * from usaha, perizinan where usaha.id_usaha=perizinan.id_usaha";
+        $query = $this->db->query($sql);
+        return $query;
     }
 
     function updateB()
