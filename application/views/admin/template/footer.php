@@ -31,43 +31,14 @@
 <script src="<?= base_url('asset'); ?>/dist/js/demo.js"></script>
 <script src="<?= base_url('asset'); ?>/dist/js/alert/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('asset'); ?>/dist/js/alert/myscript.js"></script>
-<script>
-    $(document).ready(() => {
-        let url = location.href.replace(/\/$/, "");
 
-        if (location.hash) {
-            const hash = url.split("#");
-            $('#myTab a[href="#' + hash[1] + '"]').tab("show");
-            url = location.href.replace(/\/#/, "#");
-            history.replaceState(null, null, url);
-            setTimeout(() => {
-                $(window).scrollTop(0);
-            }, 400);
-        }
-
-        $('a[data-toggle="tab"]').on("click", function() {
-            let newUrl;
-            const hash = $(this).attr("href");
-            if (hash == "#tab_11") {
-                newUrl = url.split("#")[0];
-                $('#tab_11').addClass('active');
-            } else {
-                newUrl = url.split("#")[0] + hash;
-                $('#tab_11').removeClass('active');
-                $('#tab_12').addClass('active');
-            }
-            newUrl += "/";
-            history.replaceState(null, null, newUrl);
-        });
-    });
-</script>
 
 <script>
     $(function() {
 
         $('#example1').DataTable({
             "responsive": true,
-            "paging": true,
+            "paging": false,
             "lengthChange": false,
             "searching": true,
             "ordering": false,

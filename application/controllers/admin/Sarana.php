@@ -1,15 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Izin extends CI_Controller
+class Sarana extends CI_Controller
 {
-
     function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('admin/mod_usaha');
-        $this->load->model('admin/mod_izin');
+        $this->load->model('admin/mod_sarana');
 
         if (!$this->session->userdata('email')) {
             redirect('auth');
@@ -22,29 +21,18 @@ class Izin extends CI_Controller
 
     function index()
     {
-        $data['usaha'] = $this->mod_izin->selectByUsaha()->result_array();
+        $data['sarana'] = $this->mod_sarana->selectByUsaha()->result_array();
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/izin/view', $data);
+        $this->load->view('admin/sarana/view', $data);
         $this->load->view('admin/template/footer');
     }
 
     function create()
     {
         if (isset($_POST['submit'])) {
-            /*$this->form_validation->set_rules('j_izin', 'Jenis Izin', 'required');
-            $this->form_validation->set_rules('nmr_izin', 'Nomor Izin', 'required');
-            $this->form_validation->set_rules('tgl_terbit', 'Tangga Terbit', 'required');
-            $this->form_validation->set_rules('berlaku', 'Masa Berlaku', 'required');
-            $this->form_validation->set_rules('Keterangan', 'Keterangan', 'required');*/
-
-
-            /*if ($this->form_validation->run() == false) {
-                echo "balik lagi";
-            } else {*/
-
             $this->mod_izin->simpan();
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -54,12 +42,12 @@ class Izin extends CI_Controller
             //}
         } else {
 
-            $data['usaha'] = $this->mod_izin->selectByUser($this->session->userdata('user_id'))->row_array();
+            $data['usaha'] = $this->mod_sarana->selectByUser($this->session->userdata('user_id'))->row_array();
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/navbar', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/izin/create', $data);
+            $this->load->view('admin/sarana/create', $data);
             $this->load->view('admin/template/footer');
         }
     }
