@@ -22,6 +22,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+
 
 
 <script src="<?= base_url('asset'); ?>/plugins/fastclick/fastclick.js"></script>
@@ -32,7 +35,55 @@
 <script src="<?= base_url('asset'); ?>/dist/js/alert/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('asset'); ?>/dist/js/alert/myscript.js"></script>
 
+<script>
+    $(".input-group.date").datepicker({
+        autoclose: true,
+        format: " yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+</script>
 
+<script>
+    $("#date1").datepicker({
+        format: 'MM',
+        viewMode: "months",
+        minViewMode: "months",
+        autoclose: true
+    });
+</script>
+<script>
+    $("#date2").datepicker({
+        format: 'MM',
+        viewMode: "months",
+        minViewMode: "months",
+        autoclose: true
+    });
+</script>
+<script>
+    $("#date3").datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true
+
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#air').hide();
+
+
+    });
+</script>
+<script>
+    function tampil_box(param) {
+        if (param == 2) {
+            $('#air').show();
+        } else {
+            $('#air').hide();
+        }
+    }
+</script>
 <script>
     $(function() {
 

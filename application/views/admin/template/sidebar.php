@@ -3,7 +3,7 @@
    <!-- Brand Logo -->
    <a href="#" class="brand-link">
      <img src="<?= base_url('asset'); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-     <span class="brand-text font-weight-light">SIKASER 0.1</span>
+     <span class="brand-text font-weight-light">SI-DILAN 0.1</span>
    </a>
 
    <!-- Sidebar -->
@@ -144,13 +144,13 @@
              </a>
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="pages/examples/invoice.html" class="nav-link">
+                 <a href="<?= base_url('admin/pelptri'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>Triwulan</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="pages/examples/profile.html" class="nav-link">
+                 <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>Semester</p>
                  </a>

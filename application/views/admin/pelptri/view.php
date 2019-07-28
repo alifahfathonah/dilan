@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Data Izin USaha</li>
+                        <li class="breadcrumb-item active">Pelaporan Triwulan</li>
                     </ol>
                 </div>
             </div>
@@ -21,12 +21,12 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/izin/create'); ?>" class="btn btn-primary btn-sm">Input Izin Usaha</a>
+        <a href="<?= base_url('admin/pelptri/create'); ?>" class="btn btn-primary btn-sm">Input Laporan Triwulan</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data Perizinan Usaha</h3>
+                <h3 class="card-title">Pelaporan Triwulan</h3>
             </div>
             <!-- /.card-header -->
 
@@ -36,10 +36,10 @@
                         <tr>
                             <th width="5">NO</th>
                             <th>Nama Usaha</th>
-                            <th>Izin Usaha</th>
-                            <th>Tanggal Terbit</th>
-                            <th>Berlaku</th>
-                            <th>Aksi</th>
+                            <th>Periode</th>
+                            <th>Tahun</th>
+                            <th>Jenis Pelaporan</th>
+                            <th>PH</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -48,16 +48,15 @@
                         <?php
                         $no = 1;
 
-                        foreach ($usaha as $a) {
+                        foreach ($sarana as $a) {
 
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
-                                <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['nmr_izin'] . "</td>
-                                <td>" . $a['tgl_terbit'] . "</td>
-                                <td>" . $a['berlaku'] . "</td>
-                                <td>" . anchor("admin/izin/edit/" . $a['id_izin'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
-                                <td>"; ?><a href="<?= base_url('admin/izin/delete/' . $a['id_izin']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
+                                <td>" . $a['periode'] . "</td>
+                                <td>" . $a['tahun'] . "</td>
+                                <td>" . $a['jenis'] . "</td>
+                                <td>" . $a['PH'] . "</td>
+                                <td>" . anchor("admin/pelptri/edit/" . $a['id_pelptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }
