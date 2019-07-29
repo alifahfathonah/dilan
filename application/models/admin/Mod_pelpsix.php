@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Mod_pelptri extends Ci_Model
+class Mod_pelpsix extends Ci_Model
 {
 
     function selectByUsaha()
     {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha";
+        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha";
         $query = $this->db->query($sql);
         return $query;
     }

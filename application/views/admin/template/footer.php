@@ -34,7 +34,7 @@
 <script src="<?= base_url('asset'); ?>/dist/js/demo.js"></script>
 <script src="<?= base_url('asset'); ?>/dist/js/alert/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('asset'); ?>/dist/js/alert/myscript.js"></script>
-
+<script src="<?= base_url('asset'); ?>/plugins/summernote/summernote-bs4.js"></script>
 <script>
     $(".input-group.date").datepicker({
         autoclose: true,
@@ -71,7 +71,7 @@
 <script>
     $(document).ready(function() {
         $('#air').hide();
-
+        $('.field').hide();
 
     });
 </script>
@@ -83,6 +83,21 @@
             $('#air').hide();
         }
     }
+</script>
+<script>
+    function tampil_field(param) {
+        if (param == 1) {
+            $('.field').show();
+        } else {
+            $('.field').hide();
+        }
+    }
+</script>
+<script>
+    $(function() {
+        // Summernote
+        $('.textarea').summernote()
+    })
 </script>
 <script>
     $(function() {

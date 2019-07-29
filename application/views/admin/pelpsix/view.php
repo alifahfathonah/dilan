@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Pelaporan Triwulan</li>
+                        <li class="breadcrumb-item active">Pelaporan Semester</li>
                     </ol>
                 </div>
             </div>
@@ -21,7 +21,7 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/pelptri/create'); ?>" class="btn btn-primary btn-sm">Input Laporan Triwulan</a>
+        <a href="<?= base_url('admin/pelpsix/create'); ?>" class="btn btn-primary btn-sm">Input Laporan Semester</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -39,7 +39,7 @@
                             <th>Periode</th>
                             <th>Tahun</th>
 
-                            <th>PH</th>
+                            <th>Sumber Dampak</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -53,11 +53,11 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['periode'] . "</td>
-                                <td>" . $a['tahun'] . "</td>
+                                <td>" . $a['periode_sm'] . "</td>
+                                <td>" . $a['tahun_sm'] . "</td>
                             
-                                <td>" . $a['PH'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_lapor'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . $a['s_dampak'] . "</td>
+                                <td>" . anchor("admin/pelpsix/edit/" . $a['id_laporsm'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }
