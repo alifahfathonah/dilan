@@ -25,7 +25,7 @@
             <div class="card-header">
                 <h3 class="card-title">Laporan Semester</h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/pelpsix/create'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/pelpsix/create'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <!--<div class="row d-flex justify-content-center"> menegahkan box-->
                     <div class="row">
@@ -34,7 +34,7 @@
 
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
-
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
 
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Pengelolahan Dan Pemantauan Yang Dilaksanakan</label>
@@ -78,7 +78,7 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                     <div class="col-sm-5">
-                                        <input class="form-control form-control-sm col-3" type="text" name="tahun" readonly>
+                                        <input class="form-control form-control-sm col-3" type="text" name="tahun_sm" readonly>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pengelolaan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="aksi" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        <textarea name="kelola" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     </div>
                                 </div>
                             </div>

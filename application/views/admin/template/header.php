@@ -20,18 +20,22 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <style type="text/css">
-        #date1 {
+        .input-group-addon {
 
+            font-size: 15px;
+        }
+
+        .glyphicon glyphicon-calendar {
             font-size: 10px;
         }
 
-        #date2 {
+        /* #date2 {
             font-size: 10px;
-        }
+        
 
         #date3 {
             font-size: 10px;
-        }
+        }*/
     </style>
 </head>
 

@@ -26,7 +26,7 @@
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Pelaporan Triwulan</h3>
+                <h3 class="card-title">Pelaporan Semester</h3>
             </div>
             <!-- /.card-header -->
 

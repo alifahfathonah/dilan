@@ -17,34 +17,27 @@ class Mod_pelpsix extends Ci_Model
     }
     function selectById($id)
     {
-        $sql = "select * from lapor where id_lapor='" . $id . "'";
+        $sql = "select * from laporsm, usaha where usaha.id_usaha=laporsm.id_usaha and laporsm.id_laporsm='" . $id . "'";
         $query = $this->db->query($sql);
         return $query;
     }
 
     function simpan($data)
     {
-        $this->db->insert('lapor', $data);
+        $this->db->insert('laporsm', $data);
     }
 
-    function update()
+    function update($data)
     {
-        $m1 = $this->input->post('m1');
-        $m2 = $this->input->post('m2');
-        $g = $m1 . "-" . $m2;
-        $data = [
-            'id_usaha' => $this->input->post('id_usaha'),
-            'periode' => $g,
-            'tahun' => $this->input->post('tahun'),
-            'PH' => $this->input->post('PH'),
-            'tgl_pantau' => $this->input->post('tgl_pantau'),
-            'parameter' => $this->input->post('parameter'),
-            'b_mutu' => $this->input->post('b_mutu'),
-            'h_pantau' => $this->input->post('h_pantau')
 
-        ];
 
-        $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
-        $this->db->update('lapor', $data);
+        $this->db->where('id_laporsm', $this->input->post('id_laporsm'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->update('laporsm', $data);
+    }
+    function selectFile($id)
+    {
+        $sql = "select lampiran from laporsm where id_laporsm='" . $id . "'";
+        $query = $this->db->query($sql);
+        return $query;
     }
 }
