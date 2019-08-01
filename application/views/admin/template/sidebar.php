@@ -47,50 +47,53 @@
                </p>
              </a>
            </li>
-           <li class="nav-item">
-             <a href="<?= base_url('admin/aduan_a'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
-               <p>
-                 ADUAN
 
-               </p>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="<?= base_url('admin/kategori'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
-               <p>
-                 KATEGORI ADUAN
-
-               </p>
-             </a>
-           </li>
            <li class="nav-item">
              <a href="<?= base_url('admin/kecamatan'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
+               <i class="nav-icon fas fa-th"></i>
                <p>
                  KECAMATAN
 
                </p>
              </a>
            </li>
-         <?php
-          }
-          ?>
-         <?php
-          if ($user['role_id'] == 1) {
-            ?>
-           <li class="nav-header">USER</li>
            <li class="nav-item">
-             <a href="#" class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
+             <a href="<?= base_url('admin/v_umum'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-book"></i>
                <p>
-                 MY Profile
+                 Data Umum
 
                </p>
              </a>
            </li>
-         <?php  }
+           <li class="nav-item has-treeview">
+             <a href="#" class="nav-link">
+               <i class="nav-icon fas fa-copy"></i>
+               <p>
+                 Laporan
+                 <i class="fas fa-angle-left right"></i>
+               </p>
+             </a>
+             <ul class="nav nav-treeview" style="display: none;">
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/v_laptri'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Triwulan</p>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/v_lapsm'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Semester</p>
+                 </a>
+               </li>
+             </ul>
+           </li>
+         <?php
+          }
+          ?>
+
+         <?php
 
           if ($user['role_id'] == 4) {
             ?>
@@ -176,37 +179,7 @@
              </a>
            </li>
          <?php
-          } else if ($user['role_id'] == 3) { ?>
-           <li class="nav-header">MENU</li>
-           <li class="nav-item">
-             <a href="<?= base_url('admin/aduan_k'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
-               <p>
-                 Data Aduan
-
-               </p>
-             </a>
-           </li>
-         <?php } else if ($user['role_id'] == 2) { ?>
-           <li class="nav-item">
-             <a href="<?= base_url('admin/aduan_kds'); ?>" class="nav-link">
-               <i class="nav-icon far fa-calendar-alt"></i>
-               <p>
-                 Dashboard
-
-               </p>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="<?= base_url('admin/aduan_kds'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-user-tie"></i>
-               <p>
-                 Data Aduan
-
-               </p>
-             </a>
-           </li>
-         <?php }
+          }
           ?>
          <li class="nav-header">SETTING</li>
          <li class="nav-item">

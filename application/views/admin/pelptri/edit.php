@@ -26,7 +26,7 @@
             <div class="card-header">
                 <h3 class="card-title">Laporan Triwulan</h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/pelptri/edit'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/pelptri/edit'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -35,6 +35,7 @@
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
                             <input type="hidden" name="id_lapor" class="form-control form-control-sm col-10" value="<?= $usaha['id_lapor']; ?>">
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
                             <!-- <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
                                 <div class="col-sm-8">
@@ -67,8 +68,6 @@
                             <div class="form-group row">
                                 <?php
                                 $a = explode("-", $usaha['periode']);
-
-
                                 ?>
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>

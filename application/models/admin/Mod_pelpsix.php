@@ -40,4 +40,18 @@ class Mod_pelpsix extends Ci_Model
         $query = $this->db->query($sql);
         return $query;
     }
+
+    function selectv_usaha($id)
+    {
+        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function verify($data)
+    {
+        $this->db->where('id_laporsm', $this->input->post('id_laporsm'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->update('laporsm', $data);
+    }
 }

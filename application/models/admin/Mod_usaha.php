@@ -59,4 +59,21 @@ class Mod_usaha extends Ci_Model
         $this->db->where('id_usaha', $this->input->post('id'));
         $this->db->update('usaha', $data);
     }
+
+    function selectByUsaha()
+    {
+        $sql = "select * from usaha";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    function selectById($id)
+    {
+        return  $this->db->get_where('usaha', ['id_usaha' => $id]);
+    }
+    function verify($data)
+    {
+        $this->db->where('id_usaha', $this->input->post('id'));
+        $this->db->update('usaha', $data);
+    }
 }

@@ -9,6 +9,14 @@ class Mod_pelptri extends Ci_Model
         $query = $this->db->query($sql);
         return $query;
     }
+
+    function selectByUsahaId($id)
+    {
+        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and lapor.id_lapor='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
     function selectByUser($id)
     {
         $sql = "select * from usaha where user_id='" . $id . "'";
@@ -17,7 +25,7 @@ class Mod_pelptri extends Ci_Model
     }
     function selectById($id)
     {
-        $sql = "select * from lapor where id_lapor='" . $id . "'";
+        $sql = "select * from lapor, usaha where usaha.id_usaha=lapor.id_usaha and lapor.id_lapor='" . $id . "'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -27,23 +35,31 @@ class Mod_pelptri extends Ci_Model
         $this->db->insert('lapor', $data);
     }
 
-    function update()
+    function update($data)
     {
-        $m1 = $this->input->post('m1');
-        $m2 = $this->input->post('m2');
-        $g = $m1 . "-" . $m2;
-        $data = [
-            'id_usaha' => $this->input->post('id_usaha'),
-            'periode' => $g,
-            'tahun' => $this->input->post('tahun'),
-            'PH' => $this->input->post('PH'),
-            'tgl_pantau' => $this->input->post('tgl_pantau'),
-            'parameter' => $this->input->post('parameter'),
-            'b_mutu' => $this->input->post('b_mutu'),
-            'h_pantau' => $this->input->post('h_pantau')
 
-        ];
 
+        $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->update('lapor', $data);
+    }
+
+    function selectFile($id)
+    {
+        $sql = "select lampiran from lapor where id_lapor='" . $id . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    function selectv_usaha($id)
+    {
+        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function verify($data)
+    {
         $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
         $this->db->update('lapor', $data);
     }

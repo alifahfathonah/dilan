@@ -156,7 +156,7 @@ class Pelpsix extends CI_Controller
                     redirect('admin/pelpsix');
                 }
             } else {
-                $nama_file = $this->upload->data(file_name);
+
                 $m1 = $this->input->post('m1');
                 $m2 = $this->input->post('m2');
                 $g = $m1 . "-" . $m2;
