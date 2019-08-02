@@ -22,8 +22,10 @@ class Izin extends CI_Controller
 
     function index()
     {
-        $data['usaha'] = $this->mod_izin->selectByUsaha()->result_array();
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $data['user']['user_id'];
+        $data['usaha'] = $this->mod_izin->selectByUsaha($user)->result_array();
+        
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);

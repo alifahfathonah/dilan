@@ -29,6 +29,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
+                            <h5>Data Perizinan Usaha</h5>
+
+                            <hr>
                             <input type="hidden" name="id_usaha" value="<?= $usaha['id_usaha']; ?>">
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Izin</label>
@@ -46,8 +49,8 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Tanggal Terbit</label>
-                                <div class="col-sm-8">
-                                    <input type="date" name="tgl_terbit" class="form-control form-control-sm col-10" required>
+                                <div class="col-sm-6">
+                                    <input type="date" name="tgl_terbit" class="form-control form-control-sm col-8" required>
                                     <?= form_error('tgl_terbit', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>

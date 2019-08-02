@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Mod_sarana extends Ci_Model
 {
 
-    function selectByUsaha()
+    function selectByUsaha($user)
     {
-        $sql = "select * from usaha, sarana where usaha.id_usaha=sarana.id_usaha";
+        $sql = "select * from usaha, sarana where usaha.id_usaha=sarana.id_usaha and usaha.user_id='".$user."'";
         $query = $this->db->query($sql);
         return $query;
     }

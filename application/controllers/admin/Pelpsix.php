@@ -21,8 +21,10 @@ class Pelpsix extends CI_Controller
 
     function index()
     {
-        $data['usaha'] = $this->mod_pelpsix->selectByUsaha()->result_array();
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $data['user']['user_id'];
+        $data['usaha'] = $this->mod_pelpsix->selectByUsaha($user)->result_array();
+      
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
@@ -54,7 +56,8 @@ class Pelpsix extends CI_Controller
                         'j_dampak' => $this->input->post('j_dampak'),
                         'kelola' => $this->input->post('kelola'),
                         'pantau' => $this->input->post('pantau'),
-                        'lampiran' => $nama_file
+                        'lampiran' => $nama_file,
+                        'created_at' => date('Y-m-d')
 
                     ];
 
@@ -84,7 +87,8 @@ class Pelpsix extends CI_Controller
                     's_dampak' => $this->input->post('s_dampak'),
                     'j_dampak' => $this->input->post('j_dampak'),
                     'kelola' => $this->input->post('kelola'),
-                    'pantau' => $this->input->post('pantau')
+                    'pantau' => $this->input->post('pantau'),
+                    'created_at' => date('Y-m-d')
 
 
                 ];
@@ -138,7 +142,8 @@ class Pelpsix extends CI_Controller
                         'j_dampak' => $this->input->post('j_dampak'),
                         'kelola' => $this->input->post('kelola'),
                         'pantau' => $this->input->post('pantau'),
-                        'lampiran' => $nama_file
+                        'lampiran' => $nama_file,
+                        'updated_at' => date('Y-m-d')
 
                     ];
                     $this->mod_pelpsix->update($data);
@@ -167,7 +172,8 @@ class Pelpsix extends CI_Controller
                     's_dampak' => $this->input->post('s_dampak'),
                     'j_dampak' => $this->input->post('j_dampak'),
                     'kelola' => $this->input->post('kelola'),
-                    'pantau' => $this->input->post('pantau')
+                    'pantau' => $this->input->post('pantau'),
+                    'updated_at' => date('Y-m-d')
 
 
                 ];

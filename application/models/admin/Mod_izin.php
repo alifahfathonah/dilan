@@ -11,9 +11,9 @@ class Mod_izin extends Ci_Model
         ];
         $this->db->insert('usaha', $data);
     }
-    function selectByUsaha()
+    function selectByUsaha($user)
     {
-        $sql = "select * from usaha, perizinan where usaha.id_usaha=perizinan.id_usaha";
+        $sql = "select * from usaha, perizinan where usaha.id_usaha=perizinan.id_usaha and usaha.user_id='".$user."'";
         $query = $this->db->query($sql);
         return $query;
     }

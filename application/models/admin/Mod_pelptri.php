@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Mod_pelptri extends Ci_Model
 {
 
-    function selectByUsaha()
+    function selectByUsaha($user)
     {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha";
+        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and usaha.user_id='".$user."'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -57,6 +57,7 @@ class Mod_pelptri extends Ci_Model
 
         return $query;
     }
+  
 
     function verify($data)
     {

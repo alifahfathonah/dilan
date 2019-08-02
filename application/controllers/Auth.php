@@ -8,6 +8,8 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('admin/mod_usaha');
+        $this->load->model('admin/mod_user');
+        
     }
 
     public function index()
@@ -33,7 +35,7 @@ class Auth extends CI_Controller
                             'user_id' => $user['user_id'],
                             'email' => $user['email'],
                             'role_id' => $user['role_id'],
-                            'kec_id' => $user['kec_id']
+                           
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin/home');
@@ -218,8 +220,35 @@ class Auth extends CI_Controller
             $this->load->view('auth/footer');
         } else {
             $token = base64_encode(random_bytes(32));
+            $datakode = $this->mod_user->getKode()->row_array();
+             
+            // jika $datakode
+           if ($datakode > 0 ) {
+            $nilaikode = substr($datakode['max_id'], 3);
+            // menjadikan $nilaikode ( int )
+            $kode = (int) $nilaikode;
+            // setiap $kode di tambah 1
+            $kode = $kode + 1;
+            $kode_otomatis = "usr".str_pad($kode, 3, "0", STR_PAD_LEFT);
+            } else {
+            $kode_otomatis = "usr001";
+            }
+
+            $du = $this->mod_usaha->getKode()->row_array();
+            if ($du > 0 ) {
+                $nkode = substr($du['max_ush'], 3);
+                // menjadikan $nilaikode ( int )
+                $kodex = (int) $nkode;
+                // setiap $kode di tambah 1
+                $kodex = $kodex + 1;
+                $kode_usaha = "ush".str_pad($kodex, 3, "0", STR_PAD_LEFT);
+                } else {
+                $kode_usaha = "ush001";
+                }
+          
 
             $data = [
+                'user_id' => $kode_otomatis,
                 'nama' => htmlspecialchars(($this->input->post('nama', true))),
                 'email' => htmlspecialchars(($this->input->post('email', true))),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
@@ -231,7 +260,7 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('users', $data);
-            $this->mod_usaha->create();
+            $this->mod_usaha->create($kode_usaha,$kode_otomatis);
             $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

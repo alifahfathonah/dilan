@@ -8,6 +8,7 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('admin/mod_user');
+        $this->load->model('admin/mod_usaha');
         if (!$this->session->userdata('email')) {
             redirect('auth');
         } else {
@@ -53,6 +54,8 @@ class User extends CI_Controller
                 ['matches' => 'password not matches', 'min_length' => 'paasword too short']
             );
             if ($this->form_validation->run() == false) {
+
+
                 $data['level'] = $this->db->get('user_role')->result();
                 $data['kec'] = $this->db->get('kecamatan')->result();
                 $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -62,10 +65,36 @@ class User extends CI_Controller
                 $this->load->view('admin/user/create', $data);
                 $this->load->view('admin/template/footer');
             } else {
-                //$this->form_validation->set_rules('c_password', 'Password2', 'required|min_length[8]|matches[password]');
+               
+                $datakode = $this->mod_user->getKode()->row_array();
+             
+                // jika $datakode
+               if ($datakode > 0 ) {
+                $nilaikode = substr($datakode['max_id'], 3);
+                // menjadikan $nilaikode ( int )
+                $kode = (int) $nilaikode;
+                // setiap $kode di tambah 1
+                $kode = $kode + 1;
+                $kode_otomatis = "usr".str_pad($kode, 3, "0", STR_PAD_LEFT);
+                } else {
+                $kode_otomatis = "usr001";
+                }
 
+                $du = $this->mod_usaha->getKode()->row_array();
+                if ($du > 0 ) {
+                    $nkode = substr($du['max_ush'], 3);
+                    // menjadikan $nilaikode ( int )
+                    $kodex = (int) $nkode;
+                    // setiap $kode di tambah 1
+                    $kodex = $kodex + 1;
+                    $kode_usaha = "ush".str_pad($kodex, 3, "0", STR_PAD_LEFT);
+                    } else {
+                    $kode_usaha = "ush001";
+                    }
+              
 
-                $this->mod_user->simpan();
+                $this->mod_user->simpan($kode_otomatis);
+                $this->mod_usaha->create($kode_usaha,$kode_otomatis);
                 $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h5><i class="icon fas fa-check"></i> Alert!</h5>

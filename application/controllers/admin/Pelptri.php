@@ -21,8 +21,10 @@ class Pelptri extends CI_Controller
 
     function index()
     {
-        $data['usaha'] = $this->mod_pelptri->selectByUsaha()->result_array();
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $data['user']['user_id'];
+        $data['usaha'] = $this->mod_pelptri->selectByUsaha($user)->result_array();
+        
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
@@ -55,7 +57,9 @@ class Pelptri extends CI_Controller
                         'parameter' => $this->input->post('parameter'),
                         'b_mutu' => $this->input->post('b_mutu'),
                         'h_pantau' => $this->input->post('h_pantau'),
-                        'lampiran' => $nama_file
+                        'lampiran' => $nama_file,
+                        'created_at' => date('Y-m-d')
+
 
                     ];
                     $this->mod_pelptri->simpan($data);
@@ -84,7 +88,8 @@ class Pelptri extends CI_Controller
                     'tgl_pantau' => $this->input->post('tgl_pantau'),
                     'parameter' => $this->input->post('parameter'),
                     'b_mutu' => $this->input->post('b_mutu'),
-                    'h_pantau' => $this->input->post('h_pantau')
+                    'h_pantau' => $this->input->post('h_pantau'),
+                    'created_at' => date('Y-m-d')
 
                 ];
                 $this->mod_pelptri->simpan($data);
@@ -134,7 +139,8 @@ class Pelptri extends CI_Controller
                         'parameter' => $this->input->post('parameter'),
                         'b_mutu' => $this->input->post('b_mutu'),
                         'h_pantau' => $this->input->post('h_pantau'),
-                        'lampiran' => $nama_file
+                        'lampiran' => $nama_file,
+                        'updated_at' => date('Y-m-d')
 
                     ];
                     $this->mod_pelptri->update($data);
@@ -163,7 +169,8 @@ class Pelptri extends CI_Controller
                     'tgl_pantau' => $this->input->post('tgl_pantau'),
                     'parameter' => $this->input->post('parameter'),
                     'b_mutu' => $this->input->post('b_mutu'),
-                    'h_pantau' => $this->input->post('h_pantau')
+                    'h_pantau' => $this->input->post('h_pantau'),
+                    'updated_at' => date('Y-m-d')
 
                 ];
                 $this->mod_pelptri->update($data);

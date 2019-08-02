@@ -25,7 +25,7 @@
             <div class="card-header">
                 <h3 class="card-title">Laporan Triwulan</h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/pelptri/create'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/pelptri/create'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -68,9 +68,9 @@
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                     <div class="col-sm-8">
                                         <div class="input-group input-daterange">
-                                            <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" readonly>
+                                            <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" required>
                                             <div class="input-group-addon">&nbsp; to &nbsp;</div>
-                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" readonly>
+                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" required>
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control form-control-sm col-3" type="text" name="tahun" readonly>
+                                        <input class="form-control form-control-sm col-3" type="text" name="tahun" required>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>

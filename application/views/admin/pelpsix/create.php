@@ -62,9 +62,9 @@
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                     <div class="col-sm-4">
                                         <div class="input-group input-daterange">
-                                            <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" readonly>
+                                            <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" required>
                                             <div class="input-group-addon">&nbsp; to &nbsp;</div>
-                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" readonly>
+                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" required>
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                     <div class="col-sm-5">
-                                        <input class="form-control form-control-sm col-3" type="text" name="tahun_sm" readonly>
+                                        <input class="form-control form-control-sm col-3" type="text" name="tahun_sm" required>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>
@@ -86,14 +86,14 @@
                             <div class="form-group row field">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Sumber Dampak</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="s_dampak" class="form-control form-control-sm col-10">
+                                    <input type="text" name="s_dampak" class="form-control form-control-sm col-10" required>
 
                                 </div>
                             </div>
                             <div class="form-group row field">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Dampak</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="j_dampak" class="form-control form-control-sm col-10">
+                                    <input type="text" name="j_dampak" class="form-control form-control-sm col-10" required>
 
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pengelolaan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="kelola" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        <textarea name="kelola" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pemantauan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        <textarea name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>
                                      </textarea>
                                     </div>
                                 </div>

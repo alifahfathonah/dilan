@@ -23,13 +23,14 @@ class Usaha extends CI_Controller
     function profile()
 
     {
+        
         $data['kec'] = $this->mod_kecamatan->select_all()->result_array();
-        $data['usaha'] = $this->db->get_where('usaha', ['email' => $this->session->userdata('email')])->row_array();
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['usaha'] = $this->db->get_where('usaha', ['user_id' => $this->session->userdata('user_id')])->row_array();
+        $data['user'] = $this->db->get_where('users', ['user_id' => $this->session->userdata('user_id')])->row_array();
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/umum/f_profile', $data);
+        $this->load->view('admin/umum/f_profilex', $data);
         $this->load->view('admin/template/footer');
     }
 

@@ -15,17 +15,16 @@ class Mod_user extends Ci_Model
     }
 
 
-    function simpan()
+    function simpan($kode)
     {
         $data = [
+            'user_id' =>$kode,
             'nama' => htmlspecialchars(($this->input->post('nama', true))),
             'email' => htmlspecialchars(($this->input->post('email', true))),
             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'image' => 'default-image.jpg',
-            'kec_id' => $this->input->post('kecamatan'),
             'role_id' => htmlspecialchars(($this->input->post('level', true))),
-            'is_active' => 0,
-
+            'is_active' => $this->input->post('status'),
             'created_at' => date('Y-m-d')
         ];
         $this->db->insert('users', $data);
@@ -43,5 +42,12 @@ class Mod_user extends Ci_Model
         );
         $this->db->where('user_id', $this->input->post('id'));
         $this->db->update('users', $data);
+    }
+
+    function getKode(){
+        $sql="select max(user_id) as max_id from users";
+        $query = $this->db->query($sql);
+        return $query;
+        
     }
 }
