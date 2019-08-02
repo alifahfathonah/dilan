@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="<?= base_url('asset'); ?>/plugins/summernote/summernote-bs4.css">
-    <link rel="stylesheet" href="<?= base_url('asset'); ?>/plugins/ckeditor/contents.css">
+
     <!-- Ionicons -->
     <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
     <!-- overlayScrollbars -->
@@ -21,6 +21,7 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!--<link rel="stylesheet" href="<?= base_url('asset'); ?>/plugins/ckeditor/contents.css">-->
     <style type="text/css">
         .input-group-addon {
 

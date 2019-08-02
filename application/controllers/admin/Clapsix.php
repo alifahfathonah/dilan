@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Claptri extends CI_Controller
+class Clapsix extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('admin/mod_usaha');
-        $this->load->model('admin/mod_pelptri');
+        $this->load->model('admin/mod_pelpsix');
         $this->load->library('fpdf_lib');
         include_once APPPATH . 'libraries/Mypdf.php';
 
@@ -25,11 +25,11 @@ class Claptri extends CI_Controller
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $user = $data['user']['user_id'];
-        $data['usaha'] = $this->mod_pelptri->selectByUsaha($user)->result_array();
+        $data['usaha'] = $this->mod_pelpsix->selectByUsaha($user)->result_array();
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/c-laptri/view', $data);
+        $this->load->view('admin/c-lapsix/view', $data);
         $this->load->view('admin/template/footer');
     }
 
@@ -158,20 +158,66 @@ class Claptri extends CI_Controller
         $this->x = $this->lMargin;
     }
 
+
+    function WordWrap(&$text, $maxwidth)
+    {
+        $text = trim($text);
+        if ($text === '')
+            return 0;
+        $space = $this->GetStringWidth(' ');
+        $lines = explode("\n", $text);
+        $text = '';
+        $count = 0;
+
+        foreach ($lines as $line) {
+            $words = preg_split('/ +/', $line);
+            $width = 0;
+
+            foreach ($words as $word) {
+                $wordwidth = $this->GetStringWidth($word);
+                if ($wordwidth > $maxwidth) {
+                    // Word is too long, we cut it
+                    for ($i = 0; $i < strlen($word); $i++) {
+                        $wordwidth = $this->GetStringWidth(substr($word, $i, 1));
+                        if ($width + $wordwidth <= $maxwidth) {
+                            $width += $wordwidth;
+                            $text .= substr($word, $i, 1);
+                        } else {
+                            $width = $wordwidth;
+                            $text = rtrim($text) . "\n" . substr($word, $i, 1);
+                            $count++;
+                        }
+                    }
+                } elseif ($width + $wordwidth <= $maxwidth) {
+                    $width += $wordwidth + $space;
+                    $text .= $word . ' ';
+                } else {
+                    $width = $wordwidth + $space;
+                    $text = rtrim($text) . "\n" . $word . ' ';
+                    $count++;
+                }
+            }
+            $text = rtrim($text) . "\n";
+            $count++;
+        }
+        $text = rtrim($text);
+        return $count;
+    }
+
     function print($id)
     {
-        $data['usaha'] = $this->mod_pelptri->selectByUsahaId($id)->row_array();
+        $data['usaha'] = $this->mod_pelpsix->selectById($id)->row_array();
 
         $InterLigne = 7;
         $pdf = new FPDF();
         // membuat halaman baru
-        $pdf->AddPage('P', 'Letter');
+        $pdf->AddPage('P', 'Legal');
         $pdf->SetFont('Arial', 'B', 16);
         // mencetak string 
         $pdf->Ln(10);
-        $pdf->Cell(196, 7, 'LAPORAN TRIWULAN ', 0, 1, 'C');
+        $pdf->Cell(196, 7, 'LAPORAN SEMESTER ', 0, 1, 'C');
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(196, 7, 'PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH ', 0, 1, 'C');
+        $pdf->Cell(196, 7, 'PEMANTAUAN DAN PENGELOLAAN LINGKUNGAN YANG DILAKSANAKAN', 0, 1, 'C');
         $pdf->Cell(196, 1, '', 0, 1, 'C', true);
 
 
@@ -190,45 +236,30 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'periode', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['periode'] . '  ,' . $data['usaha']['tahun'], 0, 1);
+        $pdf->Cell(10, 6, $data['usaha']['periode_sm'] . '  ,' . $data['usaha']['tahun_sm'], 0, 1);
         $pdf->Cell(10, 6, 'Alamat Kantor ', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
         $pdf->Cell(10, 6, $data['usaha']['almt_ktr'] . ' ' . '(' . $data['usaha']['kec_ktr'] . ')', 0, 1);
         $pdf->Ln(15);
 
-        $pdf->Cell(10, 6, 'HASIL PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH', 0, 1);
+        $pdf->Cell(10, 6, 'PEMANTAUAN DAN PENGELOLAAN LINGKUNGAN YANG DILAKSANAKAN', 0, 1);
         $pdf->Ln(2);
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Cell(10, 6, '- Tgl Pemantauan ', 0, 0);
+        $pdf->Cell(10, 6, '- Sumber Dampak ', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['tgl_pantau'], 0, 1);
-        $pdf->Cell(10, 6, '- Parameter Yang Dipantau', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['s_dampak'], 0, 1);
+        $pdf->Cell(10, 6, '- Jenis Dampak', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['parameter'], 0, 1);
-        $pdf->Cell(10, 6, '- Baku Mutu (mg/liter)', 0, 0);
-        $pdf->Cell(40);
-        $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['b_mutu'], 0, 1);
-        $pdf->Cell(10, 6, '- Hasil Pemantauan', 0, 0);
-        $pdf->Cell(40);
-        $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['h_pantau'], 0, 1);
-        $pdf->Cell(10, 6, '- Pemantauan PH ', 0, 0);
-        $pdf->Cell(40);
-        $pdf->Cell(2, 6, ':', 0, 0);
-        $pdf->Cell(10, 6, $data['usaha']['PH'], 0, 1);
-
-        /*$pdf->Ln(15);
-        $pdf->SetFont('Arial', 'B', 12);
-        $txt = $data['usaha']['telepon'];
-        $pdf->Cell(196, 7, $txt, 0, 1, 'C');
-        /* $pdf->ln(3);
+        $pdf->Cell(10, 6, $data['usaha']['j_dampak'], 0, 1);
+        $pdf->Cell(10, 6, '- Pengelolaan Lingkungan Yang Dilakukan', 0, 1);
         $pdf->SetFont('Arial', '', 10);
-        $txt = $data['aduan']['keterangan'];
-        $pdf->MultiCell(0, $InterLigne, $txt, 0, 'L', 0, 15);*/
+        $txt = $data['usaha']['kelola'];
+
+
+        $pdf->Write(5, $txt);
 
 
 

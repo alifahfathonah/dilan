@@ -5,7 +5,7 @@ class Mod_pelpsix extends Ci_Model
 
     function selectByUsaha($user)
     {
-        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha and usaha.user_id='".$user."'";
+        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha and usaha.user_id='" . $user . "'";
         $query = $this->db->query($sql);
         return $query;
     }
