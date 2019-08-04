@@ -109,8 +109,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pemantauan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>
-                                     </textarea>
+                                        <textarea id="editor" name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                                     </div>
                                 </div>
                             </div>

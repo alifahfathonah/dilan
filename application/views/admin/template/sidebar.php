@@ -183,7 +183,7 @@
           ?>
          <li class="nav-header">SETTING</li>
          <li class="nav-item">
-           <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
+           <a href="<?= base_url('auth/logout'); ?>" class="nav-link" data-toggle="modal" data-target="#logoutModal">
              <i class="nav-icon fas fa-sign-out-alt"></i>
              <p>
                &nbsp;Log-Out

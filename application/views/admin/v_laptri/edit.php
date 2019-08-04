@@ -87,6 +87,7 @@
 
                                 </div>
                             </div>
+                           
                         </div>
                         <!-- end col-md-6 -->
                         <div class="col-md-6">
@@ -103,7 +104,7 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tanggal Pemantauan</label>
                                     <div class="col-sm-8">
-                                        <input id="date3" class="form-control form-control-sm col-3" value="<?= $usaha['tgl_pantau'] ?>" type="text" name="tgl_pantau" readonly>
+                                        <input id="date3" class="form-control form-control-sm col-5" value="<?= $usaha['tgl_pantau'] ?>" type="text" name="tgl_pantau" readonly>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>
@@ -127,11 +128,25 @@
                         </div>
                         <!-- end col-md-6 -->
                     </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                        <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Koreksi</label>
+                                <div class="col-sm-12">
+                                    <textarea id="editor" name="keterangan" placeholder="Isi Pesan Anda Disini" required></textarea>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
                     <button type="submit" name="update" class="btn btn-primary">verifikasi</button>
                     <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
+                    <button type="submit" name="correct" class="btn btn-primary">koreksi</button>
                 </div>
                 <!-- end card footer -->
             </form>

@@ -77,9 +77,9 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Kirim Pesan</label>
                                 <div class="col-sm-8">
-                                    <textarea name="pesan" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>
-
-                                </textarea>
+                                    <textarea name="pesan" placeholder="Isi Pesan Anda Disini" 
+                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
+                                     border: 1px solid #dddddd; padding: 10px;" required></textarea>
 
                                 </div>
 

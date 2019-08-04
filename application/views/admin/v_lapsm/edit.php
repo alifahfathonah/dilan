@@ -80,7 +80,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pengelolaan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="kelola" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
+                                        <textarea name="kelola" placeholder="Place some text here" style="width: 60%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
                                         <?= $usaha['kelola']; ?>
                                     </textarea>
                                     </div>
@@ -90,7 +90,7 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pemantauan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
+                                        <textarea name="pantau" placeholder="Place some text here" style="width: 60%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
                                         <?= $usaha['pantau']; ?> 
                                     </textarea>
                                     </div>
@@ -106,11 +106,25 @@
                         </div>
 
                     </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                        <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Koreksi</label>
+                                <div class="col-sm-12">
+                                    <textarea id="editor" name="keterangan" placeholder="Isi Pesan Anda Disini" required></textarea>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
                     <button type="submit" name="update" class="btn btn-primary">verifikasi</button>
                     <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
+                    <button type="submit" name="correct" class="btn btn-primary">koreksi</button>
                 </div>
                 <!-- end card footer -->
             </form>

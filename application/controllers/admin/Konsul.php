@@ -70,7 +70,49 @@ class Konsul extends CI_Controller
 
     function sendEmail()
     {
-        echo "siap kirim email";
+        if(isset($_POST['submit'])){
+            $client = $this->input->post('email');
+            $pesan = $this->input->post('pesan');
+            $nama = $this->input->post('nama');
+            $hal = $this->input->post('perihal');
+    
+            $this->load->library('phpmailer_lib');
+            $mail = $this->phpmailer_lib->load();
+    
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mansurmoji@gmail.com';
+            $mail->Password = 'mansurmoji07';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = '587';
+    
+            $mail->setFrom('mansurmoji@gmail.com', 'administrator SI-DILAN');
+            $mail->addReplyTo('mansurmoji@gmail.com', 'administrator SI-DILAN');
+    
+            $mail->addAddress($client);
+            //$mail->addCC($);
+            //$mail->addBCC($kc);
+            $mail->Subject = "Konsultasi " . $hal . " ";
+            $mail->isHTML(true);
+    
+            $content = "<p>" . $pesan . "</p>";
+            $mail->Body = $content;
+    
+            if (!$mail->send()) {
+                $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                Gagal Mengirim Email.. terjadi gangguan jaringan'. '</div>');
+                 redirect('admin/konsul/list');
+            } else {
+                $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                Pesan Berhasil Dikirim Ke Email  '.$client.'</div>');
+                 redirect('admin/konsul/list');
+            }
+        }
     }
 
     function delete($id)
@@ -83,4 +125,6 @@ class Konsul extends CI_Controller
                 Data Berhasil Dihapus </div>');
         redirect('admin/konsul/list');
     }
+
+    
 }
