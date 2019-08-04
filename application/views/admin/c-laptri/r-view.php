@@ -23,21 +23,22 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Laporan Triwulan</h3>
+                <h3 class="card-title">Rekapan Laporan Triwulan</h3>
             </div>
             <!-- /.card-header -->
 
             <div class="card-body" style="overflow:auto;">
+                <a href="<?= base_url('admin/claptri/rekap_tri'); ?>" target="_blank"><i class="fas fa-print"></i></a>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th width="5">NO</th>
                             <th>Nama</th>
-                            <th>Periode</th>
-                            <th>Tahun</th>
+                            <th>Jenis Usaha</th>
+                            <th>ALamat Kantor</th>
 
-                            <th>PH</th>
-                            <th>Aksi</th>
+                            <th>Lokasi Usaha</th>
+                            <th>Status Laporan</th>
                         </tr>
                     </thead>
 
@@ -46,17 +47,23 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-
+                            if ($a['vlap'] == 0) {
+                                $x = "Draft";
+                            } elseif ($a['vlap'] == 1) {
+                                $x =  "Sudah";
+                            } else {
+                                $x = "Koreksi";
+                            }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['periode'] . "</td>
-                                <td>" . $a['tahun'] . "</td>
+                                <td>" . $a['jenis'] . "</td>
+                                <td>" . $a['almt_ktr'] . "</td>
                             
-                                <td>" . $a['PH'] . "</td>
-                                <td>" . anchor("admin/claptri/print/" . $a['id_lapor'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                                <td>" . $a['almt_ush'] . "</td>
+                                <td>" . $x . "</td>
+                            </tr>";
+                            $no++;
                         }
                         ?>
 

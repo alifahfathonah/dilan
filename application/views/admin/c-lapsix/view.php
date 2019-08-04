@@ -21,9 +21,8 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/pelpsix/create'); ?>" class="btn btn-primary btn-sm">Input Laporan Semester</a>
-        <br /><br />
-        <?= $this->session->flashdata('message'); ?>
+
+
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Pelaporan Semester</h3>
@@ -57,7 +56,7 @@
                                 <td>" . $a['tahun_sm'] . "</td>
                             
                                 <td>" . $a['s_dampak'] . "</td>
-                                <td>" . anchor("admin/clapsix/print/" . $a['id_laporsm'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/clapsix/print/" . $a['id_laporsm'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }

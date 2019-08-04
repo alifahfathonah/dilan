@@ -30,7 +30,7 @@
            <li class="nav-header"></li>
            <li class="nav-header">ADMINISTRATOR</li>
            <li class="nav-item">
-             <a href="#" class="nav-link">
+             <a href="<?= base_url('admin/home'); ?>" class="nav-link">
                <i class="nav-icon far fa-calendar-alt"></i>
                <p>
                  Dashboard
@@ -70,7 +70,7 @@
              <a href="#" class="nav-link">
                <i class="nav-icon fas fa-copy"></i>
                <p>
-                 Laporan
+                 Verifikasi Laporan
                  <i class="fas fa-angle-left right"></i>
                </p>
              </a>
@@ -99,7 +99,7 @@
             ?>
 
            <li class="nav-item">
-             <a href="<?= base_url('admin/aduan_u'); ?>" class="nav-link">
+             <a href="<?= base_url('admin/home'); ?>" class="nav-link">
                <i class="nav-icon far fa-calendar-alt"></i>
                <p>
                  Dashboard
@@ -162,7 +162,7 @@
            </li>
 
            <li class="nav-item">
-             <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
+             <a href="<?= base_url('admin/konsul'); ?>" class="nav-link">
                <i class="nav-icon fas fa-copy"></i>
                <p>
                  &nbsp;Klinik Konsultasi
@@ -191,29 +191,58 @@
            </a>
          </li>
          <li class="nav-item has-treeview">
+           <a href="#" class="nav-link">
+             <i class="nav-icon fas fa-book"></i>
+             <p>
+               Cetak Laporan
+               <i class="fas fa-angle-left right"></i>
+             </p>
+           </a>
+           <ul class="nav nav-treeview" style="display: none;">
+             <li class="nav-item">
+               <a href="<?= base_url('admin/claptri'); ?>" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Triwulan</p>
+               </a>
+             </li>
+             <li class="nav-item">
+               <a href="<?= base_url('admin/clapsix'); ?>" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Semester</p>
+               </a>
+             </li>
+           </ul>
+
+
+         </li>
+
+         <?php if ($user['role_id'] == 1) { ?>
+           <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                <i class="nav-icon fas fa-book"></i>
                <p>
-                  Cetak Laporan
+                 Rekapan Laporan
                  <i class="fas fa-angle-left right"></i>
                </p>
              </a>
+
+
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="<?= base_url('admin/claptri'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/claptri/rekap'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
-                   <p>Triwulan</p>
+                   <p>Rekap Triwulan</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="<?= base_url('admin/clapsix'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/clapsix/rekap'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
-                   <p>Semester</p>
+                   <p>Rekap Semester</p>
                  </a>
                </li>
              </ul>
            </li>
-
+         <?php } ?>
 
        </ul>
 

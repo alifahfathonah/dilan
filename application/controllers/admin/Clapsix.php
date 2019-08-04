@@ -15,7 +15,7 @@ class Clapsix extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         } else {
-            if ($this->session->userdata('role_id') != 4) {
+            if ($this->session->userdata('role_id') != 4 && $this->session->userdata('role_id') != 1) {
                 redirect('auth');
             }
         }
@@ -25,12 +25,82 @@ class Clapsix extends CI_Controller
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $user = $data['user']['user_id'];
-        $data['usaha'] = $this->mod_pelpsix->selectByUsaha($user)->result_array();
+        $role = $data['user']['role_id'];
+        if ($role == 4) {
+            $data['usaha'] = $this->mod_pelpsix->selectByUsaha($user)->result_array();
+        } else if ($role == 1) {
+            $data['usaha'] = $this->mod_pelpsix->selectUsaha()->result_array();
+        }
+
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
         $this->load->view('admin/c-lapsix/view', $data);
         $this->load->view('admin/template/footer');
+    }
+
+    function rekap()
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $data['user']['user_id'];
+        $role = $data['user']['role_id'];
+        if ($role == 4) {
+            redirect('auth');
+        } else if ($role == 1) {
+            $data['usaha'] = $this->mod_pelpsix->selectUsaha()->result_array();
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/navbar', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/c-lapsix/r-view', $data);
+            $this->load->view('admin/template/footer');
+        }
+    }
+
+    function rekap_sm()
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
+        $role = $data['user']['role_id'];
+        if ($role == 4) {
+            redirect('auth');
+        }
+        $a = new Mypdf();
+        $a->AliasNbPages();
+        $a->AddPage('P', 'A4', 0);
+
+        $a->SetFont('Arial', 'B', 8);
+        $a->Cell(10, 10, 'No', 1, 0, 'C');
+        $a->Cell(30, 10, 'Nama Usaha', 1, 0, 'C');
+        $a->Cell(30, 10, 'Jenis', 1, 0, 'C');
+        $a->Cell(50, 10, 'Alamat Kantor', 1, 0, 'C');
+        $a->Cell(50, 10, 'Lokasi Usaha', 1, 0, 'C');
+        $a->Cell(20, 10, 'Status', 1, 1, 'C');
+        $no = 1;
+        $data['record'] = $this->mod_pelpsix->selectUsaha()->result();
+        foreach ($data['record'] as $h) {
+            if ($h->vlapsm == 0) {
+                $x = "Draft";
+            } elseif ($h->vlapsm == 1) {
+                $x =  "Sudah";
+            } else {
+                $x = "Koreksi";
+            }
+            $a->SetFont('Arial', 'B', 8);
+            $a->Cell(10, 10, $no, 1, 0, 'C');
+            $a->Cell(30, 10, $h->nm_usaha, 1, 0, 'L');
+            $a->Cell(30, 10, $h->jenis, 1, 0, 'C');
+            $a->Cell(50, 10, $h->almt_ktr, 1, 0, 'C');
+            $a->Cell(50, 10, $h->almt_ush, 1, 0, 'C');
+            $a->Cell(20, 10, $x, 1, 1, 'C');
+            $no++;
+        }
+        //footer
+        /* $a->setY(-15);
+               $a->setFont('Arial', '', 8);
+               $a->Cell(0, 10, 'Page' . $a->PageNo() . '/{nb}', 0, 0, 'C');*/
+
+
+        $a->Output();
     }
 
     function MultiCell($w, $h, $txt, $border = 0, $align = 'J', $fill = false, $indent = 0)

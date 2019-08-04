@@ -24,7 +24,7 @@ class Pelptri extends CI_Controller
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $user = $data['user']['user_id'];
         $data['usaha'] = $this->mod_pelptri->selectByUsaha($user)->result_array();
-        
+
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
@@ -36,7 +36,7 @@ class Pelptri extends CI_Controller
     {
         if (isset($_POST['submit'])) {
             $config['upload_path']          = './upload/laptri/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|doc|docx|pdf|xls|xlsx|ppt|ppt|zip|rar';
             $config['file_name']            = 'file' . '-' . $this->input->post('nm_usaha') . '-' . $_FILES['lampiran']['name'];
             $config['overwrite']            = true;
             $config['max_size']             = 2048;
@@ -115,7 +115,7 @@ class Pelptri extends CI_Controller
     {
         if (isset($_POST['update'])) {
             $config['upload_path']          = './upload/laptri/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|doc|docx|pdf|xls|xlsx|ppt|ppt|zip|rar';
             $config['file_name']            = 'file' . '-' . $this->input->post('nm_usaha') . '-' . $_FILES['lampiran']['name'];
             $config['overwrite']            = true;
             $config['max_size']             = 2048;

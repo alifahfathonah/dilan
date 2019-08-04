@@ -1,9 +1,7 @@
 <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.0-beta.1
-    </div>
-    <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+
+    <div class="text-center"> <strong>Copyright &copy; 2019 <a href="#">DLH KAB.GORONTALO</a>.</strong> All rights reserved.</div>
+
 </footer>
 
 <!-- Control Sidebar -->
@@ -40,8 +38,8 @@
 <script src="<?= base_url('asset'); ?>/plugins/ckeditor/ckeditor.js"></script>
 <script src="<?= base_url('asset'); ?>/plugins/ckeditor/styles.js"></script>
 <script>
-     CKEDITOR.replace( 'editor1' );
-   CKEDITOR.replace( 'editor' );
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor');
 </script>
 <script>
     $(".input-group.date").datepicker({

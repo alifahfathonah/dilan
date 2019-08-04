@@ -5,8 +5,8 @@ class Mod_usaha extends Ci_Model
     function create($kdusaha, $kduser)
     {
         $data = [
-            'id_usaha'=>$kdusaha,
-            'user_id' =>$kduser,
+            'id_usaha' => $kdusaha,
+            'user_id' => $kduser,
             'nm_usaha' => htmlspecialchars(($this->input->post('nm_usaha', true))),
             'created_at' => date('Y-m-d')
         ];
@@ -74,10 +74,17 @@ class Mod_usaha extends Ci_Model
         $this->db->update('usaha', $data);
     }
 
-    function getKode(){
-        $sql="select max(id_usaha) as max_ush from usaha";
+    function getKode()
+    {
+        $sql = "select max(id_usaha) as max_ush from usaha";
         $query = $this->db->query($sql);
         return $query;
-        
+    }
+
+    function selectUsahaTriByUser($user)
+    {
+        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and usaha.user_id='" . $user . "'";
+        $query = $this->db->query($sql);
+        return $query;
     }
 }
