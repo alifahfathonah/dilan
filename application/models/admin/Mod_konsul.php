@@ -8,7 +8,13 @@ class Mod_konsul extends Ci_Model
     }
 
 
-
+    function selectById($id)
+    {
+        $sql = " select usaha.nm_usaha, users.nama, users.user_id, konsul.email, konsul.kontak, konsul.perihal, konsul.isi,
+         konsul.id_k, konsul.perihal from users, konsul, usaha where users.user_id=konsul.user_id and usaha.user_id=users.user_id and konsul.id_k='" . $id . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
     function simpan()
     {
@@ -23,24 +29,10 @@ class Mod_konsul extends Ci_Model
         $this->db->insert('konsul', $data);
     }
 
-
-    /* function update()
+    function selectByUser()
     {
-        $data = array(
-            'nama'     =>  $this->input->post('nama'),
-            'email'            =>  $this->input->post('email'),
-            'kec_id'    => $this->input->post('kecamatan'),
-            'is_active'              =>  $this->input->post('status'),
-            'role_id' =>  $this->input->post('level')
-        );
-        $this->db->where('user_id', $this->input->post('id'));
-        $this->db->update('users', $data);
-    }
-
-    function getKode()
-    {
-        $sql = "select max(user_id) as max_id from users";
+        $sql = " select usaha.nm_usaha, users.nama, users.user_id, konsul.email, konsul.id_k, konsul.perihal from users, konsul, usaha where users.user_id=konsul.user_id and usaha.user_id=users.user_id";
         $query = $this->db->query($sql);
         return $query;
-    }*/
+    }
 }

@@ -48,15 +48,7 @@
              </a>
            </li>
 
-           <li class="nav-item">
-             <a href="<?= base_url('admin/kecamatan'); ?> " class="nav-link">
-               <i class="nav-icon fas fa-th"></i>
-               <p>
-                 KECAMATAN
 
-               </p>
-             </a>
-           </li>
            <li class="nav-item">
              <a href="<?= base_url('admin/v_umum'); ?> " class="nav-link">
                <i class="nav-icon fas fa-book"></i>
@@ -88,6 +80,14 @@
                  </a>
                </li>
              </ul>
+           </li>
+           <li class="nav-item">
+             <a href="<?= base_url('admin/konsul/list'); ?> " class="nav-link">
+               <i class="nav-icon fas fa-copy"></i>
+               <p>
+                 &nbsp; Daftar Konsultasi
+               </p>
+             </a>
            </li>
          <?php
           }
