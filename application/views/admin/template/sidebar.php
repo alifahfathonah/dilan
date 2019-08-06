@@ -11,7 +11,7 @@
      <!-- Sidebar user (optional) -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
        <div class="image">
-         <img src="<?= base_url('asset'); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+         <img src="<?= base_url('asset'); ?>/dist/img/<?= $user['image']; ?>" class="img-circle elevation-2" alt="User Image">
        </div>
        <div class="info">
          <a href="#" class="d-block"><?= $user['nama']; ?></a>
@@ -147,104 +147,126 @@
              </a>
              <ul class="nav nav-treeview" style="display: none;">
                <li class="nav-item">
-                 <a href="<?= base_url('admin/pelptri'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/air'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
-                   <p>Triwulan</p>
+                   <p>Kualitas Air Limbah</p>
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
+                 <a href="<?= base_url('admin/udara'); ?>" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
-                   <p>Semester</p>
+                   <p>Kualitas Udara</p>
                  </a>
                </li>
-             </ul>
-           </li>
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/limbah'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Limbah B3</p>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/kelola'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Pengelolaan</p>
+                 </a>
+               </li>
+               <!--    <li class="nav-item">
+                               <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Semester</p>
+                               </a>
+                             </li>
+                           </ul>
+                         </li>-->
 
-           <li class="nav-item">
-             <a href="<?= base_url('admin/konsul'); ?>" class="nav-link">
-               <i class="nav-icon fas fa-copy"></i>
-               <p>
-                 &nbsp;Klinik Konsultasi
-               </p>
-             </a>
-           </li>
 
-           <li class="nav-item">
-             <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
-               <i class="nav-icon fas fa-edit"></i>
-               <p>
-                 &nbsp;Regulasi
-               </p>
-             </a>
-           </li>
-         <?php
-          }
-          ?>
-         <li class="nav-header">SETTING</li>
-         <li class="nav-item">
-           <a href="<?= base_url('auth/logout'); ?>" class="nav-link" data-toggle="modal" data-target="#logoutModal">
-             <i class="nav-icon fas fa-sign-out-alt"></i>
-             <p>
-               &nbsp;Log-Out
-             </p>
-           </a>
-         </li>
-         <li class="nav-item has-treeview">
-           <a href="#" class="nav-link">
-             <i class="nav-icon fas fa-book"></i>
-             <p>
-               Cetak Laporan
-               <i class="fas fa-angle-left right"></i>
-             </p>
-           </a>
-           <ul class="nav nav-treeview" style="display: none;">
+
+
+
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/konsul'); ?>" class="nav-link">
+                   <i class="nav-icon fas fa-copy"></i>
+                   <p>
+                     &nbsp;Klinik Konsultasi
+                   </p>
+                 </a>
+               </li>
+
+               <li class="nav-item">
+                 <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
+                   <i class="nav-icon fas fa-edit"></i>
+                   <p>
+                     &nbsp;Regulasi
+                   </p>
+                 </a>
+               </li>
+             <?php
+              }
+              ?>
+             <li class="nav-header">SETTING</li>
              <li class="nav-item">
-               <a href="<?= base_url('admin/claptri'); ?>" class="nav-link">
-                 <i class="far fa-circle nav-icon"></i>
-                 <p>Triwulan</p>
+               <a href="<?= base_url('auth/logout'); ?>" class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                 <i class="nav-icon fas fa-sign-out-alt"></i>
+                 <p>
+                   &nbsp;Log-Out
+                 </p>
                </a>
              </li>
-             <li class="nav-item">
-               <a href="<?= base_url('admin/clapsix'); ?>" class="nav-link">
-                 <i class="far fa-circle nav-icon"></i>
-                 <p>Semester</p>
+             <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+                 <i class="nav-icon fas fa-book"></i>
+                 <p>
+                   Cetak Laporan
+                   <i class="fas fa-angle-left right"></i>
+                 </p>
                </a>
+               <ul class="nav nav-treeview" style="display: none;">
+                 <li class="nav-item">
+                   <a href="<?= base_url('admin/claptri'); ?>" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Triwulan</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="<?= base_url('admin/clapsix'); ?>" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Semester</p>
+                   </a>
+                 </li>
+               </ul>
+
+
              </li>
+
+             <?php if ($user['role_id'] == 1) { ?>
+               <li class="nav-item has-treeview">
+                 <a href="#" class="nav-link">
+                   <i class="nav-icon fas fa-book"></i>
+                   <p>
+                     Rekapan Laporan
+                     <i class="fas fa-angle-left right"></i>
+                   </p>
+                 </a>
+
+
+                 <ul class="nav nav-treeview" style="display: none;">
+                   <li class="nav-item">
+                     <a href="<?= base_url('admin/claptri/rekap'); ?>" class="nav-link">
+                       <i class="far fa-circle nav-icon"></i>
+                       <p>Rekap Triwulan</p>
+                     </a>
+                   </li>
+                   <li class="nav-item">
+                     <a href="<?= base_url('admin/clapsix/rekap'); ?>" class="nav-link">
+                       <i class="far fa-circle nav-icon"></i>
+                       <p>Rekap Semester</p>
+                     </a>
+                   </li>
+                 </ul>
+               </li>
+             <?php } ?>
+
            </ul>
-
-
-         </li>
-
-         <?php if ($user['role_id'] == 1) { ?>
-           <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-               <i class="nav-icon fas fa-book"></i>
-               <p>
-                 Rekapan Laporan
-                 <i class="fas fa-angle-left right"></i>
-               </p>
-             </a>
-
-
-             <ul class="nav nav-treeview" style="display: none;">
-               <li class="nav-item">
-                 <a href="<?= base_url('admin/claptri/rekap'); ?>" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>Rekap Triwulan</p>
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a href="<?= base_url('admin/clapsix/rekap'); ?>" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>Rekap Semester</p>
-                 </a>
-               </li>
-             </ul>
-           </li>
-         <?php } ?>
-
-       </ul>
 
 
      </nav>

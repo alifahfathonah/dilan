@@ -35,28 +35,9 @@
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
-
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Pengelolahan Dan Pemantauan Yang Dilaksanakan</label>
-                                <div class="col-sm-8">
-                                    <div class="d-inline">
-
-                                        <input type="radio" name="act" value="1" onclick="tampil_field(1)">
-
-                                        <label>
-                                            <small> &nbsp; Ya&nbsp; &nbsp;</small>
-                                        </label>
-                                        <input type="radio" name="act" value="2" onclick="tampil_field(2)" checked="checked">
-
-                                        <label>
-                                            <small> &nbsp; Tidak</small>
-                                        </label>
-                                    </div>
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['user_id']; ?>">
 
 
-
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>

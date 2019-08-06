@@ -34,34 +34,9 @@
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
-                            <!-- <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
-                                <div class="col-sm-8">
-                                    <select name="jenis" class="form-control form-control-sm col-6">
-                                        <option value="">:. Jenis Laporan .:</option>
-                                        <option value="1">Kualitas Air</option>
-                                        <option value="2">Pengelolahan Limbah</option>
 
-                                    </select>
-                                </div>
-                            </div>-->
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
-                                <div class="col-sm-8">
-                                    <div class="d-inline">
-                                        <input type="radio" name="jenis" value="1" onclick="tampil_box(1)" checked="checked">
-                                        <label>
-                                            <small> Pengelolahan Limbah</small>
-                                        </label>
-                                        <input id="p-air" type="radio" name="jenis" onclick="tampil_box(2)" value="2">
-                                        <label>
-                                            <small>Kualitas Air</small>
-                                        </label>
-                                    </div>
 
-
-
-                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
@@ -69,8 +44,8 @@
                                     <div class="col-sm-8">
                                         <div class="input-group input-daterange">
                                             <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" required>
-                                            <div class="input-group-addon">&nbsp; to &nbsp;</div>
-                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" required>
+
+
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                     </div>
@@ -89,23 +64,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Pemantauan PH</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="PH" class="form-control form-control-sm col-10" required>
-
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Lampiran</label>
-                                <div class="col-sm-8">
-                                    <input type="file" name="lampiran" class="form-control form-control-sm col-10">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col-md-6 -->
-                        <div id="air" class="col-md-6">
                             <h5>Data Kualitas Air</h5>
 
                             <hr>
@@ -114,7 +72,7 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tanggal Pemantauan</label>
                                     <div class="col-sm-8">
-                                        <input id="date3" class="form-control form-control-sm col-3" type="text" name="tgl_pantau" readonly>
+                                        <input id="date3" class="form-control form-control-sm col-6" type="text" name="tgl_pantau" readonly>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>
@@ -140,6 +98,105 @@
 
                                 </div>
                             </div>
+                            <h5>Data Kualitas Udara</h5>
+
+                            <hr>
+
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tanggal Pemantauan</label>
+                                    <div class="col-sm-8">
+                                        <input id="date3" class="form-control form-control-sm col-6" type="text" name="tgl_pantau" readonly>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Parameter</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="parameter" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Baku Mutu (mg/liter)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="b_mutu" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Hasil Pemantauan (mg/liter)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <h5>Data Limbah B3</h5>
+
+                            <hr>
+
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tanggal Pemantauan</label>
+                                    <div class="col-sm-8">
+                                        <input id="date3" class="form-control form-control-sm col-6" type="text" name="tgl_pantau" readonly>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Limba B3</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="parameter" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">a. Jumlah Periode Sebelumnya (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="b_mutu" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">b. Jumlah Periode Ini (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">c. Disimpan Di TPS (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">d. Dimanfaatkan (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">e. Diserahkan Ke Pihak Ke III (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Total a + b (ton)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="h_pantau" class="form-control form-control-sm col-10">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col-md-6 -->
+                        <div id="air" class="col-md-6">
 
                         </div>
                         <!-- end col-md-6 -->

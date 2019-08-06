@@ -16,14 +16,14 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    <?= form_error('email'); ?>
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="input-group mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         <div class="input-group-append input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
-                    <?= form_error('password'); ?>
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     <div class="row">
                         <div class="col-8">
                             <!--<div class="icheck-primary">

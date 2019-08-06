@@ -74,13 +74,13 @@
 
     });
 </script>
-<script>
+<!--<script>
     $(document).ready(function() {
         $('#air').hide();
         $('.field').hide();
 
     });
-</script>
+</script>-->
 <script>
     function tampil_box(param) {
         if (param == 2) {
