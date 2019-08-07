@@ -30,7 +30,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Kualitas Air Limbah</h5>
-
+                            <h5>Kualitas Air Limbah</h5>
+                            <h5>Kualitas Air Limbah</h5>
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">

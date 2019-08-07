@@ -24,7 +24,8 @@ class Air extends CI_Controller
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $user = $data['user']['user_id'];
         $data['usaha'] = $this->mod_air->selectByUsaha($user)->result_array();
-
+        $sql = "select * from p_air order by b2 asc";
+        $data['feb'] = $this->db->query($sql)->result_array();
         $this->load->view('admin/template/header');
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);
@@ -35,16 +36,22 @@ class Air extends CI_Controller
     function create()
     {
         if (isset($_POST['submit'])) {
-
-
-
-
+            $pecah = explode('-', $this->input->post('tgl_pantau'));
+            $bulan = $pecah[1];
+            if ($bulan == 01) {
+                $tag = 'b1';
+            } elseif ($bulan == 02) {
+                $tag = 'b2';
+            } elseif ($bulan == 03) {
+                $tag = 'b3';
+            }
             $data = [
                 'id_usaha' => $this->input->post('id_usaha'),
                 'tgl_pantau' => $this->input->post('tgl_pantau'),
                 'parameter_a' => $this->input->post('parameter'),
                 'bk_mutu' => $this->input->post('b_mutu'),
-                'h_pantau' => $this->input->post('h_pantau')
+                'h_pantau' => $this->input->post('h_pantau'),
+                $tag => $this->input->post('h_pantau')
 
             ];
 
