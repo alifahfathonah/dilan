@@ -21,7 +21,7 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/udara/create'); ?>" class="btn btn-primary btn-sm">Create Kualitas Udara</a>
+        <a href="<?= base_url('admin/udara/create'); ?>" class="btn btn-primary btn-sm">Tambah Parameter</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -35,13 +35,14 @@
                     <thead>
                         <tr>
                             <th width="5">NO</th>
+
                             <th>Nama Usaha</th>
-                            <th>Tgl Pantau</th>
                             <th>Parameter</th>
 
                             <th>BK Mutu</th>
-                            <th>H Pantau</th>
-
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Maret</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -54,13 +55,15 @@
 
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
+                              
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['tgl_pantau'] . "</td>
                                 <td>" . $a['parameter_u'] . "</td>
                             
                                 <td>" . $a['bk_mutu'] . "</td>
-                                <td>" . $a['h_pantau'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . $a['b1'] . "</td>
+                                <td>" . $a['b2'] . "</td>
+                                <td>" . $a['b3'] . "</td>
+                                <td>" . anchor("admin/udara/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }

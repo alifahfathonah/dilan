@@ -38,7 +38,7 @@
                             <th>Judul</th>
                             <th>Nama File</th>
                             <th>tgl Upload</th>
-                            <th>Edit</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
 

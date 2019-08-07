@@ -21,7 +21,7 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/air/create'); ?>" class="btn btn-primary btn-sm">Create Kualitas Air Limbah</a>
+        <a href="<?= base_url('admin/air/create'); ?>" class="btn btn-primary btn-sm">Tambah Parameter</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -36,7 +36,7 @@
                         <tr>
                             <th width="5">NO</th>
 
-                            <th>Tgl Pantau</th>
+                            <th>Nama Usaha</th>
                             <th>Parameter</th>
 
                             <th>BK Mutu</th>
@@ -56,14 +56,14 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
-                                <td>" . $a['tgl_pantau'] . "</td>
+                                <td>" . $a['nm_usaha'] . "</td>
                                 <td>" . $a['parameter_a'] . "</td>
                             
                                 <td>" . $a['bk_mutu'] . "</td>
                                 <td>" . $a['b1'] . "</td>
                                 <td>" . $a['b2'] . "</td>
                                 <td>" . $a['b3'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/air/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }
@@ -77,61 +77,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Kualitas Air</h3>
-            </div>
-            <!-- /.card-header -->
 
-            <div class="card-body" style="overflow:auto;">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th width="5">NO</th>
-
-                            <th>Tgl Pantau</th>
-                            <th>Parameter</th>
-
-                            <th>BK Mutu</th>
-                            <th>Jan</th>
-                            <th>Feb</th>
-                            <th>Maret</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php
-                        $no = 1;
-
-                        foreach ($usaha as $a) {
-
-                            echo "<tr>
-                                <td width='5'>" . $no . "</td>
-                              
-                                <td>" . $a['tgl_pantau'] . "</td>
-                                <td>" . $a['parameter_a'] . "</td>
-                            
-                                <td>" . $a['bk_mutu'] . "</td>
-                                <td>" . $a['b1'] . "</td>";
-
-                            foreach ($feb as $b) {
-                                echo "<td>" . $b['b2'] . "</td>";
-                            }
-                            echo "<td>" . $a['b3'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
-                        }
-                        ?>
-
-
-                    </tbody>
-
-                </table>
-            </div>
-            <!-- /.card-body -->
-        </div>
     </section>
     <!-- /.content -->
 </div>

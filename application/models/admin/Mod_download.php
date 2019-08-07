@@ -31,9 +31,4 @@ class Mod_download extends Ci_Model
         $query = $this->db->query($sql);
         return $query;
     }
-
-    function list()
-    {
-        echo "disini list";
-    }
 }

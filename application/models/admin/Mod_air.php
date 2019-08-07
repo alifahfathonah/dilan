@@ -27,7 +27,7 @@ class Mod_air extends Ci_Model
     }
     function selectById($id)
     {
-        $sql = "select * from lapor, usaha where usaha.id_usaha=lapor.id_usaha and lapor.id_lapor='" . $id . "'";
+        $sql = "select * from p_air, usaha where usaha.id_usaha=p_air.id_usaha and p_air.id_p='" . $id . "'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -41,16 +41,11 @@ class Mod_air extends Ci_Model
     {
 
 
-        $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
-        $this->db->update('lapor', $data);
+        $this->db->where('id_p', $this->input->post('id_p'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->update('p_air', $data);
     }
 
-    function selectFile($id)
-    {
-        $sql = "select lampiran from lapor where id_lapor='" . $id . "'";
-        $query = $this->db->query($sql);
-        return $query;
-    }
+
 
     function selectv_usaha($id)
     {
@@ -65,13 +60,5 @@ class Mod_air extends Ci_Model
     {
         $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
         $this->db->update('lapor', $data);
-    }
-
-    function selectUsaha()
-    {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha";
-        $query = $this->db->query($sql);
-
-        return $query;
     }
 }
