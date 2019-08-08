@@ -21,7 +21,7 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/limbah/create'); ?>" class="btn btn-primary btn-sm">Create Kualitas Limba B3</a>
+        <a href="<?= base_url('admin/limbah/create'); ?>" class="btn btn-primary btn-sm">+ Peneglolaan Limba B3</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -40,10 +40,12 @@
                             <th>Jml periode lalu (ton)</th>
 
                             <th>Jml periode ini (ton)</th>
-                            <th>Jml Simpan TPS (ton)</th>
-                            <th>Jml Disimpan (ton)</th>
+                            <th>Jml sampai periode ini (ton)</th>
+                            <th>Jml yang dimanfaatkan (ton)</th>
                             <th>Jml Yg Diserahkan Ke Pihak 3(ton)</th>
-                            <th>Total (ton)</th>
+                            <th>Jml sisa di TPS (ton)</th>
+
+
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -57,15 +59,14 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['jenis'] . "</td>
+                                <td>" . $a['jenis_b3'] . "</td>
                                 <td>" . $a['jml_bfr'] . "</td>
-                            
-                                <td>" . $a['jml_now'] . "</td>
-                                <td>" . $a['save_tps'] . "</td>
+                               <td>" . $a['jml_now'] . "</td>
+                                <td>" . $a['ttl_now'] . "</td>
                                 <td>" . $a['used'] . "</td>
                                 <td>" . $a['give_3'] . "</td>
-                                <td>" . $a['total'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . $a['sisa'] . "</td>
+                                <td>" . anchor("admin/limbah/edit/" . $a['id_b3'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }
