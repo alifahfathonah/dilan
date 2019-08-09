@@ -33,11 +33,14 @@
                         <tr>
                             <th width="5">NO</th>
                             <th>Nama</th>
-                            <th>Periode</th>
                             <th>Tahun</th>
+                            <th>Profil</th>
+                            <th>Triwulan I</th>
+                            <th>Triwulan II</th>
+                            <th>Triwulan III</th>
+                            <th>Triwulan IV</th>
+                            <th>Penutup</th>
 
-                            <th>PH</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
 
@@ -46,15 +49,28 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
+                            /*$data = date('Y-m-d');
+                            $bln = substr($data, 6, 1);
+                            if($bln == '1'  || $bln == '2' || ){
 
+                            }else if(){
+
+                            }else if(){
+
+                            }else{
+
+                            }*/
+                            //if ($a['']) { }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['periode'] . "</td>
-                                <td>" . $a['tahun'] . "</td>
-                            
-                                <td>" . $a['PH'] . "</td>
-                                <td>" . anchor("admin/claptri/print/" . $a['id_lapor'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
+                                <td>  2019  </td>
+                                <td>" . anchor("admin/claptri/print_profil/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                                <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                                <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>                               
+                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }

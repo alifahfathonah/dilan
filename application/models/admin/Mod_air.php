@@ -14,7 +14,7 @@ class Mod_air extends Ci_Model
 
     function selectByUsahaId($id)
     {
-        $sql = "select * from usaha, p_air, users where usaha.id_usaha=p_air.id_usaha and usaha.user_id='" . $id . "'";
+        $sql = "select * from usaha, p_air where usaha.id_usaha=p_air.id_usaha and usaha.id_usaha='" . $id . "'";
         $query = $this->db->query($sql);
 
         return $query;

@@ -19,6 +19,32 @@ class Mod_limbah extends Ci_Model
 
         return $query;
     }
+    function selectByUsahaIdj($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='01' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdf($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+        p_b3.bln='02' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdm($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='03' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+
     function selectByUser($id)
     {
         $sql = "select * from usaha where user_id='" . $id . "'";

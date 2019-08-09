@@ -9,6 +9,9 @@ class Claptri extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('admin/mod_usaha');
         $this->load->model('admin/mod_pelptri');
+        $this->load->model('admin/mod_air');
+        $this->load->model('admin/mod_limbah');
+        $this->load->model('admin/mod_udara');
         $this->load->library('fpdf_lib');
         include_once APPPATH . 'libraries/Newpdf.php';
 
@@ -28,8 +31,14 @@ class Claptri extends CI_Controller
         $role = $data['user']['role_id'];
         if ($role == 4) {
             $data['usaha'] = $this->mod_pelptri->selectByUsaha($user)->result_array();
+            // $data['air'] = $this->mod_air->selectByUsahaId($user)->result_array();
+            //$data['udara'] = $this->mod_udara->selectByUsahaId($user)->result_array();
+            //$data['limbah'] = $this->mod_limbah->selectByUsahaId($user)->result_array();
         } else if ($role == 1) {
-            $data['usaha'] = $this->mod_pelptri->selectUsaha()->result_array();
+            $data['usaha'] = $this->mod_pelptri->selectByUsaha($user)->result_array();
+            // $data['air'] = $this->mod_air->selectUsaha()->result_array();
+            //$data['udara'] = $this->mod_udara->selectUsaha()->result_array();
+            // $data['limbah'] = $this->mod_limbah->selectUsaha()->result_array();
         }
 
         $this->load->view('admin/template/header');
@@ -164,7 +173,187 @@ class Claptri extends CI_Controller
         $this->x = $this->lMargin;
     }
 
-    function print($id)
+    function print_satu($id)
+    {
+        $data['usaha'] = $this->mod_pelptri->selectByUsahaId($id)->row_array();
+        $data['air'] = $this->mod_air->selectByUsahaId($id)->result();
+        $data['udara'] = $this->mod_udara->selectByUsahaId($id)->result();
+        $data['limbahj'] = $this->mod_limbah->selectByUsahaIdj($id)->result();
+        $data['limbahf'] = $this->mod_limbah->selectByUsahaIdf($id)->result();
+        $data['limbahm'] = $this->mod_limbah->selectByUsahaIdm($id)->result();
+        $InterLigne = 7;
+        $pdf = new FPDF();
+        // membuat halaman baru
+        $pdf->AddPage('P', 'Letter');
+        $pdf->SetFont('Arial', 'B', 16);
+        // mencetak string 
+        $pdf->Ln(10);
+        $pdf->Cell(196, 7, 'BAB II PEMANTAUAN KUALITAS LINGKUNGAN', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(196, 7, 'PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH ', 0, 1, 'C');
+        $pdf->Cell(196, 1, '', 0, 1, 'C', true);
+
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '1. Hasil Pemantauan Kualitas Air Limbah', 0, 1);
+        $pdf->Cell(10, 6, 'Data hasil pemantauan kualitas air limbah periode Januari s/d Maret 2019 adalah sebagai berikut :', 0, 1);
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 8);
+        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
+        $pdf->Cell(50, 10, 'Januari', 1, 0, 'C');
+        $pdf->Cell(50, 10, 'Februari', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Maret', 1, 1, 'C');
+        $no = 1;
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
+        foreach ($data['air'] as $h) {
+
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->Cell(10, 10, $no, 1, 0, 'C');
+            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
+            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
+            $pdf->Cell(50, 10, $h->b1, 1, 0, 'C');
+            $pdf->Cell(50, 10, $h->b2, 1, 0, 'C');
+            $pdf->Cell(20, 10, $h->b3, 1, 1, 'C');
+            $no++;
+        }
+
+
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '2. Hasil Pemantauan Kualitas Udara', 0, 1);
+        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode Januari s/d Maret 2019 adalah sebagai berikut :', 0, 1);
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 8);
+        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
+        $pdf->Cell(50, 10, 'Januari', 1, 0, 'C');
+        $pdf->Cell(50, 10, 'Februari', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Maret', 1, 1, 'C');
+        $no = 1;
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
+        foreach ($data['udara'] as $d) {
+
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->Cell(10, 10, $no, 1, 0, 'C');
+            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
+            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
+            $pdf->Cell(50, 10, $d->b1, 1, 0, 'C');
+            $pdf->Cell(50, 10, $d->b2, 1, 0, 'C');
+            $pdf->Cell(20, 10, $d->b3, 1, 1, 'C');
+            $no++;
+        }
+
+
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '3. Pengelolaan Limbah B3', 0, 1);
+        $pdf->Cell(10, 6, 'Data limbah B3 yang dihasilkan selama periode pelaporan adalah sebagai berikut :', 0, 1);
+        $pdf->Ln(5);
+        $pdf->Cell(195, 7, 'PERIODE BULAN JANUARI ', 1, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 8);
+        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jenis Limbah B3', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jml Periode Sebelumnya', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Jml Periode Ini', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Jml Sampai Periode Ini', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Dimanfaatkan', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Ke Pihak k 3', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Sisa di TPS', 1, 1, 'C');
+
+        $no = 1;
+        //$data['limbahj'] = $this->mod_pelptri->selectUsaha()->result();
+        foreach ($data['limbahj'] as $e) {
+
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->Cell(10, 10, $no, 1, 0, 'C');
+            $pdf->Cell(30, 10, $e->jenis_b3, 1, 0, 'L');
+            $pdf->Cell(30, 10, $e->jml_bfr, 1, 0, 'C');
+            $pdf->Cell(25, 10, $e->jml_now, 1, 0, 'C');
+            $pdf->Cell(35, 10, $e->ttl_now, 1, 0, 'C');
+            $pdf->Cell(20, 10, $e->used, 1, 0, 'C');
+            $pdf->Cell(25, 10, $e->give_3, 1, 0, 'C');
+            $pdf->Cell(20, 10, $e->sisa, 1, 1, 'C');
+            $no++;
+        }
+
+        $pdf->Cell(195, 7, 'PERIODE BULAN FEBRUARI ', 1, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 8);
+        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jenis Limbah B3', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jml Periode Sebelumnya', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Jml Periode Ini', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Jml Sampai Periode Ini', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Dimanfaatkan', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Ke Pihak k 3', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Sisa di TPS', 1, 1, 'C');
+
+        $no = 1;
+        //$data['limbahj'] = $this->mod_pelptri->selectUsaha()->result();
+        foreach ($data['limbahf'] as $f) {
+
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->Cell(10, 10, $no, 1, 0, 'C');
+            $pdf->Cell(30, 10, $f->jenis_b3, 1, 0, 'L');
+            $pdf->Cell(30, 10, $f->jml_bfr, 1, 0, 'C');
+            $pdf->Cell(25, 10, $f->jml_now, 1, 0, 'C');
+            $pdf->Cell(35, 10, $f->ttl_now, 1, 0, 'C');
+            $pdf->Cell(20, 10, $f->used, 1, 0, 'C');
+            $pdf->Cell(25, 10, $f->give_3, 1, 0, 'C');
+            $pdf->Cell(20, 10, $f->sisa, 1, 1, 'C');
+            $no++;
+        }
+
+        $pdf->Cell(195, 7, 'PERIODE BULAN MARET ', 1, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 8);
+        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jenis Limbah B3', 1, 0, 'C');
+        $pdf->Cell(30, 10, 'Jml Periode Sebelumnya', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Jml Periode Ini', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Jml Sampai Periode Ini', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Dimanfaatkan', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Ke Pihak k 3', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Sisa di TPS', 1, 1, 'C');
+
+        $no = 1;
+        //$data['limbahj'] = $this->mod_pelptri->selectUsaha()->result();
+        foreach ($data['limbahm'] as $g) {
+
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->Cell(10, 10, $no, 1, 0, 'C');
+            $pdf->Cell(30, 10, $g->jenis_b3, 1, 0, 'L');
+            $pdf->Cell(30, 10, $g->jml_bfr, 1, 0, 'C');
+            $pdf->Cell(25, 10, $g->jml_now, 1, 0, 'C');
+            $pdf->Cell(35, 10, $g->ttl_now, 1, 0, 'C');
+            $pdf->Cell(20, 10, $g->used, 1, 0, 'C');
+            $pdf->Cell(25, 10, $g->give_3, 1, 0, 'C');
+            $pdf->Cell(20, 10, $g->sisa, 1, 1, 'C');
+            $no++;
+        }
+
+        /*$pdf->Ln(15);
+        $pdf->SetFont('Arial', 'B', 12);
+        $txt = $data['usaha']['telepon'];
+        $pdf->Cell(196, 7, $txt, 0, 1, 'C');
+        /* $pdf->ln(3);
+        $pdf->SetFont('Arial', '', 10);
+        $txt = $data['aduan']['keterangan'];
+        $pdf->MultiCell(0, $InterLigne, $txt, 0, 'L', 0, 15);*/
+
+
+
+
+        $pdf->Output();
+    }
+
+    function print_dua($id)
     {
         $data['usaha'] = $this->mod_pelptri->selectByUsahaId($id)->row_array();
 
@@ -237,6 +426,228 @@ class Claptri extends CI_Controller
         $pdf->MultiCell(0, $InterLigne, $txt, 0, 'L', 0, 15);*/
 
 
+
+
+        $pdf->Output();
+    }
+
+    function print_tiga($id)
+    {
+        $data['usaha'] = $this->mod_pelptri->selectByUsahaId($id)->row_array();
+
+        $InterLigne = 7;
+        $pdf = new FPDF();
+        // membuat halaman baru
+        $pdf->AddPage('P', 'Letter');
+        $pdf->SetFont('Arial', 'B', 16);
+        // mencetak string 
+        $pdf->Ln(10);
+        $pdf->Cell(196, 7, 'LAPORAN TRIWULAN ', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(196, 7, 'PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH ', 0, 1, 'C');
+        $pdf->Cell(196, 1, '', 0, 1, 'C', true);
+
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, 'Nama Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['nm_usaha'], 0, 1);
+        $pdf->Cell(10, 6, 'Nama Penanggung Jawab', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['owner'], 0, 1);
+        $pdf->Cell(10, 6, 'periode', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['periode'] . '  ,' . $data['usaha']['tahun'], 0, 1);
+        $pdf->Cell(10, 6, 'Alamat Kantor ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['almt_ktr'] . ' ' . '(' . $data['usaha']['kec_ktr'] . ')', 0, 1);
+        $pdf->Ln(15);
+
+        $pdf->Cell(10, 6, 'HASIL PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH', 0, 1);
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(10, 6, '- Tgl Pemantauan ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['tgl_pantau'], 0, 1);
+        $pdf->Cell(10, 6, '- Parameter Yang Dipantau', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['parameter'], 0, 1);
+        $pdf->Cell(10, 6, '- Baku Mutu (mg/liter)', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['b_mutu'], 0, 1);
+        $pdf->Cell(10, 6, '- Hasil Pemantauan', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['h_pantau'], 0, 1);
+        $pdf->Cell(10, 6, '- Pemantauan PH ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['PH'], 0, 1);
+
+        /*$pdf->Ln(15);
+        $pdf->SetFont('Arial', 'B', 12);
+        $txt = $data['usaha']['telepon'];
+        $pdf->Cell(196, 7, $txt, 0, 1, 'C');
+        /* $pdf->ln(3);
+        $pdf->SetFont('Arial', '', 10);
+        $txt = $data['aduan']['keterangan'];
+        $pdf->MultiCell(0, $InterLigne, $txt, 0, 'L', 0, 15);*/
+
+
+
+
+        $pdf->Output();
+    }
+
+    function print_empat($id)
+    {
+        $data['usaha'] = $this->mod_pelptri->selectByUsahaId($id)->row_array();
+
+        $InterLigne = 7;
+        $pdf = new FPDF();
+        // membuat halaman baru
+        $pdf->AddPage('P', 'Letter');
+        $pdf->SetFont('Arial', 'B', 16);
+        // mencetak string 
+        $pdf->Ln(10);
+        $pdf->Cell(196, 7, 'LAPORAN TRIWULAN ', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(196, 7, 'PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH ', 0, 1, 'C');
+        $pdf->Cell(196, 1, '', 0, 1, 'C', true);
+
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, 'Nama Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['nm_usaha'], 0, 1);
+        $pdf->Cell(10, 6, 'Nama Penanggung Jawab', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['owner'], 0, 1);
+        $pdf->Cell(10, 6, 'periode', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['periode'] . '  ,' . $data['usaha']['tahun'], 0, 1);
+        $pdf->Cell(10, 6, 'Alamat Kantor ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['almt_ktr'] . ' ' . '(' . $data['usaha']['kec_ktr'] . ')', 0, 1);
+        $pdf->Ln(15);
+
+        $pdf->Cell(10, 6, 'HASIL PEMANTAUAN KUALITAS AIR DAN PENGELOLAAN LIMBAH', 0, 1);
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(10, 6, '- Tgl Pemantauan ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['tgl_pantau'], 0, 1);
+        $pdf->Cell(10, 6, '- Parameter Yang Dipantau', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['parameter'], 0, 1);
+        $pdf->Cell(10, 6, '- Baku Mutu (mg/liter)', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['b_mutu'], 0, 1);
+        $pdf->Cell(10, 6, '- Hasil Pemantauan', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['h_pantau'], 0, 1);
+        $pdf->Cell(10, 6, '- Pemantauan PH ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['PH'], 0, 1);
+
+        /*$pdf->Ln(15);
+        $pdf->SetFont('Arial', 'B', 12);
+        $txt = $data['usaha']['telepon'];
+        $pdf->Cell(196, 7, $txt, 0, 1, 'C');
+        /* $pdf->ln(3);
+        $pdf->SetFont('Arial', '', 10);
+        $txt = $data['aduan']['keterangan'];
+        $pdf->MultiCell(0, $InterLigne, $txt, 0, 'L', 0, 15);*/
+
+
+
+
+        $pdf->Output();
+    }
+
+    function print_profil($id)
+    {
+        $data['usaha'] = $this->mod_usaha->selectById($id)->row_array();
+
+        $InterLigne = 7;
+        $pdf = new FPDF();
+        // membuat halaman baru
+        $pdf->AddPage('P', 'Legal');
+        $pdf->SetFont('Arial', 'B', 14);
+        // mencetak string 
+        $pdf->Ln(10);
+        $pdf->Cell(196, 7, 'LAPORAN PENGELOLAAN DAN PEMANTAUAN ', 0, 1, 'C');
+        $pdf->Cell(196, 7, 'LINGKUNGAN / PERIZINAN LINGKUNGAN ', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(196, 7, 'PT ANGIN RIBUT', 0, 1, 'C');
+        $pdf->Cell(196, 7, 'PERIODE BULAN JANUARI S/D MARET 2019', 0, 1, 'C');
+        $pdf->Cell(196, 1, '', 0, 1, 'C', true);
+
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Ln(5);
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(10, 6, 'Nama Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['nm_usaha'], 0, 1);
+        $pdf->Cell(10, 6, 'Jenis Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['jenis'], 0, 1);
+        $pdf->Cell(10, 6, 'Nama Penanggung Jawab', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['owner'], 0, 1);
+        $pdf->Cell(10, 6, 'Alamat Kantor', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, 'Desa:  ' . $data['usaha']['almt_ktr'] . ',  Kecamatan:  ' . $data['usaha']['kec_ktr'], 0, 1);
+        $pdf->Cell(10, 6, 'Lokasi Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['almt_ush'], 0, 1);
+        $pdf->Cell(10, 6, 'No Telpon Kantor', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['telepon'], 0, 1);
+        $pdf->Cell(10, 6, 'Email', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['email_u'], 0, 1);
+        $pdf->Cell(10, 6, 'Tahun Operasi', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['email_u'], 0, 1);
+        $pdf->Cell(10, 6, 'Email', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['email_u'], 0, 1);
+
+        $pdf->Ln(15);
 
 
         $pdf->Output();
