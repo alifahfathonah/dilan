@@ -59,7 +59,7 @@
                                 <th>" .  $a['tahun']  . "</th>
                                 <td>" . $a['sumber'] . "</td>
                                 <td>" . $a['jenis'] . "</td>
-                                <td>" . anchor("admin/pelptri/edit/" . $a['id_kelola'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/kelola/edit/" . $a['id_kelola'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }

@@ -17,7 +17,9 @@ class Mod_kelola extends Ci_Model
     }
     function selectById($id)
     {
-        $sql = "select * from laporsm, usaha where usaha.id_usaha=laporsm.id_usaha and laporsm.id_laporsm='" . $id . "'";
+        $sql = "select usaha.id_usaha, usaha.nm_usaha, usaha.user_id, kelola_pantau.id_kelola, kelola_pantau.periode, kelola_pantau.tahun, 
+        kelola_pantau.sumber, kelola_pantau.jenis, kelola_pantau.kelola, kelola_pantau.pantau, 
+        kelola_pantau.file from kelola_pantau, usaha where usaha.id_usaha=kelola_pantau.id_usaha and kelola_pantau.id_kelola='" . $id . "'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -31,12 +33,12 @@ class Mod_kelola extends Ci_Model
     {
 
 
-        $this->db->where('id_laporsm', $this->input->post('id_laporsm'), 'id_usaha', $this->input->post('id_usaha'));
-        $this->db->update('laporsm', $data);
+        $this->db->where('id_kelola', $this->input->post('id_kelola'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->update('kelola_pantau', $data);
     }
     function selectFile($id)
     {
-        $sql = "select lampiran from laporsm where id_laporsm='" . $id . "'";
+        $sql = "select kelola_pantau from laporsm where id_kelola='" . $id . "'";
         $query = $this->db->query($sql);
         return $query;
     }

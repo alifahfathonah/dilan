@@ -45,13 +45,12 @@ class Kelola extends CI_Controller
 
                 if ($this->upload->do_upload(('lampiran'))) {
                     $nama_file = $this->upload->data('file_name');
-                    $m1 = $this->input->post('m1');
-                    $m2 = $this->input->post('m2');
-                    $g = $m1 . "-" . $m2;
+
+
                     $data = [
                         'id_usaha' => $this->input->post('id_usaha'),
-                        'periode' => $g,
-                        'tahun' => $this->input->post('tahun_sm'),
+                        'periode' => $this->input->post('smster'),
+                        'tahun' => date('Y'),
                         'sumber' => $this->input->post('s_dampak'),
                         'jenis' => $this->input->post('j_dampak'),
                         'kelola' => $this->input->post('kelola'),
@@ -79,8 +78,8 @@ class Kelola extends CI_Controller
 
                 $data = [
                     'id_usaha' => $this->input->post('id_usaha'),
-                    'periode' => $g,
-                    'tahun' => $this->input->post('tahun_sm'),
+                    'periode' => $this->input->post('smster'),
+                    'tahun' => date('Y'),
                     'sumber' => $this->input->post('s_dampak'),
                     'jenis' => $this->input->post('j_dampak'),
                     'kelola' => $this->input->post('kelola'),
@@ -128,69 +127,63 @@ class Kelola extends CI_Controller
                     }
 
                     $nama_file = $this->upload->data('file_name');
-                    $m1 = $this->input->post('m1');
-                    $m2 = $this->input->post('m2');
-                    $g = $m1 . "-" . $m2;
+
                     $data = [
 
-                        'periode_sm' => $g,
-                        'tahun_sm' => $this->input->post('tahun_sm'),
-                        's_dampak' => $this->input->post('s_dampak'),
-                        'j_dampak' => $this->input->post('j_dampak'),
+                        'periode' => $this->input->post('smster'),
+                        'tahun' => date('Y'),
+                        'sumber' => $this->input->post('s_dampak'),
+                        'jenis' => $this->input->post('j_dampak'),
                         'kelola' => $this->input->post('kelola'),
                         'pantau' => $this->input->post('pantau'),
-                        'lampiran' => $nama_file,
-                        'updated_at' => date('Y-m-d')
+                        'file' => $nama_file
+
 
                     ];
-                    $this->mod_pelpsix->update($data);
+                    $this->mod_kelola->update($data);
                     $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h5><i class="icon fas fa-check"></i> Alert!</h5>
                     Data Berhasil Diubah</div>');
-                    redirect('admin/pelpsix');
+                    redirect('admin/kelola');
                 } else {
                     $error = $this->upload->display_errors();
                     $this->session->set_flashdata('message', '<div class= "' . $error . '">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h5><i class="icon fas fa-check"></i> Alert!</h5>
                     Somethink wrong with upload</div>');
-                    redirect('admin/pelpsix');
+                    redirect('admin/kelola');
                 }
             } else {
 
-                $m1 = $this->input->post('m1');
-                $m2 = $this->input->post('m2');
-                $g = $m1 . "-" . $m2;
-                $data = [
 
-                    'periode_sm' => $g,
-                    'tahun_sm' => $this->input->post('tahun_sm'),
-                    's_dampak' => $this->input->post('s_dampak'),
-                    'j_dampak' => $this->input->post('j_dampak'),
+                $data = [
+                    'periode' => $this->input->post('smster'),
+                    'tahun' => date('Y'),
+                    'sumber' => $this->input->post('s_dampak'),
+                    'jenis' => $this->input->post('j_dampak'),
                     'kelola' => $this->input->post('kelola'),
                     'pantau' => $this->input->post('pantau'),
-                    'updated_at' => date('Y-m-d')
 
 
                 ];
-                $this->mod_pelpsix->update();
+                $this->mod_kelola->update($data);
                 $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h5><i class="icon fas fa-check"></i> Alert!</h5>
                     Data Berhasil Diubah</div>');
-                redirect('admin/pelpsix');
+                redirect('admin/kelola');
             }
         } else {
 
             $id = $this->uri->segment(4);
-            $data['usaha'] = $this->mod_pelpsix->selectById($id)->row_array();
+            $data['usaha'] = $this->mod_kelola->selectById($id)->row_array();
 
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/navbar', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/pelpsix/edit', $data);
+            $this->load->view('admin/kelola/edit', $data);
             $this->load->view('admin/template/footer');
         }
     }
