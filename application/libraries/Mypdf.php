@@ -13,12 +13,7 @@ class Mypdf extends FPDF
     {
 
         // $a->header();
-        $this->SetFont('Arial', 'B', 10);
-        $this->Cell(196, 5, 'REKAP LAPORAN SEMESTER ', 0, 0, 'C');
-        $this->ln();
-        $this->SetFont('Times', '', 12);
-        $this->Cell(196, 10, 'IZIN USAHA DAN PENGELOLAAN LINGKUNGAN USAHA', 0, 0, 'C');
-        $this->ln(30);
+
     }
     function footer()
     {
@@ -70,5 +65,26 @@ class Mypdf extends FPDF
         }
         $text = rtrim($text);
         return $count;
+    }
+
+    function MyCell($w, $h, $x, $t)
+    {
+        $height = $h / 3;
+        $first = $height + 2;
+        $second = $height + $height + $height + 3;
+        $len = strlen($t);
+
+        if ($len > 15) {
+            $txt = str_split($t, 15);
+            $this->setX($x);
+            $this->Cell($w, $first, $txt[0], '', '', '');
+            $this->setX($x);
+            $this->Cell($w, $second, $txt[1], '', '', '');
+            $this->setX($x);
+            $this->Cell($w, $h, '', 'LTRB', 0, 'L', 0);
+        } else {
+            $this->SetX($x);
+            $this->Cell($w, $h, $t, 'LTRB', '0', '0');
+        }
     }
 }
