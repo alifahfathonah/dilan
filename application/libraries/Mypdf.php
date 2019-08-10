@@ -19,8 +19,8 @@ class Mypdf extends FPDF
     {
         //footer
         $this->setY(-15);
-        $this->setFont('Arial', '', 8);
-        $this->Cell(0, 10, 'Page' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->setFont('Arial', 'I', 8);
+        $this->Cell(0, 10, 'Halaman' . $this->PageNo() . '/{nb}', 0, 0, 'C');
     }
     function WordWrap(&$text, $maxwidth)
     {
@@ -67,24 +67,46 @@ class Mypdf extends FPDF
         return $count;
     }
 
-    function MyCell($w, $h, $x, $t)
+    //Cell with horizontal scaling only if necessary
+    function CellFitScale($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '')
     {
-        $height = $h / 3;
-        $first = $height + 2;
-        $second = $height + $height + $height + 3;
-        $len = strlen($t);
+        $this->CellFit($w, $h, $txt, $border, $ln, $align, $fill, $link, true, false);
+    }
 
-        if ($len > 15) {
-            $txt = str_split($t, 15);
-            $this->setX($x);
-            $this->Cell($w, $first, $txt[0], '', '', '');
-            $this->setX($x);
-            $this->Cell($w, $second, $txt[1], '', '', '');
-            $this->setX($x);
-            $this->Cell($w, $h, '', 'LTRB', 0, 'L', 0);
-        } else {
-            $this->SetX($x);
-            $this->Cell($w, $h, $t, 'LTRB', '0', '0');
+
+    //Cell with horizontal scaling if text is too wide
+    function CellFit($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '', $scale = false, $force = true)
+    {
+        //Get string width
+        $str_width = $this->GetStringWidth($txt);
+
+        //Calculate ratio to fit cell
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $ratio = ($w - $this->cMargin * 2) / $str_width;
+
+        $fit = ($ratio < 1 || ($ratio > 1 && $force));
+        if ($fit) {
+            if ($scale) {
+                //Calculate horizontal scaling
+                $horiz_scale = $ratio * 100.0;
+                //Set horizontal scaling
+                $this->_out(sprintf('BT %.2F Tz ET', $horiz_scale));
+            } else {
+                //Calculate character spacing in points
+                $char_space = ($w - $this->cMargin * 2 - $str_width) / max($this->MBGetStringLength($txt) - 1, 1) * $this->k;
+                //Set character spacing
+                $this->_out(sprintf('BT %.2F Tc ET', $char_space));
+            }
+            //Override user alignment (since text will fill up cell)
+            $align = '';
         }
+
+        //Pass on to Cell method
+        $this->Cell($w, $h, $txt, $border, $ln, $align, $fill, $link);
+
+        //Reset character spacing/horizontal scaling
+        if ($fit)
+            $this->_out('BT ' . ($scale ? '100 Tz' : '0 Tc') . ' ET');
     }
 }

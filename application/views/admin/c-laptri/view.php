@@ -67,9 +67,9 @@
                                 <td>  2019  </td>
                                 <td>" . anchor("admin/claptri/print_profil/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
                                 <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
-                                <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
-                               <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
-                               <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>                               
+                                <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>                               
                                 <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
