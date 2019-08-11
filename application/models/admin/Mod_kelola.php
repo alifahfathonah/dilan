@@ -45,7 +45,14 @@ class Mod_kelola extends Ci_Model
 
     function selectv_usaha($id)
     {
-        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha and usaha.id_usaha='" . $id . "'";
+        $sql = "select * from usaha, kelola_pantau where usaha.id_usaha=kelola_pantau.id_usaha and kelola_pantau.periode='01' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectv_usahax($id)
+    {
+        $sql = "select * from usaha, kelola_pantau where usaha.id_usaha=kelola_pantau.id_usaha and kelola_pantau.periode='02' and usaha.id_usaha='" . $id . "'";
         $query = $this->db->query($sql);
 
         return $query;

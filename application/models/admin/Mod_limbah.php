@@ -67,6 +67,54 @@ class Mod_limbah extends Ci_Model
 
         return $query;
     }
+    function selectByUsahaIdju($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='07' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdag($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='08' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdse($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='09' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdok($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='10' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdno($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='11' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+    function selectByUsahaIdde($id)
+    {
+        $sql = "select * from usaha, p_b3 where usaha.id_usaha=p_b3.id_usaha and
+                p_b3.bln='12' and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
 
 
     function selectByUser($id)

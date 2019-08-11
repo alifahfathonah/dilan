@@ -49,18 +49,7 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-                            /*$data = date('Y-m-d');
-                            $bln = substr($data, 6, 1);
-                            if($bln == '1'  || $bln == '2' || ){
 
-                            }else if(){
-
-                            }else if(){
-
-                            }else{
-
-                            }*/
-                            //if ($a['']) { }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
@@ -70,7 +59,7 @@
                                 <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
                                <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>
                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>                               
-                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
+                                <td>" . anchor("admin/claptri/sign/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('target' => '_blank')) . "</td>"; ?>
                             </tr>
                             <?php $no++;
                         }
