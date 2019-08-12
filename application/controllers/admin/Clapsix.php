@@ -688,7 +688,7 @@ class Clapsix extends CI_Controller
         $pdf->Output('I', 'babIII.pdf');
     }
 
-    function print_profil($id)
+    function print_profil_satu($id)
     {
         $data['usaha'] = $this->mod_usaha->selectById($id)->row_array();
         $data['izin'] = $this->mod_izin->selectByUsahaId($id)->result();
@@ -709,6 +709,260 @@ class Clapsix extends CI_Controller
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(196, 7, $data['usaha']['nm_usaha'], 0, 1, 'C');
         $pdf->Cell(196, 7, 'PERIODE BULAN JANUARI S/D JUNI 2019', 0, 1, 'C');
+        $pdf->Cell(196, 1, '', 0, 1, 'C', true);
+
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->Cell(196, 7, 'BAB 1. PENDAHULUAN', 0, 1, 'C');
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '1. Profil Usaha / Kegiatan', 0, 1);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'a. Nama Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['nm_usaha'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'b. Jenis Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(20, 6, $data['usaha']['jenis'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'c. Nama Penanggung Jawab', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['owner'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'd. Alamat Kantor', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(20, 6, 'Desa :  ' . $data['usaha']['almt_ktr'] . ',  Kecamatan:  ' . $data['usaha']['kec_ktr'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'e. Lokasi Usaha', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(20, 6, 'Desa :  ' . $data['usaha']['almt_ush'] . ',  Kecamatan:  ' . $data['usaha']['kec_ush'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'f. No Telpon Kantor', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['telepon'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'g. Email', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['email_u'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'h. Tahun Operasi', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+
+        $pdf->Cell(10, 6, $data['usaha']['tahun_opr'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'i. Jenis Dokumen Lingkungan', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['jenis_dok'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(35, 6, 'j. Tahun Pengesahan Dokumen Lingkungan ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['tahun_sah'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'k. Luas Lahan Usaha / Kegiatan', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['luas_lahan'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'l. Jenis Produk', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['jenis_produk'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'm. Kapasitas Produksi', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['kapasitas'] . ' (ton/bln)', 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'n. Jenis Bahan Baku ', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['jenis_bahan'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'o. Penggunaan Bahan Baku', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['penggunaan'] . ' (ton/bln)', 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'p. Sumber Air Baku', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['sumber_air'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'q. Jumlah Karyawan', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['usaha']['jml_karyawan'] . ' Orang', 0, 1);
+        $pdf->Ln(8);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '2. Perizinan Dan Non Perizinan Yang Dimiliki', 0, 1);
+        $pdf->Ln(5);
+
+
+
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetAligns(array('C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 30, 40, 30, 30, 40));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Jenis Izin', 'Nomor Izin', 'Tgl. Terbit', 'Masa Berlaku', 'Keterangan'
+        ));
+        $no = 1;
+        $pdf->SetFont('Arial', '', 10);
+
+        foreach ($data['izin'] as $o) {
+
+            $pdf->Row(array(
+                $no,
+                $o->j_izin,
+                $o->nmr_izin,
+                $o->tgl_terbit,
+                $o->berlaku,
+                $o->keterangan,
+            ));
+
+            $no++;
+        }
+
+
+
+
+
+
+
+        $pdf->Ln(8);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, '3. Sarana Dan Prasarana Yang Dimiliki', 0, 1);
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'a.  Bangunan (m2)', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['sarana']['l_bangunan'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'b.  Lahan Parkir (m2)', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['sarana']['l_parkir'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'c.  Ruang Terbuka Hijau (m2)', 0, 0);
+        $pdf->Cell(40);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['sarana']['ruang_hijau'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(25, 6, 'd.  Tempat Penyimpanan LB3 (m2)', 0, 0);
+        $pdf->Cell(35);
+        $pdf->Cell(2, 6, ':', 0, 0);
+        $pdf->Cell(10, 6, $data['sarana']['penyimpanan'], 0, 1);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'e.  Boiler', 0, 1);
+        $pdf->Ln(3);
+        $pdf->SetFont('Arial', 'B', 10);
+
+
+
+
+
+        $pdf->SetAligns(array('C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 20, 25, 30, 30, 30, 25));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Nama Boiler', 'Kapasitas (Hp)', 'Bahan Bakar', 'Tinggi Cerobong', 'Bentuk Cerobong', 'Diameter Cerobong (m)', 'Waktu Operasi (jam)'
+        ));
+        $no = 1;
+        $pdf->SetFont('Arial', '', 10);
+
+        foreach ($data['boiler'] as $e) {
+
+            $pdf->Row(array(
+                $no,
+                $e->nm_boiler,
+                $e->kp_boiler,
+                $e->b_bakar,
+                $e->tinggi,
+                $e->bentuk,
+                $e->diameter,
+                $e->w_opr
+            ));
+
+            $no++;
+        }
+
+
+        $pdf->SetFont('Arial', '', 10);
+
+        $pdf->Ln(5);
+        $pdf->Cell(5);
+        $pdf->Cell(20, 6, 'f.  Genset', 0, 1);
+        $pdf->Ln(3);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetAligns(array('C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 40, 25, 25, 30));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Nama Genset', 'Kapasitas (KVA)', 'Bahan Bakar', 'Waktu Operasi (jam)'
+        ));
+        $no = 1;
+        $pdf->SetFont('Arial', '', 10);
+
+        foreach ($data['genset'] as $y) {
+
+            $pdf->Row(array(
+                $no,
+                $y->nm_genset,
+                $y->kp_genset,
+                $y->bhn_bkrgent,
+                $y->wkt_opr
+            ));
+
+            $no++;
+        }
+
+
+
+        $pdf->Output('I', 'bab1.pdf');
+    }
+
+    function print_profil_dua($id)
+    {
+        $data['usaha'] = $this->mod_usaha->selectById($id)->row_array();
+        $data['izin'] = $this->mod_izin->selectByUsahaId($id)->result();
+        $data['sarana'] = $this->mod_sarana->selectByUsahaId($id)->row_array();
+        $data['boiler'] = $this->mod_boiler->selectByUsahaId($id)->result();
+        $data['genset'] = $this->mod_genset->selectByUsahaId($id)->result();
+        $pdf = new PDF_MC_Table();
+
+
+        // membuat halaman baru
+        $pdf->AliasNbPages();
+        $pdf->AddPage('P', 'Legal');
+        $pdf->SetFont('Arial', 'B', 14);
+        // mencetak string 
+
+        $pdf->Cell(196, 7, 'LAPORAN PENGELOLAAN DAN PEMANTAUAN ', 0, 1, 'C');
+        $pdf->Cell(196, 7, 'LINGKUNGAN / PERIZINAN LINGKUNGAN ', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(196, 7, $data['usaha']['nm_usaha'], 0, 1, 'C');
+        $pdf->Cell(196, 7, 'PERIODE BULAN JULI S/D DESEMBER 2019', 0, 1, 'C');
         $pdf->Cell(196, 1, '', 0, 1, 'C', true);
 
 

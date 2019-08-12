@@ -143,6 +143,18 @@
                    <p>Sarana & Prasarana</p>
                  </a>
                </li>
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/genset'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Genset</p>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a href="<?= base_url('admin/boiler'); ?>" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Boiler</p>
+                 </a>
+               </li>
              </ul>
            </li>
            <li class="nav-item has-treeview">
@@ -180,13 +192,13 @@
                </li>
              </ul>
              <!--    <li class="nav-item">
-                                                       <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
-                                                         <i class="far fa-circle nav-icon"></i>
-                                                         <p>Semester</p>
-                                                       </a>
-                                                     </li>
-                                                   </ul>
-                                                 </li>-->
+                                                                 <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
+                                                                   <i class="far fa-circle nav-icon"></i>
+                                                                   <p>Semester</p>
+                                                                 </a>
+                                                               </li>
+                                                             </ul>
+                                                           </li>-->
 
 
 

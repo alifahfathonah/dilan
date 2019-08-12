@@ -164,10 +164,9 @@ class PDF_MC_Table extends FPDF
     function footer()
     {
         //footer
-        $this->setY(-15);
+        /* $this->setY(-15);
         $this->setFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Halaman' . $this->PageNo() . '/{nb}', 0, 0, 'C');
-    }
+        $this->Cell(0, 10, 'Halaman' . $this->PageNo() . '/{nb}', 0, 0, 'C');*/ }
 
     function SetWidths($w)
     {

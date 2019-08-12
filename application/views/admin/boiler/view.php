@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Pelaporan Semester </li>
+                        <li class="breadcrumb-item active">Data Boiler</li>
                     </ol>
                 </div>
             </div>
@@ -21,9 +21,12 @@
     <section class="content">
 
 
+        <a href="<?= base_url('admin/boiler/create'); ?>" class="btn btn-primary btn-sm">Tambah Boiler</a>
+        <br /><br />
+        <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Laporan Semester</h3>
+                <h3 class="card-title">Data Boiler</h3>
             </div>
             <!-- /.card-header -->
 
@@ -32,13 +35,12 @@
                     <thead>
                         <tr>
                             <th width="5">NO</th>
-                            <th>Nama</th>
-                            <th>Tahun</th>
-
-                            <th>Semester I</th>
-                            <th>Semester II</th>
-                            <th>Penutup</th>
-
+                            <th>Nama Boiler</th>
+                            <th>Kapasitas</th>
+                            <th>Bahan Bakar</th>
+                            <th>Waktu Operasi</th>
+                            <th>Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
 
@@ -46,18 +48,16 @@
                         <?php
                         $no = 1;
 
-                        foreach ($usaha as $a) {
+                        foreach ($sarana as $a) {
 
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
-                                <td>" . $a['nm_usaha'] . "</td>
-                                <td>  2019  </td>
-                                
-                                <td>" . anchor("admin/clapsix/print_satu/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
-                                anchor("admin/clapsix/print_profil_satu/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
-                                <td>" . anchor("admin/clapsix/print_dua/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
-                                anchor("admin/clapsix/print_profil_dua/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank'))  . "</td>
-                                <td>" . anchor("admin/clapsix/sign/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')) . "</td>"; ?>
+                                <td>" . $a['nm_boiler'] . "</td>
+                                <td>" . $a['kp_boiler'] . "</td>
+                                <td>" . $a['b_bakar'] . "</td>
+                                <td>" . $a['w_opr'] . "</td>
+                                <td>" . anchor("admin/boiler/edit/" . $a['id_boiler'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>"; ?><a href="<?= base_url('admin/boiler/delete/' . $a['id_boiler']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
                             </tr>
                             <?php $no++;
                         }
