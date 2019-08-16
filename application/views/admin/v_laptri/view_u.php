@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Kualitas Air Limbah</li>
+                        <li class="breadcrumb-item active">Laporan Triwulan</li>
                     </ol>
                 </div>
             </div>
@@ -58,10 +58,11 @@
                             
                                 <td>" . $a['tahun_t'] . "</td>
                                 <td>" . $a['sts_lapt'] . "</td>
-                                <td> edit </td>
+                               
                                
                               
-                                <td>" . anchor("admin/air/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='far fa-trash'></i>", array('title' => 'hapus data')) . "</td>
+                                <td>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                         </tr>
                         <?php $no++;
                         }
