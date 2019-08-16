@@ -21,12 +21,12 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/air/create'); ?>" class="btn btn-primary btn-sm">Tambah Parameter</a>
+        <a href="<?= base_url('admin/v_laptri/create'); ?>" class="btn btn-primary btn-sm">Tambah Laporan</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Kualitas Air</h3>
+                <h3 class="card-title">Laporan Triwulan</h3>
             </div>
             <!-- /.card-header -->
 
@@ -37,20 +37,9 @@
                             <th width="5">NO</th>
 
                             <th>Nama Usaha</th>
-                            <th>Parameter</th>
-                            <th>BK Mutu</th>
-                            <th>Jan</th>
-                            <th>Feb</th>
-                            <th>Mar</th>
-                            <th>Apr</th>
-                            <th>Mei</th>
-                            <th>Jun</th>
-                            <th>Jul</th>
-                            <th>Agu</th>
-                            <th>Sep</th>
-                            <th>Okt</th>
-                            <th>Nov</th>
-                            <th>Des</th>
+                            <th>Periode</th>
+                            <th>Tahun</th>
+                            <th>Status</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -59,28 +48,20 @@
                         <?php
                         $no = 1;
 
-                        foreach ($usaha as $a) {
+                        foreach ($laptri as $a) {
 
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['parameter_a'] . "</td>
+                                <td>" . $a['periode_t'] . "</td>
                             
-                                <td>" . $a['bk_mutu'] . "</td>
-                                <td>" . $a['b1'] . "</td>
-                                <td>" . $a['b2'] . "</td>
-                                <td>" . $a['b3'] . "</td>
-                                <td>" . $a['b4'] . "</td>
-                                <td>" . $a['b5'] . "</td>
-                                <td>" . $a['b6'] . "</td>
-                                <td>" . $a['b7'] . "</td>
-                                <td>" . $a['b8'] . "</td>
-                                <td>" . $a['b9'] . "</td>
-                                <td>" . $a['b10'] . "</td>
-                                <td>" . $a['b11'] . "</td>
-                                <td>" . $a['b12'] . "</td>
-                                <td>" . anchor("admin/air/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . $a['tahun_t'] . "</td>
+                                <td>" . $a['sts_lapt'] . "</td>
+                                <td> edit </td>
+                               
+                              
+                                <td>" . anchor("admin/air/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                         </tr>
                         <?php $no++;
                         }

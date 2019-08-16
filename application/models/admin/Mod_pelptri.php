@@ -5,7 +5,7 @@ class Mod_pelptri extends Ci_Model
 
     function selectByUsaha($user)
     {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and usaha.user_id='" . $user . "'";
+        $sql = "select * from usaha, users where usaha.user_id=users.user_id and usaha.user_id='" . $user . "'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -52,7 +52,7 @@ class Mod_pelptri extends Ci_Model
 
     function selectv_usaha($id)
     {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha and usaha.id_usaha='" . $id . "'";
+        $sql = "select * from usaha  where id_usaha='" . $id . "'";
         $query = $this->db->query($sql);
 
         return $query;
@@ -61,13 +61,19 @@ class Mod_pelptri extends Ci_Model
 
     function verify($data)
     {
-        $this->db->where('id_lapor', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
+        $this->db->where('id_', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
         $this->db->update('lapor', $data);
     }
 
-    function selectUsaha()
+    function create_tri($data)
     {
-        $sql = "select * from usaha, lapor where usaha.id_usaha=lapor.id_usaha";
+        $this->db->insert('lap_tri', $data);
+    }
+
+    function selectUsaha($user)
+    {
+        $sql = "select * from usaha, users, lap_tri where usaha.user_id=users.user_id and
+        usaha.id_usaha=lap_tri.id_usaha and usaha.user_id='" . $user . "'";
         $query = $this->db->query($sql);
 
         return $query;

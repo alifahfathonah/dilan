@@ -61,8 +61,8 @@
                             
                                 <td>" . $b . "</td>
                                 <td>" . anchor("admin/v_laptri/report/" . $a['id_usaha'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

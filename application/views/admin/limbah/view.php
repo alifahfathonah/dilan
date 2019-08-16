@@ -21,7 +21,7 @@
     <section class="content">
 
 
-        <a href="<?= base_url('admin/limbah/create'); ?>" class="btn btn-primary btn-sm">+ Peneglolaan Limba B3</a>
+        <a href="<?= base_url('admin/limbah/create'); ?>" class="btn btn-primary btn-sm">+ Pengelolaan Limba B3</a>
         <br /><br />
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
@@ -67,8 +67,8 @@
                                 <td>" . $a['give_3'] . "</td>
                                 <td>" . $a['sisa'] . "</td>
                                 <td>" . anchor("admin/limbah/edit/" . $a['id_b3'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

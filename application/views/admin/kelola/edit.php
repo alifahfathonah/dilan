@@ -33,9 +33,9 @@
                             <h5>Data Pengelolahan Lingkungan</h5>
 
                             <hr>
-                            <input type="text" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
-                            <input type="text" name="id_kelola" class="form-control form-control-sm col-10" value="<?= $usaha['id_kelola']; ?>">
-                            <input type="text" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['user_id']; ?>">
+                            <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
+                            <input type="hidden" name="id_kelola" class="form-control form-control-sm col-10" value="<?= $usaha['id_kelola']; ?>">
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['user_id']; ?>">
 
 
                             <div class="form-group row field">

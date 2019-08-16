@@ -64,9 +64,10 @@
                                 anchor("admin/claptri/print_profil_tiga/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_empat/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>                               
-                                <td>" . anchor("admin/claptri/sign/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                                <td>" . anchor("admin/claptri/sign/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')) . "</td>";
+                            ?>
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

@@ -42,7 +42,16 @@
                             <th>BK Mutu</th>
                             <th>Jan</th>
                             <th>Feb</th>
-                            <th>Maret</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>Mei</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Agu</th>
+                            <th>Sep</th>
+                            <th>Okt</th>
+                            <th>Nov</th>
+                            <th>Des</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -63,9 +72,18 @@
                                 <td>" . $a['b1'] . "</td>
                                 <td>" . $a['b2'] . "</td>
                                 <td>" . $a['b3'] . "</td>
+                                <td>" . $a['b4'] . "</td>
+                                <td>" . $a['b5'] . "</td>
+                                <td>" . $a['b6'] . "</td>
+                                <td>" . $a['b7'] . "</td>
+                                <td>" . $a['b8'] . "</td>
+                                <td>" . $a['b9'] . "</td>
+                                <td>" . $a['b10'] . "</td>
+                                <td>" . $a['b11'] . "</td>
+                                <td>" . $a['b12'] . "</td>
                                 <td>" . anchor("admin/udara/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

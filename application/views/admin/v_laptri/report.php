@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Pelaporan Triwulan</li>
+                        <li class="breadcrumb-item active">Pelaporan Triwulan </li>
                     </ol>
                 </div>
             </div>
@@ -21,8 +21,6 @@
     <section class="content">
 
 
-
-        <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Laporan Triwulan</h3>
@@ -34,12 +32,16 @@
                     <thead>
                         <tr>
                             <th width="5">NO</th>
-                            <th>Nama Usaha</th>
-                            <th>Periode</th>
+                            <th>Nama</th>
                             <th>Tahun</th>
 
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th width="100">Triwulan I</th>
+                            <th>Triwulan II</th>
+                            <th>Triwulan III</th>
+                            <th>Triwulan IV</th>
+
+
+
                         </tr>
                     </thead>
 
@@ -48,21 +50,26 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-                            if ($a['vlap'] == '0') {
-                                $c = "Draft";
-                            } else {
-                                $c = "Verified";
-                            }
+
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['periode'] . "</td>
-                                <td>" . $a['tahun'] . "</td>
-                            
-                                <td>" . $c . "</td>
-                                <td>" . anchor("admin/v_laptri/act/" . $a['id_lapor'], "<i class='fab fa-audible'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                                <td>  2019  </td>
+                               
+                                <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
+                                anchor("admin/claptri/print_profil_satu/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'], "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')),
+                                anchor("admin/v_laptri/create1/" . $a['id_usaha'], "<center><i class='fas fa-adjust'></i></center>", array('title' => 'create data')) .
+                                    "</td>
+                                <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
+                                anchor("admin/claptri/print_profil_dua/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
+                                anchor("admin/claptri/print_profil_tiga/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
+                               <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
+                                anchor("admin/claptri/print_profil_empat/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>";
+                            ?>
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

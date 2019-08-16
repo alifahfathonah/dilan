@@ -26,16 +26,17 @@
             <div class="card-header">
                 <h3 class="card-title"><?= $usaha['nm_usaha']; ?></h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/v_laptri/act1'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/v_laptri/create'); ?>">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
+                            <?= $this->session->flashdata('message'); ?>
                             <h5>Data Laporan Triwulan</h5>
 
                             <hr>
                             <input type="text" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
 
-                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
+                            <input type="text" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
                             <!-- <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
                                 <div class="col-sm-8">
@@ -51,14 +52,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="periode" class="form-control form-control-sm col-6" value="<?= $periode; ?>" readonly>
+                                    <input type="text" name="periode" class="form-control form-control-sm col-6" required>
 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" value="<?= $tahun; ?>" readonly>
+                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" required>
 
                                 </div>
                             </div>
@@ -70,24 +71,13 @@
                         <!-- end col-md-6 -->
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Koreksi</label>
-                                <div class="col-sm-12">
-                                    <textarea id="editor" name="ket" placeholder="Isi Pesan Anda Disini" required></textarea>
 
-                                </div>
-
-
-                            </div>
-                        </div>
                     </div>
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
-                    <button type="submit" name="update" class="btn btn-primary">verifikasi</button>
-                    <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
-                    <button type="submit" name="correct" class="btn btn-primary">koreksi</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">kirim</button>
+
                 </div>
                 <!-- end card footer -->
             </form>
