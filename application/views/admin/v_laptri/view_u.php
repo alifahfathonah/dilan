@@ -40,7 +40,9 @@
                             <th>Periode</th>
                             <th>Tahun</th>
                             <th>Status</th>
-                            <th>Edit</th>
+                            <th>Aksi</th>
+                            <th>Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
 
@@ -50,6 +52,15 @@
 
                         foreach ($laptri as $a) {
 
+                            if ($a['sts_lapt'] == '1') {
+                                $b = "Koreksi";
+                            }
+                            if ($a['sts_lapt'] == '2') {
+                                $b = "Lengkap";
+                            } else if ($a['sts_lapt'] == '0') {
+                                $b = "Draft";
+                            }
+
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
@@ -57,12 +68,16 @@
                                 <td>" . $a['periode_t'] . "</td>
                             
                                 <td>" . $a['tahun_t'] . "</td>
-                                <td>" . $a['sts_lapt'] . "</td>
+                                <td>" . $b . "</td>
                                
                                
                               
-                                <td>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='far fa-trash'></i>", array('title' => 'hapus data')) . "</td>
-                                <td>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>
+                                <td>" . anchor("admin/v_laptri/print_kode/" . $a['id_laptri'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</td>";
+
+
+                            ?>
                         </tr>
                         <?php $no++;
                         }

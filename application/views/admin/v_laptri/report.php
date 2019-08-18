@@ -28,6 +28,7 @@
             <!-- /.card-header -->
 
             <div class="card-body" style="overflow:auto;">
+                <?= $this->session->flashdata('message'); ?>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -58,15 +59,18 @@
                                
                                 <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_satu/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
-                                anchor("admin/v_laptri/act1/" . $a['id_usaha'], "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')),
-                                anchor("admin/v_laptri/create1/" . $a['id_usaha'], "<center><i class='fas fa-adjust'></i></center>", array('title' => 'create data')) .
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-1", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) .
+
                                     "</td>
                                 <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
-                                anchor("admin/claptri/print_profil_dua/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
+                                anchor("admin/claptri/print_profil_dua/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-2", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
                                <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
-                                anchor("admin/claptri/print_profil_tiga/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>
+                                anchor("admin/claptri/print_profil_tiga/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-3", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
-                                anchor("admin/claptri/print_profil_empat/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')) . "</td>";
+                                anchor("admin/claptri/print_profil_empat/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-4", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>";
                             ?>
                         </tr>
                         <?php $no++;

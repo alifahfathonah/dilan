@@ -33,7 +33,8 @@
                             <h5>Data Laporan Triwulan</h5>
 
                             <hr>
-                            <input type="text" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
+                            <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
+                            <input type="hidden" name="id_laptri" class="form-control form-control-sm col-10" value="<?= $usaha['id_laptri']; ?>">
 
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
                             <!-- <div class="form-group row">
@@ -51,18 +52,41 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="periode" class="form-control form-control-sm col-6" value="<?= $periode; ?>" readonly>
+                                    <input type="text" name="periode" class="form-control form-control-sm col-6" value="<?= $usaha['periode_t']; ?>" readonly>
 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" value="<?= $tahun; ?>" readonly>
+                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" value="<?= $usaha['tahun_t']; ?>" readonly>
 
                                 </div>
                             </div>
 
+                            <?php
+                            if ($usaha['sts_lapt'] != null) { ?>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Status Laporan</label>
+                                <div class="col-sm-8">
+                                    <?php
+                                        if ($usaha['sts_lapt'] == '1') {
+                                            $b = "Koreksi";
+                                        }
+                                        if ($usaha['sts_lapt'] == '2') {
+                                            $b = "Lengkap";
+                                        } else if ($usaha['sts_lapt'] == '0') {
+                                            $b = "Draft";
+                                        }
+                                        ?>
+                                    <input type="text" name="status" class="form-control form-control-sm col-6" value="<?= $b; ?>" readonly>
+
+                                </div>
+                            </div>
+                            <?php }
+
+                            ?>
 
                         </div>
                         <!-- end col-md-6 -->
@@ -74,7 +98,9 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Koreksi</label>
                                 <div class="col-sm-12">
-                                    <textarea id="editor" name="ket" placeholder="Isi Pesan Anda Disini" required></textarea>
+                                    <textarea id="editor" name="ket" placeholder="Isi Pesan Anda Disini" required>
+                                        <?= $usaha['ket']; ?>
+                                    </textarea>
 
                                 </div>
 
@@ -85,7 +111,7 @@
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
-                    <button type="submit" name="update" class="btn btn-primary">verifikasi</button>
+                    <button type="submit" name="verify" class="btn btn-primary">verifikasi</button>
                     <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
                     <button type="submit" name="correct" class="btn btn-primary">koreksi</button>
                 </div>

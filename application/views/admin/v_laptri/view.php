@@ -38,7 +38,7 @@
                             <th>Alamat Kantor</th>
                             <th>Telepon</th>
 
-                            <th>Status</th>
+
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -48,18 +48,21 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-                            if ($a['verifikasi'] == '1') {
-                                $b = "Verified";
+                            /* if ($a['sts_lapt'] == 1) {
+                                $b = "koreksi";
+                            }
+                            if ($a['sts_lapt'] == 2) {
+                                $b = "lengkap";
                             } else {
                                 $b = "Draft";
-                            }
+                            }*/
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
                                 <td>" . $a['almt_ktr'] . "</td>
                                 <td>" . $a['telepon'] . "</td>
                             
-                                <td>" . $b . "</td>
+                            
                                 <td>" . anchor("admin/v_laptri/report/" . $a['id_usaha'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                         </tr>
                         <?php $no++;

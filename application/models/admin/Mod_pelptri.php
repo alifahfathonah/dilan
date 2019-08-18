@@ -52,7 +52,33 @@ class Mod_pelptri extends Ci_Model
 
     function selectv_usaha($id)
     {
-        $sql = "select * from usaha  where id_usaha='" . $id . "'";
+        $sql = "select * from usaha, lap_tri  where usaha.id_usaha=lap_tri.id_usaha and usaha.id_usaha='" . $id . "' limit 1";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function select_usaha()
+    {
+        $sql = "select * from usaha, lap_tri  where usaha.id_usaha=lap_tri.id_usaha";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+
+    function selectr_usaha($idu, $id)
+    {
+        $sql = "select * from usaha, lap_tri  where usaha.id_usaha=lap_tri.id_usaha and usaha.id_usaha='" . $idu . "' and lap_tri.id_laptri='$id'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+
+    function selectv_tri($id, $param)
+    {
+        $sql = "select * from usaha, lap_tri  where usaha.id_usaha=lap_tri.id_usaha and lap_tri.periode_t='" . $param . "' and usaha.id_usaha='" . $id . "'";
         $query = $this->db->query($sql);
 
         return $query;
@@ -61,8 +87,16 @@ class Mod_pelptri extends Ci_Model
 
     function verify($data)
     {
-        $this->db->where('id_', $this->input->post('id_lapor'), 'id_usaha', $this->input->post('id_usaha'));
-        $this->db->update('lapor', $data);
+        $param = array('id_laptri' => $this->input->post('id_laptri'), 'id_usaha' => $this->input->post('id_usaha'));
+        $this->db->where($param);
+        $this->db->update('lap_tri', $data);
+    }
+
+    function correct($data)
+    {
+        $param = array('id_laptri' => $this->input->post('id_laptri'), 'id_usaha' => $this->input->post('id_usaha'));
+        $this->db->where($param);
+        $this->db->update('lap_tri', $data);
     }
 
     function create_tri($data)
