@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Agu 2019 pada 03.18
+-- Waktu pembuatan: 18 Agu 2019 pada 09.26
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.1.30
 
@@ -189,27 +189,28 @@ INSERT INTO `lapor` (`id_lapor`, `id_usaha`, `periode`, `tahun`, `created_at`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporsm`
+-- Struktur dari tabel `lap_sm`
 --
 
-CREATE TABLE `laporsm` (
-  `id_laporsm` int(5) NOT NULL,
+CREATE TABLE `lap_sm` (
+  `id_lapsm` int(5) NOT NULL,
   `id_usaha` varchar(20) NOT NULL,
-  `periode_sm` varchar(200) NOT NULL,
-  `tahun_sm` year(4) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
-  `vlapsm` enum('0','1') NOT NULL,
-  `tgl_vlapsm` date NOT NULL
+  `periode_sm` varchar(20) NOT NULL,
+  `tahun_sm` varchar(20) NOT NULL,
+  `sts_lapsm` enum('0','1','2') NOT NULL,
+  `ket_lapsm` text NOT NULL,
+  `kd_lapsm` varchar(150) NOT NULL,
+  `tgl_trma` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `laporsm`
+-- Dumping data untuk tabel `lap_sm`
 --
 
-INSERT INTO `laporsm` (`id_laporsm`, `id_usaha`, `periode_sm`, `tahun_sm`, `created_at`, `updated_at`, `vlapsm`, `tgl_vlapsm`) VALUES
-(6, 'ush002', 'January-March', 2019, '2019-08-02', '2019-08-02', '0', '0000-00-00'),
-(7, 'ush001', 'January-June', 2019, '2019-08-02', '2019-08-02', '0', '0000-00-00');
+INSERT INTO `lap_sm` (`id_lapsm`, `id_usaha`, `periode_sm`, `tahun_sm`, `sts_lapsm`, `ket_lapsm`, `kd_lapsm`, `tgl_trma`) VALUES
+(6, 'ush002', 'semester-I', '2019', '2', '', '8D9B1I5BKDEC1DAIL1K2', '2019-08-18'),
+(7, 'ush001', 'semester-I', '2019', '2', '', '2GG4LHJJE11K6IDBH5JC', '2019-08-18'),
+(12, 'ush002', 'semester-II', '2019', '2', '\r\n', '6HJ2KA5DF42F38D8HC2F', '2019-08-18');
 
 -- --------------------------------------------------------
 
@@ -220,23 +221,21 @@ INSERT INTO `laporsm` (`id_laporsm`, `id_usaha`, `periode_sm`, `tahun_sm`, `crea
 CREATE TABLE `lap_tri` (
   `id_laptri` int(5) NOT NULL,
   `id_usaha` varchar(20) NOT NULL,
-  `periode_t` varchar(10) NOT NULL,
+  `periode_t` varchar(20) NOT NULL,
   `tahun_t` varchar(20) NOT NULL,
-  `sts_lapt` enum('0','1') NOT NULL,
+  `sts_lapt` enum('0','1','2') NOT NULL,
   `ket` text NOT NULL,
-  `kode_trima` varchar(150) NOT NULL
+  `kode_terima` varchar(150) NOT NULL,
+  `tgl_terima` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `lap_tri`
 --
 
-INSERT INTO `lap_tri` (`id_laptri`, `id_usaha`, `periode_t`, `tahun_t`, `sts_lapt`, `ket`, `kode_trima`) VALUES
-(2, 'ush001', 'triwulan1', '2019', '0', '', ''),
-(3, 'ush002', 'triwulan-1', '2019', '0', '', ''),
-(4, 'ush002', 'triwulan-2', '2019', '0', '', ''),
-(5, 'ush002', 'triwulan-3', '2019', '0', '', ''),
-(6, 'ush002', 'triwulan-4', '2019', '0', '', '');
+INSERT INTO `lap_tri` (`id_laptri`, `id_usaha`, `periode_t`, `tahun_t`, `sts_lapt`, `ket`, `kode_terima`, `tgl_terima`) VALUES
+(2, 'ush001', 'triwulan-I', '2019', '2', '', 'IGJGGA4FJB43C12JJGKE', '2019-08-18'),
+(3, 'ush002', 'triwulan-I', '2019', '2', '', 'C4G9K1H7G7LAEAD2H5B4', '2019-08-18');
 
 -- --------------------------------------------------------
 
@@ -523,10 +522,10 @@ ALTER TABLE `lapor`
   ADD PRIMARY KEY (`id_lapor`);
 
 --
--- Indeks untuk tabel `laporsm`
+-- Indeks untuk tabel `lap_sm`
 --
-ALTER TABLE `laporsm`
-  ADD PRIMARY KEY (`id_laporsm`);
+ALTER TABLE `lap_sm`
+  ADD PRIMARY KEY (`id_lapsm`);
 
 --
 -- Indeks untuk tabel `lap_tri`
@@ -629,10 +628,10 @@ ALTER TABLE `lapor`
   MODIFY `id_lapor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `laporsm`
+-- AUTO_INCREMENT untuk tabel `lap_sm`
 --
-ALTER TABLE `laporsm`
-  MODIFY `id_laporsm` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `lap_sm`
+  MODIFY `id_lapsm` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `lap_tri`

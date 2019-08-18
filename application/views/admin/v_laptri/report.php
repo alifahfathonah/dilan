@@ -55,22 +55,22 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>  2019  </td>
+                                <td>" . $a['tahun_t'] . "</td>
                                
                                 <td>" . anchor("admin/claptri/print_satu/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_satu/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
-                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-1", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) .
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-I", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) .
 
                                     "</td>
                                 <td>" . anchor("admin/claptri/print_dua/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_dua/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
-                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-2", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-II", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
                                <td>" . anchor("admin/claptri/print_tiga/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_tiga/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
-                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-3", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-III", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>
                                <td>" . anchor("admin/claptri/print_empat/" . $a['id_usaha'], "<center><i class='fas fa-print'></i></center>", array('target' => '_blank')),
                                 anchor("admin/claptri/print_profil_empat/" . $a['id_usaha'], "<center><i class='far fa-file-powerpoint'></i></center>", array('target' => '_blank')),
-                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-4", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>";
+                                anchor("admin/v_laptri/act1/" . $a['id_usaha'] . "/triwulan-IV", "<center><i class='fab fa-audible'></i></center>", array('title' => 'edit data')) . "</td>";
                             ?>
                         </tr>
                         <?php $no++;

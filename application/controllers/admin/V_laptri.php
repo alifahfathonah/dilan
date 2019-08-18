@@ -86,7 +86,7 @@ class V_laptri extends CI_Controller
     {
         if (isset($_POST['kirim'])) {
 
-            $idx = $this->input->post('id_usaha');
+            /* $idx = $this->input->post('id_usaha');
             $pr = $this->input->post('periode');
             $th = $this->input->post('tahun');
 
@@ -102,7 +102,8 @@ class V_laptri extends CI_Controller
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h5><i class="icon fas fa-check"></i> Alert!</h5>
                     Laporan Triwulan Berhasil Dikirim</div>');
-            redirect('admin/v_laptri/create/');
+            redirect('admin/v_laptri/create/');*/
+            echo "some thing wrong";
         } else if (isset($_POST['correct'])) {
 
             $idx = $this->input->post('id_usaha');
@@ -137,7 +138,7 @@ class V_laptri extends CI_Controller
                 'kode_terima' => $kode,
                 'tgl_terima' => $terima
             ];
-            $this->mod_pelptri->correct($data);
+            $this->mod_pelptri->verify($data);
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -254,7 +255,7 @@ class V_laptri extends CI_Controller
 
     private function _random_char($panjang)
     {
-        $karakter = "ABCDEFGHIJKL123456789_-";
+        $karakter = "ABCDEFGHIJKL123456789";
         $string = "";
         for ($i = 0; $i < $panjang; $i++) {
             $pos = rand(0, strlen($karakter) - 1);
@@ -290,7 +291,7 @@ class V_laptri extends CI_Controller
 
         $pdf->SetFont('Arial', '', 10);
         $pdf->Cell(5);
-        $pdf->Cell(20, 6, 'IDI TTE', 0, 0);
+        $pdf->Cell(20, 6, 'ID TTE', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
         $pdf->Cell(10, 6, $data['usaha']['kode_terima'], 0, 1);
@@ -300,7 +301,7 @@ class V_laptri extends CI_Controller
         $pdf->Cell(2, 6, ':', 0, 0);
         $pdf->Cell(10, 6, $data['usaha']['periode_t'] . " " . $data['usaha']['tahun_t'], 0, 1);
         $pdf->Cell(5);
-        $pdf->Cell(20, 6, 'Tanggal Terima', 0, 0);
+        $pdf->Cell(20, 6, 'Tanggal Terbit', 0, 0);
         $pdf->Cell(40);
         $pdf->Cell(2, 6, ':', 0, 0);
         $pdf->Cell(20, 6, $data['usaha']['tgl_terima'], 0, 1);

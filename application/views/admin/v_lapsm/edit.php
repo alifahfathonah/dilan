@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Laporan Semester</h1>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,92 +26,81 @@
             <div class="card-header">
                 <h3 class="card-title"><?= $usaha['nm_usaha']; ?></h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/v_lapsm/act'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/v_lapsm/act1'); ?>">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-10">
-                            <h5>Data Laporan Semester</h5>
+                        <div class="col-md-6">
+                            <h5>Laporan Semester</h5>
 
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
-                            <input type="hidden" name="id_laporsm" class="form-control form-control-sm col-10" value="<?= $usaha['id_laporsm']; ?>">
+                            <input type="hidden" name="id_lapsm" class="form-control form-control-sm col-10" value="<?= $usaha['id_lapsm']; ?>">
+
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
-
-                            <div class="form-group row">
-                                <?php
-                                $a = explode("-", $usaha['periode_sm']);
-                                ?>
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
-                                    <div class="col-sm-4">
-                                        <div class="input-group input-daterange">
-                                            <input id="date1" name="m1" type="text" class="form-control form-control-sm col-4" value="<?= $a[0]; ?>" readonly>
-                                            <div class="input-group-addon">&nbsp; to &nbsp;</div>
-                                            <input id="date2" name="m2" type="text" class="form-control form-control-sm col-4" value="<?= $a[1]; ?>" readonly>
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
-                                    <div class="col-sm-5">
-                                        <input class="form-control form-control-sm col-3" type="text" name="tahun_sm" value="<?= $usaha['tahun_sm']; ?>" readonly>
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Sumber Dampak</label>
+                            <!-- <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="s_dampak" class="form-control form-control-sm col-10" value="<?= $usaha['s_dampak']; ?>" readonly>
+                                    <select name="jenis" class="form-control form-control-sm col-6">
+                                        <option value="">:. Jenis Laporan .:</option>
+                                        <option value="1">Kualitas Air</option>
+                                        <option value="2">Pengelolahan Limbah</option>
 
+                                    </select>
                                 </div>
-                            </div>
+                            </div>-->
+
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Dampak</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="j_dampak" class="form-control form-control-sm col-10" value="<?= $usaha['j_dampak']; ?>" readonly>
+                                    <input type="text" name="periode" class="form-control form-control-sm col-6" value="<?= $usaha['periode_sm']; ?>" readonly>
 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-form-label col-form-label-sm">Pengelolaan Lingkungan Yang Dilakukan</label>
-                                <div class="col-sm-12">
-                                    <div class="mb-3">
-                                        <textarea name="kelola" placeholder="Place some text here" style="width: 60%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
-                                        <?= $usaha['kelola']; ?>
-                                    </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-form-label col-form-label-sm">Pemantauan Lingkungan Yang Dilakukan</label>
-                                <div class="col-sm-12">
-                                    <div class="mb-3">
-                                        <textarea name="pantau" placeholder="Place some text here" style="width: 60%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" readonly>
-                                        <?= $usaha['pantau']; ?> 
-                                    </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Lampiran</label>
-                                <div class="col-sm-6">
-                                    <input type="text" name="lampiran" value="<?= $usaha['lampiran']; ?>" class="form-control form-control-sm col-10" readonly>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" value="<?= $usaha['tahun_sm']; ?>" readonly>
 
                                 </div>
                             </div>
+
+                            <?php
+                            if ($usaha['sts_lapsm'] != null) { ?>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Status Laporan</label>
+                                <div class="col-sm-8">
+                                    <?php
+                                        if ($usaha['sts_lapsm'] == '1') {
+                                            $b = "Koreksi";
+                                        }
+                                        if ($usaha['sts_lapsm'] == '2') {
+                                            $b = "Lengkap";
+                                        } else if ($usaha['sts_lapsm'] == '0') {
+                                            $b = "Draft";
+                                        }
+                                        ?>
+                                    <input type="text" name="status" class="form-control form-control-sm col-6" value="<?= $b; ?>" readonly>
+
+                                </div>
+                            </div>
+                            <?php }
+
+                            ?>
+
                         </div>
+                        <!-- end col-md-6 -->
 
+                        <!-- end col-md-6 -->
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                        <div class="form-group row">
+                            <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Koreksi</label>
                                 <div class="col-sm-12">
-                                    <textarea id="editor" name="keterangan" placeholder="Isi Pesan Anda Disini" required></textarea>
+                                    <textarea id="editor" name="ket" placeholder="Isi Pesan Anda Disini" required>
+                                        <?= $usaha['ket_lapsm']; ?>
+                                    </textarea>
 
                                 </div>
 
@@ -122,7 +111,7 @@
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
-                    <button type="submit" name="update" class="btn btn-primary">verifikasi</button>
+                    <button type="submit" name="verify" class="btn btn-primary">verifikasi</button>
                     <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
                     <button type="submit" name="correct" class="btn btn-primary">koreksi</button>
                 </div>

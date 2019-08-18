@@ -1,17 +1,15 @@
-<!-- Content Wrapper. Contains page content -->
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pelaporan Triwulan</h1>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Laporan Triwulan</li>
+                        <li class="breadcrumb-item active">Laporan Semester</li>
                     </ol>
                 </div>
             </div>
@@ -26,12 +24,12 @@
             <div class="card-header">
                 <h3 class="card-title"><?= $usaha['nm_usaha']; ?></h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/v_laptri/create'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/v_lapsm/create'); ?>">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <?= $this->session->flashdata('message'); ?>
-                            <h5>Data Laporan Triwulan</h5>
+                            <h5>Data Laporan Semester</h5>
 
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
@@ -54,10 +52,9 @@
                                 <div class="col-sm-8">
                                     <select name="periode" class="form-control form-control-sm col-6" required>
                                         <option value="">:. Periode .: </option>
-                                        <option value="triwulan-I">triwulan-I </option>
-                                        <option value="triwulan-II">triwulan-II </option>
-                                        <option value="triwulan-III">triwulan-III </option>
-                                        <option value="triwulan-IV">triwulan-IV </option>
+                                        <option value="semester-I">semester-I </option>
+                                        <option value="semester-II">semester-II </option>
+
                                     </select>
                                 </div>
                             </div>

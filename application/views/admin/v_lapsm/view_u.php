@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Data Usaha </li>
+                        <li class="breadcrumb-item active">Laporan Semester </li>
                     </ol>
                 </div>
             </div>
@@ -19,13 +19,14 @@
 
     <!-- Main content -->
     <section class="content">
-
+        <a href="<?= base_url('admin/v_lapsm/create'); ?>" class="btn btn-primary btn-sm">Tambah Laporan</a>
+        <br /><br />
 
 
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Laporan Semester Data Usaha</h3>
+                <h3 class="card-title">Laporan Semester</h3>
             </div>
             <!-- /.card-header -->
 
@@ -35,10 +36,11 @@
                         <tr>
                             <th width="5">NO</th>
                             <th>Nama Usaha</th>
-                            <th>Alamat Kantor</th>
-                            <th>Telepon</th>
-
+                            <th>Periode</th>
+                            <th>Tahun</th>
                             <th>Status</th>
+                            <th>Aksi</th>
+                            <th>Aksi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -48,19 +50,23 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-                            if ($a['verifikasi'] == '1') {
-                                $b = "Verified";
+                            if ($a['sts_lapsm'] == '1') {
+                                $b = "Koreksi";
+                            } else if ($a['sts_lapsm'] == '2') {
+                                $b = "Lengkap";
                             } else {
                                 $b = "Draft";
                             }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
-                                <td>" . $a['almt_ktr'] . "</td>
-                                <td>" . $a['telepon'] . "</td>
+                                <td>" . $a['periode_sm'] . "</td>
+                                <td>" . $a['tahun_sm'] . "</td>
                             
                                 <td>" . $b . "</td>
-                                <td>" . anchor("admin/v_lapsm/report/" . $a['id_usaha'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/v_lapsm/edit/" . $a['id_lapsm'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>" . anchor("admin/v_lapsm/delete/" . $a['id_lapsm'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>
+                                <td>" . anchor("admin/v_lapsm/print_kode/" . $a['id_lapsm'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</td>"; ?>
                         </tr>
                         <?php $no++;
                         }

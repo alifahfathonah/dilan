@@ -34,10 +34,10 @@
                             <h5>Data Laporan Triwulan</h5>
 
                             <hr>
-                            <input type="text" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $laptri['id_usaha']; ?>">
-                            <input type="text" name="id_laptri" class="form-control form-control-sm col-10" value="<?= $laptri['id_laptri']; ?>">
+                            <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $laptri['id_usaha']; ?>">
+                            <input type="hidden" name="id_laptri" class="form-control form-control-sm col-10" value="<?= $laptri['id_laptri']; ?>">
 
-                            <input type="text" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $laptri['nm_usaha']; ?>">
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $laptri['nm_usaha']; ?>">
                             <!-- <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
                                 <div class="col-sm-8">
@@ -53,7 +53,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="periode" class="form-control form-control-sm col-6" value="<?= $laptri['periode_t']; ?>" required>
+                                    <select name="periode" class="form-control form-control-sm col-6" required>
+
+                                        <option value="">:. Periode .: </option>
+                                        <option value="triwulan-I">triwulan-I </option>
+                                        <option value="triwulan-II">triwulan-II </option>
+                                        <option value="triwulan-III">triwulan-III </option>
+                                        <option value="triwulan-IV">triwulan-IV </option>
+                                    </select>
 
                                 </div>
                             </div>
@@ -78,7 +85,7 @@
                 <!-- card footer -->
                 <div class="card-footer">
                     <button type="submit" name="update" class="btn btn-primary">update</button>
-
+                    <button type="button" name="batal" onclick="self.history.back()" class="btn btn-primary">batal</button>
                 </div>
                 <!-- end card footer -->
             </form>

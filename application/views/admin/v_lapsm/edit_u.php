@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pelaporan Triwulan</h1>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Laporan Triwulan</li>
+                        <li class="breadcrumb-item active">Update Laporan Semester</li>
                     </ol>
                 </div>
             </div>
@@ -26,17 +26,18 @@
             <div class="card-header">
                 <h3 class="card-title"><?= $usaha['nm_usaha']; ?></h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/v_laptri/create'); ?>">
+            <form role="form" method="post" action="<?= base_url('admin/v_lapsm/edit'); ?>">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <?= $this->session->flashdata('message'); ?>
-                            <h5>Data Laporan Triwulan</h5>
+                            <h5>Data Laporan Semester</h5>
 
                             <hr>
-                            <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
+                            <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $lapsm['id_usaha']; ?>">
+                            <input type="hidden" name="id_lapsm" class="form-control form-control-sm col-10" value="<?= $lapsm['id_lapsm']; ?>">
 
-                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
+                            <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $lapsm['nm_usaha']; ?>">
                             <!-- <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Laporan</label>
                                 <div class="col-sm-8">
@@ -53,18 +54,19 @@
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-8">
                                     <select name="periode" class="form-control form-control-sm col-6" required>
+
                                         <option value="">:. Periode .: </option>
-                                        <option value="triwulan-I">triwulan-I </option>
-                                        <option value="triwulan-II">triwulan-II </option>
-                                        <option value="triwulan-III">triwulan-III </option>
-                                        <option value="triwulan-IV">triwulan-IV </option>
+
+                                        <option value="semester-I">semester-I </option>
+                                        <option value="semester-II">semester-II </option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" required>
+                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" value="<?= $lapsm['tahun_sm']; ?>" required>
 
                                 </div>
                             </div>
@@ -81,7 +83,7 @@
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
-                    <button type="submit" name="kirim" class="btn btn-primary">kirim</button>
+                    <button type="submit" name="update" class="btn btn-primary">update</button>
                     <button type="button" name="batal" onclick="self.history.back()" class="btn btn-primary">batal</button>
                 </div>
                 <!-- end card footer -->
