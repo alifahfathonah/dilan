@@ -3,7 +3,7 @@
    <!-- Brand Logo -->
    <a href="#" class="brand-link">
      <img src="<?= base_url('asset'); ?>/dist/img/img-world.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-     <span class="brand-text font-weight-light">SI-DILAN 0.1</span>
+     <span class="brand-text font-weight-light">DILAN 01</span>
    </a>
 
    <!-- Sidebar -->
@@ -42,7 +42,7 @@
            <a href="<?= base_url('admin/user'); ?> " class="nav-link">
              <i class="nav-icon fas fa-user-tie"></i>
              <p>
-               User
+               Data User
 
              </p>
            </a>
@@ -93,7 +93,7 @@
            <a href="<?= base_url('admin/download'); ?> " class="nav-link">
              <i class="nav-icon fas fa-chart-pie"></i>
              <p>
-               &nbsp; Download
+               &nbsp; Upload File
              </p>
            </a>
          </li>
@@ -188,19 +188,19 @@
              <li class="nav-item">
                <a href="<?= base_url('admin/kelola'); ?>" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
-                 <p>Pengelolaan</p>
+                 <p>Kelola Pantau</p>
                </a>
              </li>
              <li class="nav-item">
                <a href="<?= base_url('admin/v_laptri/listlaptri'); ?>" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
-                 <p>Kirim Lap_Triwulan</p>
+                 <p>Status Laporan Triwulan</p>
                </a>
              </li>
              <li class="nav-item">
                <a href="<?= base_url('admin/v_lapsm/listlapsix'); ?>" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
-                 <p>Kirim Lap_Semester</p>
+                 <p>Status Laporan Semester</p>
                </a>
              </li>
            </ul>
@@ -267,12 +267,7 @@
                  <p>Semester</p>
                </a>
              </li>
-             <li class="nav-item">
-               <a href="<?= base_url('admin/clapsix'); ?>" class="nav-link">
-                 <i class="far fa-circle nav-icon"></i>
-                 <p>Profile</p>
-               </a>
-             </li>
+
            </ul>
 
 

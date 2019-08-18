@@ -51,11 +51,11 @@
 
                         foreach ($usaha as $a) {
                             if ($a['sts_lapsm'] == '1') {
-                                $b = "Koreksi";
+                                $b = "Perlu Perbaikan";
                             } else if ($a['sts_lapsm'] == '2') {
-                                $b = "Lengkap";
+                                $b = "Terverifikasi Lengkap";
                             } else {
-                                $b = "Draft";
+                                $b = "Belum Diverifikasi";
                             }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>

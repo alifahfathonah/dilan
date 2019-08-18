@@ -35,8 +35,8 @@ class Mod_genset extends Ci_Model
             'nm_genset' => $this->input->post('nm_genset'),
             'kp_genset' => $this->input->post('kp_genset'),
             'bhn_bkrgent' => $this->input->post('bhn'),
-            'wkt_opr' => $this->input->post('waktu_opr'),
-            'penyimpanan' => $this->input->post('penyimpanan')
+            'wkt_opr' => $this->input->post('waktu_opr')
+
 
         ];
 
@@ -53,8 +53,8 @@ class Mod_genset extends Ci_Model
             'nm_genset' => $this->input->post('nm_genset'),
             'kp_genset' => $this->input->post('kp_genset'),
             'bhn_bkrgent' => $this->input->post('bhn'),
-            'wkt_opr' => $this->input->post('waktu_opr'),
-            'penyimpanan' => $this->input->post('penyimpanan')
+            'wkt_opr' => $this->input->post('waktu_opr')
+
         ];
 
         $this->db->where('id_genset', $this->input->post('id_genset'), 'id_usaha', $this->input->post('id_usaha'));

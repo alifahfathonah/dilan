@@ -36,7 +36,7 @@
                             <h5>Data Umum Usaha</h5>
 
                             <hr>
-                           
+
 
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Nama Usaha</label>
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Luas Lahan</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Luas Lahan (ha)</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="luas_lahan" class="form-control form-control-sm col-4" value="<?= $usaha['luas_lahan']; ?>" required>
                                 </div>
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Kapasitas Produksi</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Kapasitas Produksi (ton/bln)</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="kapasitas" class="form-control form-control-sm col-5" value="<?= $usaha['kapasitas']; ?>" required>
                                 </div>
@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Penggunaan Bahan Baku</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Jumlah Penggunaan Bahan Baku (ton/bln)</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="penggunaan" class="form-control form-control-sm col-8" value="<?= $usaha['penggunaan']; ?>" required>
                                 </div>
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Jumlah Karyawan</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Jumlah Karyawan (org)</label>
                                 <div class="col-sm-8">
                                     <input type="number" name="jml_karyawan" class="form-control form-control-sm col-8" value="<?= $usaha['jml_karyawan']; ?>" required>
                                 </div>
@@ -196,7 +196,7 @@
                 <!-- card footer -->
                 <div class="card-footer">
                     <button type="submit" name="update" class="btn btn-primary">update</button>
-                   
+
                 </div>
                 <!-- end card footer -->
             </form>

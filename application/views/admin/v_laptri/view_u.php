@@ -53,12 +53,12 @@
                         foreach ($laptri as $a) {
 
                             if ($a['sts_lapt'] == '1') {
-                                $b = "Koreksi";
+                                $b = "Perlu Perbaikan";
                             }
                             if ($a['sts_lapt'] == '2') {
-                                $b = "Lengkap";
+                                $b = "Terverifikasi Lengkap";
                             } else if ($a['sts_lapt'] == '0') {
-                                $b = "Draft";
+                                $b = "Belum Diverifikasi";
                             }
 
                             echo "<tr>

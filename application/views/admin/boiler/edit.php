@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Tinggi Boiler</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Tinggi Boiler (m)</label>
                                 <div class="col-sm-4">
                                     <input type="text" name="tinggi" class="form-control form-control-sm col-4" value="<?= $usaha['tinggi']; ?>" required>
                                     <?= form_error('tinggi', '<small class="text-danger">', '</small>'); ?>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Diameter</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Diameter (m)</label>
                                 <div class="col-sm-4">
                                     <input type="text" name="diameter" class="form-control form-control-sm col-4" value="<?= $usaha['diameter']; ?>" required>
                                     <?= form_error('diameter', '<small class="text-danger">', '</small>'); ?>

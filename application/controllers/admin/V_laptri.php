@@ -86,23 +86,7 @@ class V_laptri extends CI_Controller
     {
         if (isset($_POST['kirim'])) {
 
-            /* $idx = $this->input->post('id_usaha');
-            $pr = $this->input->post('periode');
-            $th = $this->input->post('tahun');
 
-            $data = [
-
-                'id_usaha' => $idx,
-                'periode_t' => $pr,
-                'tahun_t' => $th
-
-            ];
-            $this->mod_pelptri->create_tri($data);
-            $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
-                    Laporan Triwulan Berhasil Dikirim</div>');
-            redirect('admin/v_laptri/create/');*/
             echo "some thing wrong";
         } else if (isset($_POST['correct'])) {
 

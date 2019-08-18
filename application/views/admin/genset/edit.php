@@ -63,13 +63,7 @@
                                     <?= form_error('waktu_opr', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Tempat Penyimpanan</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="penyimpanan" class="form-control form-control-sm col-10" value="<?= $usaha['penyimpanan']; ?>" required>
-                                    <?= form_error('penyimpanan', '<small class="text-danger">', '</small>'); ?>
-                                </div>
-                            </div>
+
                         </div>
 
                     </div><!-- end row -->

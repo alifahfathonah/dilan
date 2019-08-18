@@ -55,13 +55,7 @@
                                     <?= form_error('ruang_hijau', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Tempat Penyimpanan LB3(m2)</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="penyimpanan" class="form-control form-control-sm col-10" value="<?= $usaha['penyimpanan']; ?>" required>
-                                    <?= form_error('penyimpanan', '<small class="text-danger">', '</small>'); ?>
-                                </div>
-                            </div>
+
 
                         </div><!-- end col-md-6 -->
 

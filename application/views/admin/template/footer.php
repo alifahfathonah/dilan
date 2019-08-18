@@ -34,7 +34,7 @@
 <script src="<?= base_url('asset'); ?>/dist/js/alert/myscript.js"></script>
 <script src="<?= base_url('asset'); ?>/plugins/summernote/summernote-bs4.js"></script>
 
-1
+
 <script src="<?= base_url('asset'); ?>/plugins/ckeditor/ckeditor.js"></script>
 <script src="<?= base_url('asset'); ?>/plugins/ckeditor/styles.js"></script>
 <script>

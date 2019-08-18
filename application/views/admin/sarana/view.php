@@ -37,8 +37,8 @@
                             <th width="5">NO</th>
                             <th>Nama Usaha</th>
                             <th>Luas Bangunan</th>
-                            <th>Boiler</th>
-                            <th>Genset</th>
+                            <th>Lahan Parkir</th>
+                            <th>Ruang Hijau</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
                         </tr>
@@ -54,12 +54,12 @@
                                 <td width='5'>" . $no . "</td>
                                 <td>" . $a['nm_usaha'] . "</td>
                                 <td>" . $a['l_bangunan'] . "</td>
-                                <td>" . $a['nm_boiler'] . "</td>
-                                <td>" . $a['nm_genset'] . "</td>
+                                <td>" . $a['l_parkir'] . "</td>
+                                <td>" . $a['ruang_hijau'] . "</td>
                                 <td>" . anchor("admin/sarana/edit/" . $a['id_sarana'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
                                 <td>"; ?><a href="<?= base_url('admin/sarana/delete/' . $a['id_sarana']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

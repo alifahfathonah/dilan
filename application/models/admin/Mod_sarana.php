@@ -34,19 +34,8 @@ class Mod_sarana extends Ci_Model
             'id_usaha' => $this->input->post('id_usaha'),
             'l_bangunan' => $this->input->post('l_bangunan'),
             'l_parkir' => $this->input->post('l_parkir'),
-            'ruang_hijau' => $this->input->post('ruang_hijau'),
-            'penyimpanan' => $this->input->post('penyimpanan'),
-            'nm_boiler' => $this->input->post('nm_boiler'),
-            'kp_boiler' => $this->input->post('kp_boiler'),
-            'jml_crb' => $this->input->post('jml_crb'),
-            'tinggi_crb' => $this->input->post('tinggi_crb'),
-            'bentuk_crb' => $this->input->post('bentuk_crb'),
-            'diameter_crb' => $this->input->post('diameter_crb'),
-            'wktu_o' => $this->input->post('wktu_o'),
-            'nm_genset' => $this->input->post('nm_genset'),
-            'kp_genset' => $this->input->post('kp_genset'),
-            'waktu_opr' => $this->input->post('waktu_opr'),
-            'created_at' => date("Y-m-d")
+            'ruang_hijau' => $this->input->post('ruang_hijau')
+
 
         ];
 
@@ -61,19 +50,7 @@ class Mod_sarana extends Ci_Model
 
             'l_bangunan' => $this->input->post('l_bangunan'),
             'l_parkir' => $this->input->post('l_parkir'),
-            'ruang_hijau' => $this->input->post('ruang_hijau'),
-            'penyimpanan' => $this->input->post('penyimpanan'),
-            'nm_boiler' => $this->input->post('nm_boiler'),
-            'kp_boiler' => $this->input->post('kp_boiler'),
-            'jml_crb' => $this->input->post('jml_crb'),
-            'tinggi_crb' => $this->input->post('tinggi_crb'),
-            'bentuk_crb' => $this->input->post('bentuk_crb'),
-            'diameter_crb' => $this->input->post('diameter_crb'),
-            'wktu_o' => $this->input->post('wktu_o'),
-            'nm_genset' => $this->input->post('nm_genset'),
-            'kp_genset' => $this->input->post('kp_genset'),
-            'waktu_opr' => $this->input->post('waktu_opr'),
-            'updated_at' => date("Y-m-d")
+            'ruang_hijau' => $this->input->post('ruang_hijau')
 
         ];
 
