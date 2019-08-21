@@ -257,7 +257,8 @@ class V_lapsm extends CI_Controller
         $pdf->AddPage('P', 'Legal');
         $pdf->SetFont('Arial', 'B', 14);
         // mencetak string 
-
+        $pdf->Image(base_url() . '/asset/dist/img/gor.png', 93, 15, 20, 20);
+        $pdf->Ln(25);
         $pdf->Cell(196, 7, 'TANDA TERIMA ELEKTRONIK (TTE)', 0, 1, 'C');
         $pdf->Cell(196, 7, 'MEDIA PELAPORAN PERIZINAN LINGKUNGAN  ', 0, 1, 'C');
 

@@ -41,7 +41,7 @@
                             <th>Sumber Dampak</th>
 
                             <th>Jenis Dampak</th>
-
+                            <th>Lampiran</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -51,17 +51,22 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-
+                            if ($a['file'] != '') {
+                                $b = "Ada Lampiran";
+                            } else {
+                                $b = "Belum Ada Lampiran";
+                            }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
-                               
+                            
                                 <td>" . $a['periode'] . "</td>
                                 <th>" .  $a['tahun']  . "</th>
                                 <td>" . $a['sumber'] . "</td>
                                 <td>" . $a['jenis'] . "</td>
+                                <td>" . $b . "</td>
                                 <td>" . anchor("admin/kelola/edit/" . $a['id_kelola'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 

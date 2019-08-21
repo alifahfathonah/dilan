@@ -262,9 +262,10 @@ class V_laptri extends CI_Controller
         $pdf->SetFont('Arial', 'B', 14);
         // mencetak string 
 
+        $pdf->Image(base_url() . '/asset/dist/img/gor.png', 93, 15, 20, 20);
+        $pdf->Ln(25);
         $pdf->Cell(196, 7, 'TANDA TERIMA ELEKTRONIK (TTE)', 0, 1, 'C');
         $pdf->Cell(196, 7, 'MEDIA PELAPORAN PERIZINAN LINGKUNGAN  ', 0, 1, 'C');
-
         $pdf->Cell(196, 7, '( D I L A N )', 0, 1, 'C');
         $pdf->Cell(196, 7, 'DINAS LINGKUNGAN HIDUP DAN SUMBER DAYA ALAM', 0, 1, 'C');
         $pdf->Cell(196, 1, '', 0, 1, 'C', true);
@@ -321,6 +322,7 @@ class V_laptri extends CI_Controller
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(196, 7, 'Tim Pengelola DILAN', 0, 1, 'C');
         $pdf->Cell(196, 7, 'Dinas Lingkungan Hidup Dan Sumber Daya Alam Kabupaten Gorontalo', 0, 1, 'C');
+
         $pdf->Output('I', 'TANDA TERIMA');
     }
 }

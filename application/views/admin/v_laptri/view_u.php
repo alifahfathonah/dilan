@@ -72,9 +72,15 @@
                                
                                
                               
-                                <td>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
-                                <td>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>
-                                <td>" . anchor("admin/v_laptri/print_kode/" . $a['id_laptri'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</td>";
+                                <td><center>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</center></td>
+                                <td><center>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</center></td>";
+                            if ($a['sts_lapt'] == '2') {
+
+                                echo "<td><center>" . anchor("admin/v_laptri/print_kode/" . $a['id_laptri'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</center></td>";
+                            } else {
+
+                                echo "<td><center><i class='fas fa-print'></i></center></td>";
+                            }
 
 
                             ?>

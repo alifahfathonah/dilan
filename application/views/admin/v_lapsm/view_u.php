@@ -65,8 +65,15 @@
                             
                                 <td>" . $b . "</td>
                                 <td>" . anchor("admin/v_lapsm/edit/" . $a['id_lapsm'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
-                                <td>" . anchor("admin/v_lapsm/delete/" . $a['id_lapsm'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>
-                                <td>" . anchor("admin/v_lapsm/print_kode/" . $a['id_lapsm'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</td>"; ?>
+                                <td>" . anchor("admin/v_lapsm/delete/" . $a['id_lapsm'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>";
+
+                            if ($a['sts_lapsm'] == '2') {
+                                echo "<td>" . anchor("admin/v_lapsm/print_kode/" . $a['id_lapsm'] . "/" . $a['id_usaha'], "<i class='fas fa-print'></i>", array('title' => 'print tanda terima', 'target' => '_blank')) . "</td>";
+                            } else {
+
+                                echo "<td><i class='fas fa-print'></i></td>";
+                            }
+                            ?>
                         </tr>
                         <?php $no++;
                         }

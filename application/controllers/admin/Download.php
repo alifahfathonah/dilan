@@ -37,7 +37,7 @@ class Download extends CI_Controller
         if (isset($_POST['submit'])) {
             $config['upload_path']          = './upload/file/';
             $config['allowed_types']        = 'gif|jpg|png|doc|docx|pdf|xls|xlsx|ppt|ppt|zip|rar';
-            $config['file_name']            = $this->input->post('judul') . '-' . $_FILES['u_file']['name'];
+            $config['file_name']            = $_FILES['u_file']['name'];
             $config['overwrite']            = true;
             $config['max_size']             = 2048;
             $this->load->library('upload', $config);

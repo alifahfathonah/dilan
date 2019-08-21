@@ -1,7 +1,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html"><b>DILAN</b> - 01</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -41,12 +41,14 @@
                     </div>
                 </form>
 
-                <p class="mb-1">
-                    <a href="<?php echo base_url('auth/forgotPassword'); ?>">lupa password</a>
+                <!--    <p class="mb-1">
+                    <a href="<? php // echo base_url('auth/forgotPassword'); 
+                                ?>">lupa password</a>
                 </p>
                 <p class="mb-0">
-                    <a href="<?php echo base_url('auth/regis'); ?>" class="text-center">Daftar Sebagai User</a>
-                </p>
+                    <a href="<?php //echo base_url('auth/regis'); 
+                                ?>" class="text-center">Daftar Sebagai User</a>
+                </p>-->
             </div>
             <!-- /.login-card-body -->
         </div>

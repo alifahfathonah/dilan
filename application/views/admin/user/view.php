@@ -78,14 +78,14 @@
                                 <td>" . $x . "</td>
                                 <td>" . anchor("admin/user/edit/" . $a->user_id, "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
                                 <td>"; ?><a href="<?= base_url('admin/user/delete/' . $a->user_id); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
-                            </tr>
-                            <?php $no++;
+                        </tr>
+                        <?php $no++;
                         }
                         ?>
 
 
                     </tbody>
-                    <tfoot>
+                    <!--<tfoot>
                         <tr>
                             <th>Rendering engine</th>
                             <th>Browser</th>
@@ -95,7 +95,7 @@
                             <th>#</th>
                             <th>#</th>
                         </tr>
-                    </tfoot>
+                    </tfoot>-->
                 </table>
             </div>
             <!-- /.card-body -->
