@@ -52,9 +52,10 @@
 
 <script>
     $("#date1").datepicker({
-        format: 'MM',
-        viewMode: "months",
-        minViewMode: "months",
+        format: 'yyyy',
+        viewMode: "years",
+        minViewMode: "years",
+        orientation: 'auto top',
         autoclose: true
     });
 </script>

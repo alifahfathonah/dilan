@@ -119,7 +119,7 @@ class User extends CI_Controller
             $config['allowed_types']        = 'gif|jpg|png';
             $config['file_name']            = $_FILES['image']['name'];
             $config['overwrite']            = true;
-            $config['max_size']             = 2048;
+            $config['max_size']             = 30048;
             $this->load->library('upload', $config);
 
             if (!empty($_FILES['image']['name'])) {
@@ -194,10 +194,12 @@ class User extends CI_Controller
             Data Berhasil Diubah</div>');
             redirect('admin/user');
         } else {
-            //$data['level'] = $this->db->get('user_role')->result();
-            $data['kec'] = $this->db->get('kecamatan')->result();
+
+
             $id            = $this->uri->segment(4);
             $data['users']   = $this->db->get_where('users', array('user_id' => $id))->row_array();
+            $data['usaha'] = $this->mod_user->selectByUser($id)->row_array();
+
             $data['role'] =  $this->db->get('user_role')->result();
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('admin/template/header', $data);

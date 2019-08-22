@@ -85,6 +85,7 @@ class Udara extends CI_Controller
                 'b10' => $this->input->post('okt'),
                 'b11' => $this->input->post('nov'),
                 'b12' => $this->input->post('des'),
+                'thn_udara' => $this->input->post('tahun')
 
 
             ];
@@ -92,7 +93,7 @@ class Udara extends CI_Controller
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-check"></i> Alert!</h5>
-            Data Berhasil Disimpan</div>');
+            Data Berhasil Diubah</div>');
             redirect('admin/udara');
         } else {
 

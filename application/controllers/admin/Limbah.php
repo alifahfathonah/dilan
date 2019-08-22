@@ -38,13 +38,39 @@ class Limbah extends CI_Controller
 
             $bfr = floatval($this->input->post('before'));
             $now = floatval($this->input->post('now'));
-            $ttl_now = floatval($this->input->post('u_now'));
+            $ttl_now = floatval($bfr + $now);
             $used = floatval($this->input->post('used'));
             $give = floatval($this->input->post('to-part'));
             $sisa = floatval($ttl_now - ($used + $give));
 
-            $bln = substr($this->input->post('tgl_pantau'), 5, 2);
-
+            // $bln = substr($this->input->post('tgl_pantau'), 5, 2);
+            $bln = $this->input->post('periode');
+            if ($bln == 'January') {
+                $b = '01';
+            } else if ($bln == 'February') {
+                $b = '02';
+            } else if ($bln == 'March') {
+                $b = '03';
+            } else if ($bln == 'April') {
+                $b = '04';
+            } else if ($bln == 'May') {
+                $b = '05';
+            } else if ($bln == 'June') {
+                $b = '06';
+            } else if ($bln == 'July') {
+                $b = '07';
+            } else if ($bln == 'August') {
+                $b = '08';
+            } else if ($bln == 'September') {
+                $b = '09';
+            } else if ($bln == 'October') {
+                $b = '10';
+            } else if ($bln == 'November') {
+                $b = '11';
+            } else if ($bln == 'December') {
+                $b = '12';
+            }
+            $thn = $this->input->post('tahun');
             $data = [
                 'id_usaha' => $this->input->post('id_usaha'),
                 'jenis_b3' =>  $this->input->post('jenis'),
@@ -54,7 +80,8 @@ class Limbah extends CI_Controller
                 'used' => $used,
                 'give_3' => $give,
                 'sisa' => $sisa,
-                'bln' => $bln
+                'bln' => $b,
+                'thn_b3' => $thn
             ];
 
 
@@ -90,8 +117,36 @@ class Limbah extends CI_Controller
             $give = floatval($this->input->post('to-part'));
             $sisa = floatval($ttl_now - ($used + $give));
 
-            $bln = substr($this->input->post('tgl_pantau'), 5, 2);
 
+            //$bln = substr($this->input->post('tgl_pantau'), 5, 2);
+            $bln = $this->input->post('periode');
+            if ($bln == 'January') {
+                $b = '01';
+            } else if ($bln == 'February') {
+                $b = '02';
+            } else if ($bln == 'March') {
+                $b = '03';
+            } else if ($bln == 'April') {
+                $b = '04';
+            } else if ($bln == 'May') {
+                $b = '05';
+            } else if ($bln == 'June') {
+                $b = '06';
+            } else if ($bln == 'July') {
+                $b = '07';
+            } else if ($bln == 'August') {
+                $b = '08';
+            } else if ($bln == 'September') {
+                $b = '09';
+            } else if ($bln == 'October') {
+                $b = '10';
+            } else if ($bln == 'November') {
+                $b = '11';
+            } else if ($bln == 'December') {
+                $b = '12';
+            }
+
+            $thn = $this->input->post('tahun');
             $data = [
 
                 'jenis_b3' =>  $this->input->post('jenis'),
@@ -101,7 +156,8 @@ class Limbah extends CI_Controller
                 'used' => $used,
                 'give_3' => $give,
                 'sisa' => $sisa,
-                'bln' => $bln
+                'bln' => $b,
+                'thn_b3' => $thn
             ];
 
             $this->mod_limbah->update($data);

@@ -9,7 +9,8 @@
                 <p class="login-box-msg">Form Pendaftaran User</p>
 
 
-                <form action="<?= base_url('auth/regis'); ?>" method="post">
+                <form action="<?php //base_url('auth/regis'); 
+                                ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="nama" class="form-control" placeholder="user name" value="<?= set_value('nama'); ?>">
 
@@ -60,7 +61,7 @@
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
                         </div>
                         <!-- /.col -->
-                        <a href="<?= base_url(); ?>" class="text-center">Sudah punya akun, login</a>
+                        <a href="#" class="text-center">Sudah punya akun, login</a>
                     </div>
                 </form>
 

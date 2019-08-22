@@ -204,19 +204,33 @@
                </a>
              </li>
            </ul>
-           <!--    <li class="nav-item">
-                                                                 <a href="<?= base_url('admin/pelpsix'); ?>" class="nav-link">
-                                                                   <i class="far fa-circle nav-icon"></i>
-                                                                   <p>Semester</p>
-                                                                 </a>
-                                                               </li>
-                                                             </ul>
-                                                           </li>-->
+         </li>
+         <li class="nav-item has-treeview">
+           <a href="#" class="nav-link">
+             <i class="nav-icon fas fa-book"></i>
+             <p>
+               Lampiran File
+               <i class="fas fa-angle-left right"></i>
+             </p>
+           </a>
+           <ul class="nav nav-treeview" style="display: none;">
+             <li class="nav-item">
+               <a href="<?= base_url('admin/lamptri'); ?>" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Triwulan</p>
+               </a>
+             </li>
+             <li class="nav-item">
+               <a href="<?= base_url('admin/lampsm'); ?>" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Semester</p>
+               </a>
+             </li>
+
+           </ul>
 
 
-
-
-
+         </li>
          <li class="nav-item">
            <a href="<?= base_url('admin/konsul'); ?>" class="nav-link">
              <i class="nav-icon fas fa-copy"></i>

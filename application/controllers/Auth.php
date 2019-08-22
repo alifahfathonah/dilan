@@ -9,7 +9,6 @@ class Auth extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('admin/mod_usaha');
         $this->load->model('admin/mod_user');
-        
     }
 
     public function index()
@@ -35,14 +34,14 @@ class Auth extends CI_Controller
                             'user_id' => $user['user_id'],
                             'email' => $user['email'],
                             'role_id' => $user['role_id'],
-                           
+
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin/home');
                     } else {
                         $this->session->set_flashdata('message', '<div class= "alert alert-danger alert-dismissi ble">
                         <button typ e="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa- check"></i> Alert!</h5>
+                       Oopss!
                         Password Salah</div>');
                         redirect('auth');
                     }
@@ -221,31 +220,31 @@ class Auth extends CI_Controller
         } else {
             $token = base64_encode(random_bytes(32));
             $datakode = $this->mod_user->getKode()->row_array();
-             
+
             // jika $datakode
-           if ($datakode > 0 ) {
-            $nilaikode = substr($datakode['max_id'], 3);
-            // menjadikan $nilaikode ( int )
-            $kode = (int) $nilaikode;
-            // setiap $kode di tambah 1
-            $kode = $kode + 1;
-            $kode_otomatis = "usr".str_pad($kode, 3, "0", STR_PAD_LEFT);
+            if ($datakode > 0) {
+                $nilaikode = substr($datakode['max_id'], 3);
+                // menjadikan $nilaikode ( int )
+                $kode = (int) $nilaikode;
+                // setiap $kode di tambah 1
+                $kode = $kode + 1;
+                $kode_otomatis = "usr" . str_pad($kode, 3, "0", STR_PAD_LEFT);
             } else {
-            $kode_otomatis = "usr001";
+                $kode_otomatis = "usr001";
             }
 
             $du = $this->mod_usaha->getKode()->row_array();
-            if ($du > 0 ) {
+            if ($du > 0) {
                 $nkode = substr($du['max_ush'], 3);
                 // menjadikan $nilaikode ( int )
                 $kodex = (int) $nkode;
                 // setiap $kode di tambah 1
                 $kodex = $kodex + 1;
-                $kode_usaha = "ush".str_pad($kodex, 3, "0", STR_PAD_LEFT);
-                } else {
+                $kode_usaha = "ush" . str_pad($kodex, 3, "0", STR_PAD_LEFT);
+            } else {
                 $kode_usaha = "ush001";
-                }
-          
+            }
+
 
             $data = [
                 'user_id' => $kode_otomatis,
@@ -260,7 +259,7 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('users', $data);
-            $this->mod_usaha->create($kode_usaha,$kode_otomatis);
+            $this->mod_usaha->create($kode_usaha, $kode_otomatis);
             $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -273,10 +272,9 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-        $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h5><i class="icon fas fa-check"></i> Alert!</h5>
-        Anda Berhasil Logout.</div>');
+        $this->session->set_flashdata('message', '<div class= "alert alert-danger alert-dismissi ble">
+        <button typ e="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+       Anda Berhasil Logout</div>');
         redirect('auth');
     }
 

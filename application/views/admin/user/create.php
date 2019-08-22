@@ -19,7 +19,7 @@
 </script>
 
 
-    
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Usaha</h1>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -53,12 +53,12 @@
                     <?= $this->session->flashdata('message'); ?>
                     <div class="row">
 
-                        
+
                         <div class="col-md-6">
                             <h5>Data User</h5>
 
                             <hr>
-                           
+
 
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Nama Usaha</label>
@@ -83,14 +83,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Status</label>
                                 <div class="col-sm-8">
-                                <div class="form-check">
-                                <input name="status" class="form-check-input" type="radio" value="1" checked>
-                                <label class="form-check-label">Aktif</label>
-                            </div>
-                            <div class="form-check">
-                                <input name="status" class="form-check-input" type="radio" value="2">
-                                <label class="form-check-label">Non Aktif</label>
-                            </div>
+                                    <div class="form-check">
+                                        <input name="status" class="form-check-input" type="radio" value="1" checked>
+                                        <label class="form-check-label">Aktif</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="status" class="form-check-input" type="radio" value="2">
+                                        <label class="form-check-label">Non Aktif</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -117,21 +117,21 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Level</label>
                                 <div class="col-sm-4">
-                                <select id="level-user" name="level" class="form-control" required>
-                                <option value="">:. Level User .:</option>
-                                <?php
+                                    <select id="level-user" name="level" class="form-control" required>
+                                        <option value="">:. Level User .:</option>
+                                        <?php
 
-                                foreach ($level as $b) {
-                                    echo " <option value='" . $b->role_id . "'>" . $b->role . "</option>";
-                                }
-                                ?>
-                            </select>
+                                        foreach ($level as $b) {
+                                            echo " <option value='" . $b->role_id . "'>" . $b->role . "</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <!-- end col-md-6 -->
                     </div>
-                   
+
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">

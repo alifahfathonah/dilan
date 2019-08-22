@@ -50,6 +50,15 @@
 
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
+                                    <div class="col-sm-6">
+                                        <input id="date1" class="form-control form-control-sm col-6" type="text" name="tahun" value="<?= $usaha['thn_air']; ?>" readonly="">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!--  <div class="form-group row">
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">

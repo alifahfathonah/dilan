@@ -52,7 +52,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Kontak (HP/WA)</label>
                                 <div class="col-sm-8">
-                                    <input type="number" name="kontak" class="form-control form-control-sm col-10" value="" required>
+                                    <input type="text" name="kontak" class="form-control form-control-sm col-10" value="" required>
 
                                 </div>
                             </div>

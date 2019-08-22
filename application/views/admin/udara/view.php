@@ -52,6 +52,7 @@
                             <th>Okt</th>
                             <th>Nov</th>
                             <th>Des</th>
+                            <th>Tahun</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -61,7 +62,11 @@
                         $no = 1;
 
                         foreach ($usaha as $a) {
-
+                            if ($a['thn_udara'] == null) {
+                                $thn = "-";
+                            } else {
+                                $thn = $a['thn_udara'];
+                            }
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
@@ -81,6 +86,7 @@
                                 <td>" . $a['b10'] . "</td>
                                 <td>" . $a['b11'] . "</td>
                                 <td>" . $a['b12'] . "</td>
+                                <td>" . $thn . "</td>
                                 <td>" . anchor("admin/udara/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
                         </tr>
                         <?php $no++;

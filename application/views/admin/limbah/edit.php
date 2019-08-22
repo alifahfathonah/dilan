@@ -38,20 +38,30 @@
 
                             <hr>
 
-                            <div class="form-group row">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
-                                    <div class="col-sm-6">
-                                        <input id="date3" class="form-control form-control-sm col-6" type="text" name="tgl_pantau" value="<?= $usaha['bln']; ?>" readonly>
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jenis Limba B3</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="jenis" class="form-control form-control-sm col-10" value="<?= $usaha['jenis_b3']; ?>" required>
 
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
+                                    <div class="col-sm-6">
+                                        <input id="date2" class="form-control form-control-sm col-6" type="text" name="periode" value="<?= $usaha['bln']; ?>" readonly>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
+                                    <div class="col-sm-6">
+                                        <input id="date1" class="form-control form-control-sm col-6" type="text" name="tahun" value="<?= $usaha['thn_b3']; ?>" readonly>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -71,7 +81,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Jumlah Sampai Periode Ini (ton)</label>
                                 <div class="col-sm-3">
-                                    <input type="text" name="u_now" class="form-control form-control-sm col-10" value="<?= $usaha['ttl_now']; ?>" required>
+                                    <input type="text" name="u_now" class="form-control form-control-sm col-10" value="<?= $usaha['ttl_now']; ?>" readonly>
 
                                 </div>
                             </div>
@@ -92,7 +102,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Sisa Di TPS (ton)</label>
                                 <div class="col-sm-3">
-                                    <input type="text" name="sisa" class="form-control form-control-sm col-10">
+                                    <input type="text" name="sisa" class="form-control form-control-sm col-10" value="<?= $usaha['sisa']; ?>" readonly>
 
                                 </div>
                             </div>
