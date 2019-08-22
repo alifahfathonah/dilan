@@ -38,6 +38,7 @@ class Air extends CI_Controller
 
             $data = [
                 'id_usaha' => $this->input->post('id_usaha'),
+                'titik_smp' => $this->input->post('lokasi'),
                 'parameter_a' => $this->input->post('parameter'),
                 'bk_mutu' => $this->input->post('b_mutu')
 
@@ -69,7 +70,7 @@ class Air extends CI_Controller
 
 
             $data = [
-
+                'titik_smp' => $this->input->post('lokasi'),
                 'parameter_a' => $this->input->post('parameter'),
                 'bk_mutu' => $this->input->post('b_mutu'),
                 'b1' => $this->input->post('jan'),

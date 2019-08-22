@@ -36,7 +36,7 @@
                         <tr>
                             <th width="5">NO</th>
 
-                            <th>Nama Usaha</th>
+                            <th>Lokasi Sampling</th>
                             <th>Parameter</th>
 
                             <th>BK Mutu</th>
@@ -70,7 +70,7 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
-                                <td>" . $a['nm_usaha'] . "</td>
+                                <td>" . $a['lokasi_smp'] . "</td>
                                 <td>" . $a['parameter_u'] . "</td>
                             
                                 <td>" . $a['bk_mutu'] . "</td>

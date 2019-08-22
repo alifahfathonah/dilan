@@ -26,7 +26,7 @@
         <?= $this->session->flashdata('message'); ?>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Kualitas Air</h3>
+                <h3 class="card-title">Kualitas Air </h3>
             </div>
             <!-- /.card-header -->
 
@@ -36,7 +36,7 @@
                         <tr>
                             <th width="5">NO</th>
 
-                            <th>Nama Usaha</th>
+                            <th>Lokasi Sampling</th>
                             <th>Parameter</th>
                             <th>BK Mutu</th>
                             <th>Jan</th>
@@ -70,7 +70,7 @@
                             echo "<tr>
                                 <td width='5'>" . $no . "</td>
                               
-                                <td>" . $a['nm_usaha'] . "</td>
+                                <td>" . $a['titik_smp'] . "</td>
                                 <td>" . $a['parameter_a'] . "</td>
                             
                                 <td>" . $a['bk_mutu'] . "</td>

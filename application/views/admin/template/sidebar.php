@@ -260,6 +260,7 @@
              </p>
            </a>
          </li>
+         <?php if ($user['role_id'] == 4) { ?>
          <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
              <i class="nav-icon fas fa-book"></i>
@@ -286,9 +287,10 @@
 
 
          </li>
+         <?php } ?>
 
          <?php if ($user['role_id'] == 1) { ?>
-         <li class="nav-item has-treeview">
+         <!--   <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
              <i class="nav-icon fas fa-book"></i>
              <p>
@@ -312,7 +314,7 @@
                </a>
              </li>
            </ul>
-         </li>
+         </li>-->
          <?php } ?>
 
        </ul>

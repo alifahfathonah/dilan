@@ -77,8 +77,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Kirim Pesan</label>
                                 <div class="col-sm-8">
-                                    <textarea name="pesan" placeholder="Isi Pesan Anda Disini" 
-                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
+                                    <textarea name="pesan" placeholder="Isi Pesan Anda Disini" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
                                      border: 1px solid #dddddd; padding: 10px;" required></textarea>
 
                                 </div>
@@ -93,7 +92,7 @@
         <!-- card footer -->
         <div class="card-footer">
             <button type="submit" name="submit" class="btn btn-primary">kirim</button>
-            <button type="button" onclick="self.history.back()" class="btn btn-primary">batal</button>
+
         </div>
         <!-- end card footer -->
         </form>

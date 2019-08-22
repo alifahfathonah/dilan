@@ -37,6 +37,13 @@
 
 
                             <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Lokasi Sampling</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="lokasi" class="form-control form-control-sm col-12" value="<?= $usaha['titik_smp']; ?>">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Parameter</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="parameter" class="form-control form-control-sm col-6" value="<?= $usaha['parameter_a']; ?>">

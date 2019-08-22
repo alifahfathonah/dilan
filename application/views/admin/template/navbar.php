@@ -23,10 +23,11 @@
              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
              Update Profile
            </a>
-           <a class="dropdown-item" href="<?= base_url('admin/user/changePassword'); ?>">
+           <!-- <a class="dropdown-item" href="<?php //base_url('admin/user/changePassword'); 
+                                                ?>">
              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
              Ganti Password
-           </a>
+           </a>-->
            <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
              Logout

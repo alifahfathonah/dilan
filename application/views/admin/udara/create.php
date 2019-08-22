@@ -35,7 +35,13 @@
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
                             <input type="hidden" name="id_user" class="form-control form-control-sm col-10" value="<?= $usaha['user_id']; ?>">
 
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label col-form-label-sm">Lokasi Sampling</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="lokasi" class="form-control form-control-sm col-12" required>
 
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Parameter</label>
                                 <div class="col-sm-8">

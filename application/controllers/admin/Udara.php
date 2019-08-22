@@ -38,7 +38,7 @@ class Udara extends CI_Controller
 
             $data = [
                 'id_usaha' => $this->input->post('id_usaha'),
-
+                'lokasi_smp' => $this->input->post('lokasi'),
                 'parameter_U' => $this->input->post('parameter'),
                 'bk_mutu' => $this->input->post('b_mutu')
 
@@ -70,7 +70,7 @@ class Udara extends CI_Controller
 
 
             $data = [
-
+                'lokasi_smp' => $this->input->post('lokasi'),
                 'parameter_u' => $this->input->post('parameter'),
                 'bk_mutu' => $this->input->post('b_mutu'),
                 'b1' => $this->input->post('jan'),
