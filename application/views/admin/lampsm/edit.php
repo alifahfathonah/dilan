@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Upload File Baru</li>
+                        <li class="breadcrumb-item active">Update File Baru</li>
                     </ol>
                 </div>
             </div>
@@ -23,9 +23,9 @@
         <!-- card primary -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Pilih File Upload Triwulan</h3>
+                <h3 class="card-title">Pilih File Upload Semester</h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/lamptri/create'); ?>" enctype="multipart/form-data">
+            <form role="form" method="post" action="<?= base_url('admin/lampsm/edit'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <?= $this->session->flashdata('message'); ?>
                     <div class="row">
@@ -35,7 +35,7 @@
 
                             <hr>
 
-                            <input type="hidden" name="id_user" class="form-control form-control-sm col-10" value="<?= $usaha['user_id']; ?>">
+                            <input type="hidden" name="id_sm" class="form-control form-control-sm col-10" value="<?= $usaha['idl_sm']; ?>">
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
                             <input type="hidden" name="nm_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['nm_usaha']; ?>">
 
@@ -44,11 +44,14 @@
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-6">
                                     <select name="periode" class="form-control" required>
-                                        <option value="">:. Triwulan .:</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
+
+                                        <option value="01" <?php if ($usaha['p_sm'] == '01') {
+                                                                echo "selected";
+                                                            } ?>>01</option>
+                                        <option value="02" <?php if ($usaha['p_sm'] == '02') {
+                                                                echo "selected";
+                                                            } ?>>02</option>
+
                                     </select>
                                 </div>
 
@@ -57,15 +60,15 @@
                                 <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
                                     <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
                                     <div class="col-sm-6">
-                                        <input id="date1" class="form-control form-control-sm col-6" type="text" name="tahun" readonly="">
+                                        <input id="date1" class="form-control form-control-sm col-6" type="text" name="tahun" value="<?= $usaha['tahun_sm']; ?>" readonly="">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Pilih File</label>
+                                <label class="col-sm-4 col-form-label col-form-label-sm">GantiFile</label>
                                 <div class="col-sm-8">
-                                    <input type="file" name="u_file" class="form-control form-control-sm col-12" required>
+                                    <input type="file" name="u_file" class="form-control form-control-sm col-12">
 
                                 </div>
                             </div>
@@ -76,8 +79,9 @@
                 </div><!-- end card body-->
                 <!-- card footer -->
                 <div class="card-footer">
-                    <button type="submit" name="submit" class="btn btn-primary">upload</button>
+                    <button type="submit" name="update" class="btn btn-primary">update</button>
                     <button type="button" name="batal" class="btn btn-primary" onclick="self.history.back()">batal</button>
+
                 </div>
                 <!-- end card footer -->
             </form>

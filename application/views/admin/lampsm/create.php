@@ -23,9 +23,9 @@
         <!-- card primary -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Pilih File Upload Triwulan</h3>
+                <h3 class="card-title">Pilih File Upload Semester</h3>
             </div>
-            <form role="form" method="post" action="<?= base_url('admin/lamptri/create'); ?>" enctype="multipart/form-data">
+            <form role="form" method="post" action="<?= base_url('admin/lampsm/create'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <?= $this->session->flashdata('message'); ?>
                     <div class="row">
@@ -44,11 +44,9 @@
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Periode</label>
                                 <div class="col-sm-6">
                                     <select name="periode" class="form-control" required>
-                                        <option value="">:. Triwulan .:</option>
+                                        <option value="">:. Semester .:</option>
                                         <option value="01">01</option>
                                         <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
                                     </select>
                                 </div>
 
@@ -78,6 +76,7 @@
                 <div class="card-footer">
                     <button type="submit" name="submit" class="btn btn-primary">upload</button>
                     <button type="button" name="batal" class="btn btn-primary" onclick="self.history.back()">batal</button>
+
                 </div>
                 <!-- end card footer -->
             </form>

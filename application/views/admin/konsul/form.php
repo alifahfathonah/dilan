@@ -92,7 +92,7 @@
         <!-- card footer -->
         <div class="card-footer">
             <button type="submit" name="submit" class="btn btn-primary">kirim</button>
-
+            <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
         </div>
         <!-- end card footer -->
         </form>
