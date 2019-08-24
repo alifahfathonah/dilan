@@ -23,14 +23,14 @@
         <!-- card primary -->
         <div class="card card-primary ">
             <div class="card-header">
-                <h3 class="card-title">Pengelolahan Lingkungan</h3>
+                <h3 class="card-title">Pengelolaan Dan Pemantauan Lingkungan</h3>
             </div>
             <form role="form" method="post" action="<?= base_url('admin/kelola/edit'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <!--<div class="row d-flex justify-content-center"> menegahkan box-->
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Data Pengelolahan Lingkungan</h5>
+                            <h5>Data Pengelolaan Dan Pemantauan Lingkungan</h5>
 
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
@@ -85,28 +85,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <!--<div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Lampiran</label>
                                 <div class="col-sm-6">
                                     <input type="file" name="lampiran" class="form-control form-control-sm col-10" value="<?= $usaha['file']; ?>">
 
-                                </div>
-                            </div>
+                                </div>-->
                         </div>
-
                     </div>
-                </div><!-- end card body-->
-                <!-- card footer -->
-                <div class="card-footer">
-                    <button type="submit" name="update" class="btn btn-primary">update</button>
-                    <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
-                </div>
-                <!-- end card footer -->
-            </form>
-        </div>
-        <!-- /.card primary-->
 
-    </section>
-    <!-- /.content -->
+                </div>
+        </div><!-- end card body-->
+        <!-- card footer -->
+        <div class="card-footer">
+            <button type="submit" name="update" class="btn btn-primary">update</button>
+            <button type="button" class="btn btn-primary" onclick="self.history.back()">batal</button>
+        </div>
+        <!-- end card footer -->
+        </form>
+</div>
+<!-- /.card primary-->
+
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

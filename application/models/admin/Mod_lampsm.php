@@ -21,7 +21,13 @@ class Mod_lampsm extends Ci_Model
         $query = $this->db->query($sql);
         return $query;
     }
+    function selectsm_usaha($id)
+    {
+        $sql = "select * from usaha, lamp_sm  where usaha.id_usaha=lamp_sm.id_usaha and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
 
+        return $query;
+    }
     function simpan($data)
     {
         $this->db->insert('lamp_sm', $data);

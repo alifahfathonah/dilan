@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Pengelolahan Lingkungan</li>
+                        <li class="breadcrumb-item active">Pengelolaan Dan Pemantauan Lingkungan</li>
                     </ol>
                 </div>
             </div>
@@ -23,14 +23,14 @@
         <!-- card primary -->
         <div class="card card-primary ">
             <div class="card-header">
-                <h3 class="card-title">Pengelolahan Lingkungan</h3>
+                <h3 class="card-title">Pengelolaan Dan Pemantauan Lingkungan</h3>
             </div>
             <form role="form" method="post" action="<?= base_url('admin/kelola/create'); ?>" enctype="multipart/form-data">
                 <div class="card-body">
                     <!--<div class="row d-flex justify-content-center"> menegahkan box-->
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Data Pengelolahan Lingkungan</h5>
+                            <h5>Data Pengelolaan Dan Pemantauan Lingkungan</h5>
 
                             <hr>
                             <input type="hidden" name="id_usaha" class="form-control form-control-sm col-10" value="<?= $usaha['id_usaha']; ?>">
@@ -81,17 +81,17 @@
                                 <label class="col-sm-12 col-form-label col-form-label-sm">Pemantauan Lingkungan Yang Dilakukan</label>
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <textarea id="editor" name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                                        <textarea name="pantau" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <!--<div class="form-group row">
                                 <label class="col-sm-4 col-form-label col-form-label-sm">Lampiran</label>
                                 <div class="col-sm-6">
                                     <input type="file" name="lampiran" class="form-control form-control-sm col-10">
 
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
 
                     </div>

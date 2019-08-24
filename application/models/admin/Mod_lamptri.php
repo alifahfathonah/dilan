@@ -22,6 +22,14 @@ class Mod_lamptri extends Ci_Model
         return $query;
     }
 
+    function selectri_usaha($id)
+    {
+        $sql = "select * from usaha, lamp_tri  where usaha.id_usaha=lamp_tri.id_usaha and usaha.id_usaha='" . $id . "'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     function simpan($data)
     {
         $this->db->insert('lamp_tri', $data);
