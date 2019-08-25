@@ -78,23 +78,32 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pemantauan kualitas air limbah periode Januari s/d Maret 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Januari', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Februari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Maret', 1, 1, 'C');
+
+
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'Januari', 'Februari', 'Maret'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(50, 10, $h->b1, 1, 0, 'C');
-            $pdf->Cell(50, 10, $h->b2, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b3, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b1,
+                $h->b2,
+                $h->b3
+
+            ));
+
             $no++;
         }
 
@@ -107,23 +116,31 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode Januari s/d Maret 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Januari', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Februari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Maret', 1, 1, 'C');
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'Januari', 'Februari', 'Maret'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b1,
+                $d->b2,
+                $d->b3
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(50, 10, $d->b1, 1, 0, 'C');
-            $pdf->Cell(50, 10, $d->b2, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b3, 1, 1, 'C');
+            ));
             $no++;
         }
 
@@ -135,16 +152,7 @@ class Claptri extends CI_Controller
         $pdf->SetFont('Arial', '', 10);
         $pdf->Cell(10, 6, 'Data limbah B3 yang dihasilkan selama periode pelaporan adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
-        /*  $pdf->Cell(195, 7, 'PERIODE BULAN JANUARI ', 1, 1, 'C');
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Jenis Limbah B3', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Jml Periode Sebelumnya', 1, 0, 'C');
-        $pdf->Cell(25, 10, 'Jml Periode Ini', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'Jml Sampai Periode Ini', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Dimanfaatkan', 1, 0, 'C');
-        $pdf->Cell(25, 10, 'Ke Pihak k 3', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Sisa di TPS', 1, 1, 'C');*/
+
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(175, 7, 'PERIODE BULAN JANUARI ', 1, 1, 'C');
         $pdf->SetFont('Arial', 'B', 10);
@@ -261,25 +269,35 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pemantauan kualitas air limbah periode April s/d Juni 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'April', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Mei', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Juni', 1, 1, 'C');
+
+
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'April', 'Mei', 'Juni'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b4, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b5, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b6, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b4,
+                $h->b5,
+                $h->b6
+
+            ));
+
             $no++;
         }
+
 
 
         $pdf->Ln(5);
@@ -290,23 +308,31 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode April s/d Juni 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'April', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Mei', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Juni', 1, 1, 'C');
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'April', 'Mei', 'Juni'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b4,
+                $d->b5,
+                $d->b6
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b4, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b5, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b6, 1, 1, 'C');
+            ));
             $no++;
         }
 
@@ -448,23 +474,32 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pemantauan kualitas air limbah periode Juli s/d September 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Juli', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Agustus', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'September', 1, 1, 'C');
+
+
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'Juli', 'Agustus', 'September'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b7, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b8, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b9, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b7,
+                $h->b8,
+                $h->b9
+
+            ));
+
             $no++;
         }
 
@@ -477,27 +512,33 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode Juli s/d September 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Juli', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Agustus', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'September', 1, 1, 'C');
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'Juli', 'Agustus', 'September'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b7,
+                $d->b8,
+                $d->b9
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b7, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b8, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b9, 1, 1, 'C');
+            ));
             $no++;
         }
-
-
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
@@ -637,23 +678,32 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pemantauan kualitas air limbah periode Oktober s/d Desember 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Oktober', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'November', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Desember', 1, 1, 'C');
+
+
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'Oktober', 'November', 'Desember'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b10, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b11, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->b12, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b10,
+                $h->b11,
+                $h->b12
+
+            ));
+
             $no++;
         }
 
@@ -666,23 +716,31 @@ class Claptri extends CI_Controller
         $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode Oktober s/d Desember 2019 adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Oktober', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'November', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Desember', 1, 1, 'C');
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 25, 25, 25, 25, 20, 25, 20));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'Oktober', 'November', 'Desember'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
         // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b10,
+                $d->b11,
+                $d->b12
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b10, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b11, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->b12, 1, 1, 'C');
+            ));
             $no++;
         }
 

@@ -40,6 +40,7 @@
                             <th>Periode</th>
                             <th>Tahun</th>
                             <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
@@ -70,7 +71,7 @@
                                 <td>" . $a['tahun_t'] . "</td>
                                 <td>" . $b . "</td>
                                
-                               
+                                <td>" . $a['ket'] . "</td>
                               
                                 <td><center>" . anchor("admin/v_laptri/edit/" . $a['id_laptri'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</center></td>
                                 <td><center>" . anchor("admin/v_laptri/delete/" . $a['id_laptri'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</center></td>";

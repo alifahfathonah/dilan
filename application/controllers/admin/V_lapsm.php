@@ -166,7 +166,8 @@ class V_lapsm extends CI_Controller
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $user = $data['user']['user_id'];
         $data['usaha'] = $this->mod_pelpsix->selectByUsaha($user)->result_array();
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['lapsm'] = $this->mod_pelpsix->selectUsaha($user)->result_array();
+
         $this->load->view('admin/template/header', $data);
         $this->load->view('admin/template/navbar', $data);
         $this->load->view('admin/template/sidebar', $data);

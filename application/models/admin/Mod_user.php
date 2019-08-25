@@ -7,10 +7,10 @@ class Mod_user extends Ci_Model
         return $this->db->get('users');
     }
 
-    function select_kec()
+    function select_user()
     {
-        $query = "select * from users, user_role where
-                  users.role_id=user_role.role_id";
+        $query = "select users.nama, users.email, usaha.nm_usaha, users.role_id, users.is_active, users.user_id from users, usaha where
+                  users.user_id=usaha.user_id";
         return $this->db->query($query);
     }
 

@@ -54,6 +54,7 @@
                             <th>Des</th>
                             <th>Tahun</th>
                             <th>Edit</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
 
@@ -87,7 +88,8 @@
                                 <td>" . $a['b11'] . "</td>
                                 <td>" . $a['b12'] . "</td>
                                 <td>" . $thn . "</td>
-                                <td>" . anchor("admin/udara/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/udara/edit/" . $a['id_u'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>"; ?><a href="<?= base_url('admin/udara/delete/' . $a['id_u']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
                         </tr>
                         <?php $no++;
                         }

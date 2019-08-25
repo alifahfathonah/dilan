@@ -39,6 +39,7 @@
                             <th>Periode</th>
                             <th>Tahun</th>
                             <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
                             <th>Aksi</th>
@@ -49,7 +50,7 @@
                         <?php
                         $no = 1;
 
-                        foreach ($usaha as $a) {
+                        foreach ($lapsm as $a) {
                             if ($a['sts_lapsm'] == '1') {
                                 $b = "Perlu Perbaikan";
                             } else if ($a['sts_lapsm'] == '2') {
@@ -62,8 +63,8 @@
                                 <td>" . $a['nm_usaha'] . "</td>
                                 <td>" . $a['periode_sm'] . "</td>
                                 <td>" . $a['tahun_sm'] . "</td>
-                            
                                 <td>" . $b . "</td>
+                                <td>" . $a['ket_lapsm'] . "</td>
                                 <td>" . anchor("admin/v_lapsm/edit/" . $a['id_lapsm'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
                                 <td>" . anchor("admin/v_lapsm/delete/" . $a['id_lapsm'], "<i class='fas fa-trash'></i>", array('title' => 'hapus data')) . "</td>";
 

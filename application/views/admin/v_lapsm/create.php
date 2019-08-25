@@ -58,11 +58,14 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="tahun" class="form-control form-control-sm col-6" required>
 
+                            <div class="form-group row">
+                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd">
+                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tahun</label>
+                                    <div class="col-sm-6">
+                                        <input id="date1" class="form-control form-control-sm col-6" type="text" name="tahun" readonly="">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
                                 </div>
                             </div>
 

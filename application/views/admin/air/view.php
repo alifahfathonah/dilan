@@ -53,6 +53,7 @@
                             <th>Des</th>
                             <th>Tahun</th>
                             <th>Edit</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
 
@@ -87,7 +88,8 @@
                                 <td>" . $a['b11'] . "</td>
                                 <td>" . $a['b12'] . "</td>
                                 <td>" . $thn . "</td>
-                                <td>" . anchor("admin/air/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/air/edit/" . $a['id_p'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+                                <td>"; ?><a href="<?= base_url('admin/air/delete/' . $a['id_p']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
                         </tr>
                         <?php $no++;
                         }

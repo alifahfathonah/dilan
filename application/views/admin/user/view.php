@@ -36,6 +36,7 @@
                         <tr>
                             <th>NO</th>
                             <th>Nama</th>
+                            <th>Usaha</th>
                             <th>Email</th>
                             <th>Level</th>
                             <th>Aktiv</th>
@@ -49,14 +50,7 @@
                         $no = 1;
 
                         foreach ($admin as $a) {
-                            foreach ($kec as $b) {
 
-                                if ($a->role_id == 3) {
-                                    if ($a->kec_id == $b->kec_id) {
-                                        $y = $b->nama_kec;
-                                    }
-                                }
-                            }
                             if ($a->is_active == 1) {
                                 $x = "aktif";
                             } else {
@@ -73,6 +67,7 @@
                             echo "<tr>
                                 <td>" . $no . "</td>
                                 <td>" . $a->nama . "</td>
+                                <td>" . $a->nm_usaha . "</td>
                                 <td>" . $a->email . "</td>
                                 <td>" . $y . "</td>
                                 <td>" . $x . "</td>

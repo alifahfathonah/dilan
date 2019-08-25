@@ -5,7 +5,7 @@ class Mod_pelpsix extends Ci_Model
 
     function selectByUsaha($user)
     {
-        $sql = "select * from usaha, lap_sm where usaha.id_usaha=lap_sm.id_usaha and usaha.user_id='" . $user . "'";
+        $sql = "select * from usaha, users where usaha.user_id=users.user_id and usaha.user_id='" . $user . "'";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -65,13 +65,13 @@ class Mod_pelpsix extends Ci_Model
         $this->db->where('id_laporsm', $this->input->post('id_laporsm'), 'id_usaha', $this->input->post('id_usaha'));
         $this->db->update('laporsm', $data);
     }
-    function selectUsaha()
+    /* function selectUsaha()
     {
-        $sql = "select * from usaha, laporsm where usaha.id_usaha=laporsm.id_usaha";
+        $sql = "select * from usaha, lap_sm where usaha.id_usaha=lap_sm.id_usaha";
         $query = $this->db->query($sql);
 
         return $query;
-    }
+    }*/
     function selectv_six($id, $param)
     {
         $sql = "select * from usaha, lap_sm  where usaha.id_usaha=lap_sm.id_usaha and lap_sm.periode_sm='" . $param . "' and usaha.id_usaha='" . $id . "'";
@@ -97,6 +97,15 @@ class Mod_pelpsix extends Ci_Model
     function selectsm_usaha($idu, $id)
     {
         $sql = "select * from usaha, lap_sm  where usaha.id_usaha=lap_sm.id_usaha and usaha.id_usaha='" . $idu . "' and lap_sm.id_lapsm='$id'";
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function selectUsaha($user)
+    {
+        $sql = "select * from usaha, users, lap_sm where usaha.user_id=users.user_id and
+        usaha.id_usaha=lap_sm.id_usaha and usaha.user_id='" . $user . "'";
         $query = $this->db->query($sql);
 
         return $query;

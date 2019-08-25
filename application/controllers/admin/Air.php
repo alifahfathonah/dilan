@@ -108,4 +108,15 @@ class Air extends CI_Controller
             $this->load->view('admin/template/footer');
         }
     }
+
+    function delete($id)
+    {
+        $this->db->where('id_p', $id);
+        $this->db->delete('p_air');
+        $this->session->set_flashdata('message', '<div class= "alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+        Data berhasil Dihapus.</div>');
+        redirect('admin/air');
+    }
 }

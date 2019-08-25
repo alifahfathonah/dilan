@@ -48,6 +48,7 @@
                             <th>Tahun</th>
 
                             <th>Edit</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
 
@@ -73,7 +74,9 @@
                                 <td>" . $a['sisa'] . "</td>
                                 <td>" . $a['bln'] . "</td>
                                 <td>" . $a['thn_b3'] . "</td>
-                                <td>" . anchor("admin/limbah/edit/" . $a['id_b3'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>"; ?>
+                                <td>" . anchor("admin/limbah/edit/" . $a['id_b3'], "<i class='far fa-edit'></i>", array('title' => 'edit data')) . "</td>
+
+                                <td>"; ?><a href="<?= base_url('admin/limbah/delete/' . $a['id_b3']); ?>" class="fas fa-trash-alt tombol-hapus"></a></td>
                         </tr>
                         <?php $no++;
                         }

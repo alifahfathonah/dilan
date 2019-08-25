@@ -72,20 +72,20 @@ class Clapsix extends CI_Controller
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '3. Pengelolaan dan Pemantauan Lingkungan', 0, 1);
+        $pdf->Cell(10, 6, '1. Pengelolaan dan Pemantauan Lingkungan', 0, 1);
         $pdf->SetFont('Arial', '', 10);
         $txt = 'Kegiatan pengelolaan dan pemantauan lingkungan yang telah dilaksanakan selama periode pelaporan dapat dilihat pada tabel berikut:';
         $pdf->MultiCell(196, 6, $txt, 0, 'J', 0, 0);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->SetAligns(array('C', 'C', 'C', 'C', 'C'));
-        $pdf->SetWidths(array(26, 40, 50, 50, 30));
+        $pdf->SetWidths(array(30, 40, 60, 60));
         $pdf->SetLineHeight(5);
         $pdf->Row(array(
             'Sumber Dampak',
-            'Jenis Dampak', 'Pengelolaan Lingkungan Yang Telah Dilaksanakan', 'Pemantauan Lingkungan Yang Telah Dilaksanakan', 'Lampiran'
+            'Jenis Dampak', 'Pengelolaan Lingkungan Yang Telah Dilaksanakan', 'Pemantauan Lingkungan Yang Telah Dilaksanakan'
         ));
-        $pdf->SetAligns(array('L', 'L', 'L', 'L', 'L'));
+        $pdf->SetAligns(array('L', 'L', 'L', 'L'));
         $pdf->SetFont('Arial', '', 10);
         //$data['limbahj'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['kelola'] as $e) {
@@ -95,88 +95,101 @@ class Clapsix extends CI_Controller
                 $e->sumber,
                 $e->jenis,
                 $e->kelola,
-                $pantau,
-                $e->file
+                $pantau
+
 
             ));
         }
 
 
-
+        // kualitas air limbah
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(10, 6, '2. Hasil Pemantauan Kualitas Air Limbah', 0, 1);
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas air limbah periode pelaporan adalah sebagai berikut :', 0, 1);
+        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas air limbah periode semester I adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Januari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Februari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Maret', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'April', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Mei', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Juni', 1, 1, 'C');
-        $no = 1;
 
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 30, 20, 18, 18, 18, 18, 18, 18, 18));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+        $no = 1;
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b1, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b2, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b3, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b4, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b5, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b6, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b1,
+                $h->b2,
+                $h->b3,
+                $h->b4,
+                $h->b5,
+                $h->b6,
+
+            ));
+
             $no++;
         }
 
 
+        //kualitas udara
+
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '2. Hasil Pemantauan Kualitas Udara', 0, 1);
+        $pdf->Cell(10, 6, '3. Hasil Pemantauan Kualitas Udara', 0, 1);
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode pelaporan adalah sebagai berikut :', 0, 1);
+        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode semester II adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Januari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Februari', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Maret', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'April', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Mei', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Juni', 1, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 30, 20, 18, 18, 18, 18, 18, 18, 18));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
-
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b1,
+                $d->b2,
+                $d->b3,
+                $d->b4,
+                $d->b5,
+                $d->b6
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b1, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b2, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b3, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b4, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b5, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b6, 1, 1, 'C');
+            ));
             $no++;
         }
-
 
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '3. Pengelolaan Limbah B3', 0, 1);
+        $pdf->Cell(10, 6, '4. Pengelolaan Limbah B3', 0, 1);
         $pdf->SetFont('Arial', '', 10);
         $pdf->Cell(10, 6, 'Data limbah B3 yang dihasilkan selama periode pelaporan adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
@@ -375,7 +388,7 @@ class Clapsix extends CI_Controller
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '3. Pengelolaan dan Pemantauan Lingkungan', 0, 1);
+        $pdf->Cell(10, 6, '1. Pengelolaan dan Pemantauan Lingkungan', 0, 1);
         $pdf->SetFont('Arial', '', 10);
         $txt = 'Kegiatan pengelolaan dan pemantauan lingkungan yang telah dilaksanakan selama periode pelaporan dapat dilihat pada tabel berikut:';
         $pdf->MultiCell(196, 6, $txt, 0, 'J', 0, 0);
@@ -404,82 +417,87 @@ class Clapsix extends CI_Controller
             ));
         }
 
-
-
+        // kualitas air limbah
         $pdf->Ln(5);
-        $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '2. Hasil Pemantauan Kualitas Air Limbah', 0, 1);
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 30, 20, 18, 18, 18, 18, 18, 18, 18));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu (mg/l)', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Cell(10, 6, 'Data hasil pengujian kualitas air limbah periode pelaporan adalah sebagai berikut :', 0, 1);
-        $pdf->Ln(5);
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Juli', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Agustus', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'September', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Oktober', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'November', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Desember', 1, 1, 'C');
-        $no = 1;
 
+        $no = 1;
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['air'] as $h) {
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $h->parameter_a, 1, 0, 'L');
-            $pdf->Cell(30, 10, $h->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b7, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b8, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b9, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b10, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b11, 1, 0, 'C');
-            $pdf->Cell(20, 10, $h->b12, 1, 1, 'C');
+            $pdf->Row(array(
+                $no,
+                $h->titik_smp,
+                $h->parameter_a,
+                $h->bk_mutu,
+                $h->b7,
+                $h->b8,
+                $h->b9,
+                $h->b10,
+                $h->b11,
+                $h->b12,
+
+            ));
+
             $no++;
         }
 
 
+        // kualitas udara
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '2. Hasil Pemantauan Kualitas Udara', 0, 1);
+        $pdf->Cell(10, 6, '3. Hasil Pemantauan Kualitas Udara', 0, 1);
         $pdf->SetFont('Arial', '', 10);
         $pdf->Cell(10, 6, 'Data hasil pengujian kualitas udara periode pelaporan adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Parameter', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'Baku Mutu (mg/l)', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Juli', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Agustus', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'September', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Oktober', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'November', 1, 0, 'C');
-        $pdf->Cell(20, 10, 'Desember', 1, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetAligns(array('C', 'L', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'));
+        $pdf->SetWidths(array(10, 30, 20, 18, 18, 18, 18, 18, 18, 18));
+        $pdf->SetLineHeight(5);
+        $pdf->Row(array(
+            'No',
+            'Lokasi Sampling', 'Parameter', 'Baku Mutu', 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni'
+        ));
+        $pdf->SetFont('Arial', '', 10);
+
+
+
+
         $no = 1;
-
+        // $data['record'] = $this->mod_pelptri->selectUsaha()->result();
         foreach ($data['udara'] as $d) {
+            $pdf->Row(array(
+                $no,
+                $d->lokasi_smp,
+                $d->parameter_u,
+                $d->bk_mutu,
+                $d->b1,
+                $d->b2,
+                $d->b3,
+                $d->b4,
+                $d->b5,
+                $d->b6
 
-            $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(10, 10, $no, 1, 0, 'C');
-            $pdf->Cell(30, 10, $d->parameter_u, 1, 0, 'L');
-            $pdf->Cell(30, 10, $d->bk_mutu, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b7, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b8, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b9, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b10, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b11, 1, 0, 'C');
-            $pdf->Cell(20, 10, $d->b12, 1, 1, 'C');
+            ));
             $no++;
         }
+
 
 
         $pdf->Ln(5);
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(10, 6, '3. Pengelolaan Limbah B3', 0, 1);
+        $pdf->Cell(10, 6, '4. Pengelolaan Limbah B3', 0, 1);
         $pdf->SetFont('Arial', '', 10);
         $pdf->Cell(10, 6, 'Data limbah B3 yang dihasilkan selama periode pelaporan adalah sebagai berikut :', 0, 1);
         $pdf->Ln(5);
